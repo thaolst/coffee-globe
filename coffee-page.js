@@ -49,24 +49,24 @@ window.CoffeePage.PAGE = {
       slot: "Ảnh hạt cà phê rang"
     },
     sections: {
-      overview: {
+            overview: {
         n: "01",
-        title: "Cà phê thật ra là gì?",
-        lede: "Không phải hạt đậu, không phải quả hạch. Cà phê là hạt của một loại quả mọng, và gần như mọi thứ bạn cảm nhận trong ly đều được quyết định trước khi hạt gặp nước.",
+        title: "Một trang web, cả thế giới cà phê",
+        lede: "Ly cà phê bạn uống mỗi sáng đã đi một hành trình rất xa trước khi tới tay bạn. Trang này kể lại toàn bộ hành trình đó — từ vườn trồng, qua rang xay, đến từng cách pha — bằng bản đồ, con số và những câu chuyện ai cũng đọc được.",
         paras: [
-          "Cây cà phê là cây bụi thường xanh trong họ Thiến thảo. Sau mùa hoa trắng thơm như hoa nhài, cây cho những quả mọng nhỏ, chín từ xanh sang vàng rồi sang đỏ thẫm, người trong ngành gọi là “cherry”. Bên trong lớp thịt ngọt là hai hạt úp mặt phẳng vào nhau. Đó chính là hạt cà phê.",
-          "Trước khi rang, hạt cà phê màu xanh xám, mùi cỏ tươi, không hề giống thứ bạn uống. Toàn bộ hương vị mà chúng ta gọi là “cà phê”, socola, hạt dẻ, hoa quả, caramel, được sinh ra trong khoảng mười hai phút rang, khi hàng trăm phản ứng hóa học biến đường và axit amin thành hơn tám trăm hợp chất thơm.",
-          "Cây chỉ sống tốt trong một dải hẹp quanh xích đạo, giữa hai đường chí tuyến: đủ ấm, đủ mưa, không bao giờ có sương giá. Người ta gọi dải đất ấy là Vành đai Cà phê. Càng lên cao, quả chín càng chậm, và chín chậm thì ngọt và thơm hơn, đó là lý do vì sao độ cao được ghi trên mọi bao cà phê đặc sản."
+          "Hãy bắt đầu từ bản đồ: hai mươi nước trồng cà phê nhiều nhất thế giới. Bấm vào một nước bất kỳ để xem họ trồng giống gì, sản lượng ra sao, và ly cà phê quen thuộc của họ có gì đặc biệt.",
+          "Cùng là cà phê, sao ly này chua thanh mà ly kia đắng sâu? Mục “Giống” sẽ chỉ ra khác biệt giữa Arabica và Robusta; mục “Cách pha” hướng dẫn tám cách làm quen thuộc — từ Espresso của Ý đến phin Việt Nam.",
+          "Việt Nam có một vị trí riêng ở đây: nước sản xuất cà phê lớn thứ hai thế giới, quê hương của Robusta, của phin và cà phê sữa đá. Kéo xuống mục “Việt Nam” để đọc trọn câu chuyện."
         ],
         facts: [
-          ["~70", "quốc gia trồng cà phê thương mại"],
-          ["2 tỉ+", "ly cà phê được uống mỗi ngày"],
-          ["3–4 năm", "từ khi trồng đến vụ quả đầu tiên"],
-          ["~800", "hợp chất thơm sinh ra khi rang"]
+          ["20", "nước trên bản đồ — bấm để xem từng nước"],
+          ["2 loài", "Arabica & Robusta nuôi cả thế giới"],
+          ["8", "cách pha, từ Espresso đến phin"],
+          ["2 tỉ+", "ly cà phê được uống mỗi ngày"]
         ],
         pull: "Cà phê là loại nông sản hiếm hoi mà chất lượng được quyết định ở cả năm nơi: vườn, sân phơi, nhà rang, cối xay và cuối cùng là bàn tay bạn."
       },
-      species: {
+species: {
         n: "02",
         title: "Hai loài cây chia nhau cả thế giới",
         lede: "Có hơn một trăm loài Coffea, nhưng chỉ hai loài nuôi cả ngành cà phê. Chúng khác nhau ở hình hạt, độ cao, lượng caffeine, và ở toàn bộ tính cách trong ly.",
@@ -286,24 +286,24 @@ window.CoffeePage.PAGE = {
       slot: "Photo of roasted beans"
     },
     sections: {
-      overview: {
+            overview: {
         n: "01",
-        title: "What coffee actually is",
-        lede: "Not a bean, not a nut. Coffee is the seed of a berry, and almost everything you taste in the cup is decided long before the seed meets water.",
+        title: "One website, the whole coffee world",
+        lede: "The coffee you drink each morning travels a long way before it reaches your cup. This page tells that whole journey — from the farm, through roasting and grinding, to each way of brewing — with maps, numbers and stories anyone can follow.",
         paras: [
-          "The coffee plant is an evergreen shrub in the madder family. After a flush of white, jasmine-scented flowers, it sets small berries that ripen from green through yellow to deep red, the trade calls them cherries. Inside the sweet pulp sit two seeds, pressed flat face to face. Those are coffee beans.",
-          "Unroasted, they are grey-green and smell of fresh grass, nothing like the drink. Everything we recognise as coffee flavour, chocolate, nuts, fruit, caramel, is created in roughly twelve minutes of roasting, when hundreds of reactions turn sugars and amino acids into more than eight hundred aromatic compounds.",
-          "The plant only thrives in a narrow band around the equator: warm enough, wet enough, never frost. That band is the Coffee Belt. The higher the farm, the slower the cherry ripens, and slow ripening means more sugar and more aroma, which is why altitude is printed on every bag of specialty coffee."
+          "Start with the map: the twenty countries that grow the most coffee in the world. Click any country to see which varieties they grow, how much they produce, and what makes their everyday cup special.",
+          "Why is one coffee bright and fruity while another is deep and bitter? The “Species” section explains the difference between Arabica and Robusta; “Brewing” walks you through eight familiar methods — from Italian espresso to the Vietnamese phin.",
+          "Vietnam has its own place here: the world’s second-largest coffee producer, home of Robusta, of the phin and iced milk coffee. Scroll down to the “Vietnam” section to read the full story."
         ],
         facts: [
-          ["~70", "countries grow coffee commercially"],
-          ["2bn+", "cups drunk every day"],
-          ["3–4 years", "from planting to first harvest"],
-          ["~800", "aroma compounds created by roasting"]
+          ["20", "countries on the map — click each one"],
+          ["2 species", "Arabica & Robusta feed the world"],
+          ["8", "brew methods, from espresso to phin"],
+          ["2B+", "cups of coffee drunk every day"]
         ],
-        pull: "Coffee is one of the few crops whose quality is decided in five places at once: the farm, the drying bed, the roastery, the grinder, and finally your own hands."
+        pull: "Coffee is one of the rare crops whose quality is decided in five places: the farm, the drying yard, the roastery, the grinder, and finally your own hands."
       },
-      species: {
+species: {
         n: "02",
         title: "Two species share the whole world",
         lede: "There are over a hundred Coffea species, but two carry the industry. They differ in bean shape, altitude and caffeine, and in their entire personality in the cup.",
