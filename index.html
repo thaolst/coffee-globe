@@ -276,7 +276,7 @@
           </div>
         </div>
 
-      <div style="display:grid;grid-template-columns:minmax(0,1.12fr) minmax(0,0.88fr);gap:26px;align-items:start;margin-top:28px">
+      <div style="display:grid;grid-template-columns:minmax(0,1.12fr) minmax(0,0.88fr);gap:26px;margin-top:28px">
         <div style="min-width:0;background:#17231e;border:1px solid rgba(242,236,224,0.14);border-radius:10px;padding:24px">
           
           <div style="font-size:11px;letter-spacing:0.12em;text-transform:uppercase;color:#a7d18c;font-weight:700">{{ activeRank }}</div>
@@ -384,10 +384,10 @@
   <section id="tasting" data-screen-label="06 Tasting" style="max-width:1280px;margin:32px auto 0;padding:56px 40px;background:#fffdf7;border:1px solid rgba(42,32,24,0.12);border-radius:16px">
     <h2 style="font-family:'Lora',Georgia,serif;font-weight:400;font-size:clamp(30px,3.8vw,48px);line-height:1.08;margin:0 0 16px;text-wrap:pretty">{{ taTitle }}</h2>
     <p style="font-family:'Lora',Georgia,serif;font-size:20px;line-height:1.55;color:#4a3b2c;max-width:720px;margin:0 0 34px;text-wrap:pretty">{{ taLede }}</p>
-    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:26px;align-items:start">
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:26px">
       <div style="min-width:0;display:flex;flex-direction:column;gap:1px;background:rgba(42,32,24,0.14);border:1px solid rgba(42,32,24,0.14)">
         <sc-for list="{{ taAxes }}" as="a" hint-placeholder-count="5">
-          <div style="background:#fffdf7;padding:18px 20px">
+          <div style="background:#fffdf7;padding:18px 20px;flex:1 1 0;display:flex;flex-direction:column;justify-content:center">
             <h3 style="font-family:'Lora',Georgia,serif;font-weight:500;font-size:20px;margin:0 0 6px">{{ a.k }}</h3>
             <p style="font-size:13.5px;line-height:1.62;color:#4a3b2c;margin:0;text-wrap:pretty">{{ a.v }}</p>
           </div>
@@ -481,7 +481,7 @@
   <section id="health" data-screen-label="09 Health" style="max-width:1280px;margin:32px auto 0;padding:56px 40px;background:#fffdf7;border:1px solid rgba(42,32,24,0.12);border-radius:16px">
     <h2 style="font-family:'Lora',Georgia,serif;font-weight:400;font-size:clamp(30px,3.8vw,48px);line-height:1.08;margin:0 0 16px;text-wrap:pretty">{{ heTitle }}</h2>
     <p style="font-family:'Lora',Georgia,serif;font-size:20px;line-height:1.55;color:#4a3b2c;max-width:720px;margin:0 0 34px;text-wrap:pretty">{{ heLede }}</p>
-    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:26px;align-items:start">
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:26px">
       <div style="min-width:0;display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:1px;background:rgba(42,32,24,0.14);border:1px solid rgba(42,32,24,0.14)">
         <sc-for list="{{ hePoints }}" as="p" hint-placeholder-count="4">
           <div style="background:#fffdf7;padding:20px">
@@ -513,13 +513,13 @@
   <section id="economy" data-screen-label="10 Economy" style="max-width:1280px;margin:32px auto 0;padding:56px 40px;background:#fffdf7;border:1px solid rgba(42,32,24,0.12);border-radius:16px">
     <h2 style="font-family:'Lora',Georgia,serif;font-weight:400;font-size:clamp(30px,3.8vw,48px);line-height:1.08;margin:0 0 16px;text-wrap:pretty">{{ ecTitle }}</h2>
     <p style="font-family:'Lora',Georgia,serif;font-size:20px;line-height:1.55;color:#4a3b2c;max-width:720px;margin:0 0 34px;text-wrap:pretty">{{ ecLede }}</p>
-    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:34px;align-items:start">
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:34px">
       <div style="min-width:0">
         <sc-for list="{{ ecParas }}" as="p" hint-placeholder-count="3">
           <p style="font-family:'Lora',Georgia,serif;font-size:18px;line-height:1.74;margin:0 0 22px;text-wrap:pretty">{{ p }}</p>
         </sc-for>
       </div>
-      <div style="min-width:0">
+      <div style="min-width:0;display:flex;flex-direction:column">
         <div style="background:#fffdf7;border:1px solid rgba(42,32,24,0.14);padding:24px">
           <div style="font-family:'Lora',Georgia,serif;font-size:21px;line-height:1.25;margin-bottom:20px">{{ ecChainTitle }}</div>
           <div style="display:flex;height:34px;border-radius:6px;overflow:hidden;margin-bottom:18px">
@@ -538,7 +538,7 @@
           </div>
           <p style="font-size:11.5px;color:#8a7860;line-height:1.6;margin:18px 0 0">{{ ecChainNote }}</p>
         </div>
-        <div style="height:220px;position:relative;margin-top:22px;border:1px solid rgba(42,32,24,0.14)">
+        <div style="flex:1 1 auto;min-height:200px;position:relative;margin-top:22px;border:1px solid rgba(42,32,24,0.14)">
           <image-slot id="cg-economy" shape="rect" fit="cover" placeholder="{{ ecSlot }}" src="https://upload.wikimedia.org/wikipedia/commons/thumb/e/ee/NP_coffee_sacks_%285867722798%29.jpg/1920px-NP_coffee_sacks_%285867722798%29.jpg" credit="Ảnh: CIAT · CC BY-SA 2.0 (Wikimedia Commons)" credit-href="https://commons.wikimedia.org/wiki/File:NP_coffee_sacks_(5867722798).jpg"></image-slot>
         </div>
       </div>
