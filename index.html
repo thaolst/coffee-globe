@@ -46,12 +46,15 @@
 /* ===== Editorial typography: Source Serif 4 display + Source Sans 3 body ===== */
 h1, h2, h3 { font-family:"Source Serif 4",Georgia,"Times New Roman",serif !important; }
 blockquote { font-family:"Source Serif 4",Georgia,"Times New Roman",serif !important; font-size:clamp(21px,2.3vw,27px) !important; font-style:italic; }
+/* ===== Rhythm: map full-bleed + globe ===== */
+@media (max-width: 760px) { #cg-globe { display:none; } }
 /* ===== Mobile responsive ===== */
 @media (max-width: 640px) {
   .dc-mob-stack { grid-template-columns:minmax(0,1fr) !important; }
   .dc-mob-tl { grid-template-columns:minmax(0,96px) 14px minmax(0,1fr) !important; }
   h1 { font-size:clamp(32px,8vw,52px) !important; letter-spacing:-0.01em; }
   section[style*="padding:56px 40px"] { padding:48px 18px !important; }
+  #map > div { padding-left:18px !important; padding-right:18px !important; }
   /* header: 2 hang tren mobile */
   header > div { flex-wrap:wrap; gap:6px 14px; padding:8px 14px !important; }
   header nav { order:5; flex-basis:100%; }
@@ -126,7 +129,9 @@ blockquote { font-family:"Source Serif 4",Georgia,"Times New Roman",serif !impor
       </div>
     </div>
     <div style="position:relative;max-width:1280px;margin:0 auto;padding:0 24px 24px;font-size:13px;color:#cbbfa9;font-style:italic;pointer-events:none">{{ heroCaption }}</div>
-  </section>
+  
+    <canvas id="cg-globe" width="300" height="300" aria-hidden="true" style="position:absolute;top:56px;right:clamp(16px,5vw,72px);width:clamp(150px,19vw,230px);height:clamp(150px,19vw,230px);opacity:0.95;pointer-events:none"></canvas>
+</section>
 
   <section id="overview" data-screen-label="01 Overview" style="max-width:1280px;margin:48px auto 0;padding:56px 40px;background:#fffdf7;border:1px solid rgba(42,32,24,0.12);border-radius:16px">
     <div class="dc-mob-stack" style="display:grid;grid-template-columns:minmax(0,1fr) minmax(260px,340px);gap:52px">
@@ -279,7 +284,8 @@ blockquote { font-family:"Source Serif 4",Georgia,"Times New Roman",serif !impor
     </div>
   </section>
 
-  <section id="map" data-screen-label="03 Map" style="max-width:1280px;margin:32px auto 0;background:#20302a;color:#f2ece0;padding:56px 40px;border-radius:16px">
+  <section id="map" data-screen-label="03 Map" style="margin:40px 0 0;background:#20302a;color:#f2ece0;padding:0">
+  <div style="max-width:1280px;margin:0 auto;padding:64px 24px">
     <div>
       <h2 style="font-family:"Source Sans 3",Arial,Helvetica,sans-serif;font-weight:400;font-size:clamp(28px,3.6vw,46px);line-height:1.08;margin:0 0 16px;max-width:900px;text-wrap:pretty">{{ mapTitle }}</h2>
       <p style="font-family:"Source Sans 3",Arial,Helvetica,sans-serif;font-size:20px;line-height:1.55;color:#e9e0ce;max-width:720px;margin:0 0 30px;text-wrap:pretty">{{ mapLede }}</p>
@@ -367,6 +373,8 @@ blockquote { font-family:"Source Serif 4",Georgia,"Times New Roman",serif !impor
         </div>
       </div>
     </div>
+  
+  </div>
   </section>
 
   <section id="process" data-screen-label="04 Process" style="max-width:1280px;margin:32px auto 0;padding:56px 40px;background:#fffdf7;border:1px solid rgba(42,32,24,0.12);border-radius:16px">
@@ -592,7 +600,7 @@ blockquote { font-family:"Source Serif 4",Georgia,"Times New Roman",serif !impor
     </dl>
   </section>
 
-  <section id="sources" data-screen-label="12 Sources" style="max-width:1280px;margin:32px auto 48px;padding:56px 40px;background:#fffdf7;border:1px solid rgba(42,32,24,0.12);border-radius:16px">
+  <section id="sources" data-screen-label="12 Sources" style="max-width:1280px;margin:32px auto 48px;padding:56px 40px;background:#efe6d2;border:1px solid rgba(42,32,24,0.12);border-radius:16px">
     <h2 style="font-family:"Source Sans 3",Arial,Helvetica,sans-serif;font-weight:400;font-size:clamp(26px,3vw,38px);line-height:1.1;margin:0 0 24px">{{ soTitle }}</h2>
     <ol style="margin:0;padding-left:24px;display:flex;flex-direction:column;gap:10px;max-width:860px">
       <sc-for list="{{ sources }}" as="s" hint-placeholder-count="9">
@@ -915,5 +923,84 @@ class Component extends DCLogic {
   }
 }
 </script>
+
+<script>
+/* Globe signature - nhe, canvas 2D, xoay cham (khong Three.js) */
+(function () {
+  var cv = document.getElementById('cg-globe');
+  if (!cv || !cv.getContext) return;
+  var ctx = cv.getContext('2d');
+  var mq = window.matchMedia('(max-width: 760px)');
+  var run = true;
+  function ensureSize() {
+    var r = cv.getBoundingClientRect();
+    var w = Math.round(r.width);
+    if (w < 20) return 0;
+    var dpr = Math.min(window.devicePixelRatio || 1, 2);
+    var pw = Math.round(w * dpr);
+    if (cv.width !== pw) { cv.width = pw; cv.height = pw; ctx.setTransform(dpr, 0, 0, dpr, 0, 0); }
+    return w;
+  }
+  var spots = [  /* cac "diem ca phe": lat(rad), lon(rad), ban kinh cham */
+    [-0.42, -1.2, 5.5],  /* Brasil */
+    [0.60, 1.85, 4.2],   /* Ethiopia */
+    [0.62, 2.35, 4.6],   /* Yemen */
+    [0.46, 1.95, 4.0],   /* Kenya */
+    [0.36, 2.25, 4.4],   /* Colombia - gan */
+    [0.72, 2.75, 5.2],   /* Viet Nam */
+    [0.30, 0.55, 4.0],   /* Trung My */
+    [-0.15, 0.45, 3.8]   /* Tay Phi */
+  ];
+  var t0 = null;
+  function frame(ts) {
+    if (!run) return;
+    if (!t0) t0 = ts;
+    var t = (ts - t0) / 1000;
+    var w = ensureSize();
+    if (w < 20) { requestAnimationFrame(frame); return; }
+    ctx.clearRect(0, 0, w, w);
+    var R = w / 2 - 7, cx = w / 2, cy = w / 2;
+    var rot = t * 0.22;
+    ctx.lineWidth = 1;
+    /* vong ngoai */
+    ctx.beginPath(); ctx.arc(cx, cy, R, 0, 7); ctx.strokeStyle = 'rgba(242,236,224,0.55)'; ctx.stroke();
+    /* kinh tuyen (ellipse xoay) */
+    for (var k = 0; k < 8; k++) {
+      var ph = rot + k * Math.PI / 4;
+      ctx.beginPath();
+      ctx.ellipse(cx, cy, R * Math.abs(Math.cos(ph)), R, 0, 0, 7);
+      ctx.strokeStyle = 'rgba(242,236,224,' + (0.10 + 0.16 * Math.abs(Math.cos(ph))) + ')';
+      ctx.stroke();
+    }
+    /* vi tuyen */
+    for (var lat = -1; lat <= 1; lat += 0.5) {
+      if (lat === 0) continue;
+      ctx.beginPath();
+      ctx.ellipse(cx, cy, R * Math.cos(lat * Math.PI / 4), R * Math.sin(Math.abs(lat) * Math.PI / 4), 0, 0, 7);
+      ctx.strokeStyle = 'rgba(242,236,224,0.14)'; ctx.stroke();
+    }
+    ctx.beginPath(); ctx.ellipse(cx, cy, R, R * 0.22, 0, 0, 7); ctx.strokeStyle = 'rgba(242,236,224,0.18)'; ctx.stroke();
+    /* diem ca phe */
+    for (var s = 0; s < spots.length; s++) {
+      var la = spots[s][0], lo = spots[s][1], rr = spots[s][2];
+      var x = Math.cos(la) * Math.sin(lo + rot), y = Math.sin(la), z = Math.cos(la) * Math.cos(lo + rot);
+      if (z > -0.12) {
+        var px = cx + x * R, py = cy - y * R;
+        var front = z > 0.05;
+        ctx.beginPath();
+        ctx.arc(px, py, front ? rr : rr * 0.8, 0, 7);
+        ctx.fillStyle = front ? 'rgba(167,209,140,0.9)' : 'rgba(167,209,140,0.28)';
+        ctx.fill();
+      }
+    }
+    requestAnimationFrame(frame);
+  }
+  window.addEventListener('resize', function () { if (run) requestAnimationFrame(frame); });
+  if (mq.addEventListener) mq.addEventListener('change', function (e) { run = !e.matches; if (run) requestAnimationFrame(frame); });
+  run = !mq.matches;
+  if (run) requestAnimationFrame(frame);
+})();
+</script>
+
 </body>
 </html>
