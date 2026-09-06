@@ -1,0 +1,898 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Coffee Globe — Hồ sơ cà phê thế giới</title>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="anonymous" />
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Source+Sans+3:wght@400;500;600;700&display=swap" />
+<script src="./image-slot.js"></script>
+<script src="./coffee-content.js"></script>
+<script src="./coffee-page.js"></script>
+<style>
+  html, body { margin: 0; padding: 0; background: #f7f1e4; color: #2a2018; scroll-behavior: smooth; }
+  * { box-sizing: border-box; }
+  a { color: #6c5a2f; text-decoration: underline; text-decoration-thickness: 1px; text-underline-offset: 2px; }
+  a:hover { color: #a8752c; }
+  ::selection { background: #dfe8d3; }
+  section[id] { scroll-margin-top: 74px; }
+  @keyframes cg-in { from { opacity: 0; transform: translateY(8px); } to { opacity: 1; transform: none; } }
+</style>
+</helmet>
+
+<div style="font-family:'Source Sans 3',system-ui,sans-serif;background:#eee5d2;color:#2a2018;min-height:100vh;overflow-x:hidden">
+
+  <header style="position:sticky;top:0;z-index:60;background:rgba(247,241,228,0.95);backdrop-filter:blur(12px);border-bottom:1px solid rgba(42,32,24,0.12)">
+    <div style="max-width:1280px;margin:0 auto;padding:9px 24px;display:flex;align-items:center;gap:18px">
+      <a href="#top" style="display:flex;align-items:center;gap:9px;text-decoration:none;color:#2a2018;flex:0 0 auto">
+        <svg viewBox="0 0 34 34" width="28" height="28" aria-hidden="true">
+          <defs>
+            <radialGradient id="cg-mark" cx="36%" cy="28%" r="76%">
+              <stop offset="0" stop-color="#8fbb74" />
+              <stop offset="0.48" stop-color="#4b7a4f" />
+              <stop offset="1" stop-color="#22412a" />
+            </radialGradient>
+          </defs>
+          <ellipse cx="17" cy="17" rx="11" ry="14.4" transform="rotate(-16 17 17)" fill="url(#cg-mark)" />
+          <path d="M17.4 3.2 C13.2 8.4 13.8 24 17.8 30.6" fill="none" stroke="#1c3521" stroke-width="1.8" stroke-linecap="round" opacity="0.9" />
+          <path d="M10.2 8.6 C7.6 13 7.8 21.2 10.4 25.6" fill="none" stroke="#dff0d2" stroke-width="1.2" stroke-linecap="round" opacity="0.38" />
+        </svg>
+        <span style="font-weight:700;font-size:15.5px;letter-spacing:0.01em">Coffee Globe</span>
+      </a>
+
+      <nav style="flex:1 1 auto;min-width:0;display:flex;gap:2px;overflow-x:auto;scrollbar-width:none">
+        <sc-for list="{{ nav }}" as="item" hint-placeholder-count="10">
+          <a href="{{ item.href }}" style="flex:0 0 auto;padding:8px 10px;border-radius:7px;font-size:12.5px;font-weight:500;color:#6e5f4d;text-decoration:none;white-space:nowrap" style-hover="background:#efe6d2;color:#2a2018">{{ item.label }}</a>
+        </sc-for>
+      </nav>
+
+      <div style="position:relative;flex:0 0 auto">
+        <input type="search" value="{{ query }}" onChange="{{ onSearch }}" placeholder="{{ searchPlaceholder }}" style="width:250px;font-family:inherit;font-size:12.5px;padding:9px 12px;border:1px solid rgba(42,32,24,0.18);border-radius:8px;background:#fffdf7;color:#2a2018;min-height:38px" style-focus="outline:2px solid #4b7a4f;outline-offset:1px;border-color:#4b7a4f" />
+        <sc-if value="{{ searchOpen }}" hint-placeholder-val="{{ false }}">
+          <div style="position:absolute;top:44px;right:0;width:390px;max-height:62vh;overflow:auto;background:#fffdf7;border:1px solid rgba(42,32,24,0.16);border-radius:10px;box-shadow:0 18px 44px rgba(42,32,24,0.2);padding:6px">
+            <div style="padding:8px 10px;font-size:10.5px;letter-spacing:0.1em;text-transform:uppercase;color:#8a7860;font-weight:600">{{ searchCount }}</div>
+            <sc-for list="{{ results }}" as="r" hint-placeholder-count="3">
+              <a href="{{ r.href }}" onClick="{{ clearSearch }}" style="display:block;padding:10px;border-radius:8px;text-decoration:none;color:#2a2018" style-hover="background:#f3ebd9">
+                <div style="font-size:10px;letter-spacing:0.1em;text-transform:uppercase;color:#4b7a4f;font-weight:700;margin-bottom:4px">{{ r.kicker }}</div>
+                <div style="font-family:'Lora',Georgia,serif;font-size:16px;line-height:1.25">{{ r.title }}</div>
+                <div style="font-size:12px;color:#6e5f4d;line-height:1.45;margin-top:4px">{{ r.snippet }}</div>
+              </a>
+            </sc-for>
+            <sc-if value="{{ noResults }}" hint-placeholder-val="{{ false }}">
+              <div style="padding:10px;font-size:12.5px;color:#6e5f4d;line-height:1.5">{{ searchEmpty }}</div>
+            </sc-if>
+          </div>
+        </sc-if>
+      </div>
+
+      <div style="display:flex;flex:0 0 auto;border:1px solid rgba(42,32,24,0.18);border-radius:8px;overflow:hidden">
+        <button type="button" onClick="{{ setVi }}" style="{{ viBtnStyle }}">VI</button>
+        <button type="button" onClick="{{ setEn }}" style="{{ enBtnStyle }}">EN</button>
+      </div>
+    </div>
+  </header>
+
+  <section id="top" data-screen-label="Hero" style="position:relative;background:#1c130d;color:#f7f1e4">
+    <div style="position:absolute;inset:0">
+      <image-slot id="cg-hero" shape="rect" fit="cover" placeholder="{{ heroSlot }}" src="https://upload.wikimedia.org/wikipedia/commons/thumb/d/d8/Hand_holding_coffee_cherries.jpg/1920px-Hand_holding_coffee_cherries.jpg" credit="Ảnh: Daniel Case · CC BY-SA 4.0 (Wikimedia Commons)" credit-href="https://commons.wikimedia.org/wiki/File:Hand_holding_coffee_cherries.jpg"></image-slot>
+    </div>
+    <div style="position:absolute;inset:0;background:linear-gradient(180deg,rgba(28,19,13,0.66) 0%,rgba(28,19,13,0.34) 40%,rgba(28,19,13,0.88) 100%);pointer-events:none"></div>
+    <div style="position:relative;max-width:1280px;margin:0 auto;padding:88px 24px 32px;min-height:48vh;display:flex;flex-direction:column;justify-content:flex-end;pointer-events:none">
+      <h1 style="font-family:'Lora',Georgia,serif;font-weight:400;font-size:clamp(46px,8vw,110px);line-height:0.95;letter-spacing:-0.02em;margin:0 0 16px">{{ heroTitle }}</h1>
+      <p style="font-family:'Lora',Georgia,serif;font-size:clamp(18px,2.1vw,26px);line-height:1.42;max-width:700px;color:#f2e7d2;margin:0 0 24px;text-wrap:pretty">{{ heroSubtitle }}</p>
+      <div style="display:flex;flex-wrap:wrap;gap:16px;align-items:center;font-size:12px;color:#c9b697;letter-spacing:0.03em">
+        <span>{{ heroByline }}</span>
+      </div>
+    </div>
+    <div style="position:relative;max-width:1280px;margin:0 auto;padding:0 24px 24px;font-size:11.5px;color:#a6947a;font-style:italic;pointer-events:none">{{ heroCaption }}</div>
+  </section>
+
+  <section id="overview" data-screen-label="01 Overview" style="max-width:1280px;margin:48px auto 0;padding:56px 40px;background:#fffdf7;border:1px solid rgba(42,32,24,0.12);border-radius:16px">
+    <div style="display:grid;grid-template-columns:minmax(0,1fr) minmax(260px,340px);gap:52px;align-items:start">
+      <div style="min-width:0">
+        <h2 style="font-family:'Lora',Georgia,serif;font-weight:400;font-size:clamp(32px,4.2vw,52px);line-height:1.08;letter-spacing:-0.015em;margin:0 0 18px;text-wrap:pretty">{{ ovTitle }}</h2>
+        <p style="font-family:'Lora',Georgia,serif;font-size:21px;line-height:1.5;color:#4a3b2c;margin:0 0 32px;text-wrap:pretty">{{ ovLede }}</p>
+        <sc-for list="{{ ovParas }}" as="p" hint-placeholder-count="3">
+          <p style="font-family:'Lora',Georgia,serif;font-size:18.5px;line-height:1.74;margin:0 0 22px;text-wrap:pretty">{{ p }}</p>
+        </sc-for>
+        <div style="display:flex;flex-wrap:wrap;gap:9px;margin:4px 0 32px">
+          <sc-for list="{{ termChips }}" as="c" hint-placeholder-count="5">
+            <button type="button" onMouseEnter="{{ c.show }}" onMouseLeave="{{ hideTerm }}" onFocus="{{ c.show }}" onBlur="{{ hideTerm }}" style="font-family:inherit;font-size:12.5px;font-weight:500;padding:7px 13px;border-radius:99px;border:1px solid rgba(42,32,24,0.2);background:#fffdf7;color:#4a3b2c;cursor:help" style-hover="border-color:#4b7a4f;color:#2a2018">{{ c.label }}</button>
+          </sc-for>
+        </div>
+        <blockquote style="margin:0 0 36px;padding:24px 28px;background:#efe6d2;border-left:3px solid #4b7a4f;font-family:'Lora',Georgia,serif;font-size:22px;line-height:1.45;font-style:italic;color:#3a2d20;text-wrap:pretty">{{ ovPull }}</blockquote>
+        <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(148px,1fr));gap:1px;background:rgba(42,32,24,0.14);border:1px solid rgba(42,32,24,0.14)">
+          <sc-for list="{{ ovFacts }}" as="f" hint-placeholder-count="4">
+            <div style="background:#f7f1e4;padding:20px 18px">
+              <div style="font-family:'Lora',Georgia,serif;font-size:32px;line-height:1;color:#4b7a4f">{{ f.v }}</div>
+              <div style="font-size:12px;line-height:1.42;color:#6e5f4d;margin-top:8px">{{ f.l }}</div>
+            </div>
+          </sc-for>
+        </div>
+      </div>
+
+      <aside style="min-width:0;position:sticky;top:76px;background:#fffdf7;border:1px solid rgba(42,32,24,0.16)">
+        <div style="height:168px;position:relative">
+          <image-slot id="cg-infobox" shape="rect" fit="cover" placeholder="{{ infoSlot }}" src="https://images.unsplash.com/photo-1500353391678-d7b57979d6d2?fm=jpg&amp;q=80&amp;w=1600&amp;auto=format&amp;fit=crop" credit="Photo by Nathan Dumlao on Unsplash" credit-href="https://unsplash.com/@nate_dumlao"></image-slot>
+        </div>
+        <div style="padding:20px">
+          <div style="font-size:11px;letter-spacing:0.14em;text-transform:uppercase;color:#4b7a4f;font-weight:700;margin-bottom:12px">{{ infoTitle }}</div>
+          <dl style="margin:0">
+            <sc-for list="{{ infoRows }}" as="r" hint-placeholder-count="9">
+              <div style="display:grid;grid-template-columns:minmax(0,0.85fr) minmax(0,1.15fr);gap:12px;padding:9px 0;border-top:1px solid rgba(42,32,24,0.1)">
+                <dt style="font-size:11.5px;color:#8a7860;line-height:1.4">{{ r.k }}</dt>
+                <dd style="margin:0;font-size:12.5px;font-weight:500;line-height:1.45">{{ r.v }}</dd>
+              </div>
+            </sc-for>
+          </dl>
+          <div style="font-size:11px;color:#8a7860;margin-top:13px;line-height:1.5">{{ infoNote }}</div>
+        </div>
+        <div style="height:340px;position:relative;margin:16px 0 0;border-top:1px solid rgba(42,32,24,0.1)">
+          <image-slot id="cg-infobox-2" shape="rect" fit="cover" src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/5c/Coffee_cherries_on_bush_at_Fairview_Estate%2C_Kiambu%2C_KE.jpg/1280px-Coffee_cherries_on_bush_at_Fairview_Estate%2C_Kiambu%2C_KE.jpg" credit="Ảnh: Daniel Case · CC BY-SA 4.0 (Wikimedia Commons)" credit-href="https://commons.wikimedia.org/wiki/File:Coffee_cherries_on_bush_at_Fairview_Estate,_Kiambu,_KE.jpg"></image-slot>
+        </div>
+      </aside>
+    </div>
+  </section>
+
+  <section id="species" data-screen-label="02 Species" style="max-width:1280px;margin:32px auto 0;padding:56px 40px;background:#fffdf7;border:1px solid rgba(42,32,24,0.12);border-radius:16px">
+    <h2 style="font-family:'Lora',Georgia,serif;font-weight:400;font-size:clamp(30px,3.8vw,48px);line-height:1.08;margin:0 0 16px;max-width:880px;text-wrap:pretty">{{ spTitle }}</h2>
+    <p style="font-family:'Lora',Georgia,serif;font-size:20px;line-height:1.55;color:#4a3b2c;max-width:740px;margin:0 0 38px;text-wrap:pretty">{{ spLede }}</p>
+
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:26px">
+      <article style="background:#fffdf7;border:1px solid rgba(42,32,24,0.14);display:flex;flex-direction:column;min-width:0">
+        <div style="height:200px;position:relative;border-bottom:1px solid rgba(42,32,24,0.12)">
+          <image-slot id="cg-bean-arabica" shape="rect" fit="cover" placeholder="{{ spSlotA }}" src="https://upload.wikimedia.org/wikipedia/commons/thumb/2/29/Drying_coffee_bean_texture_at_Fairview_Estate%2C_Kiambu%2C_KE.jpg/1920px-Drying_coffee_bean_texture_at_Fairview_Estate%2C_Kiambu%2C_KE.jpg" credit="Ảnh: Daniel Case · CC BY-SA 4.0 (Wikimedia Commons)" credit-href="https://commons.wikimedia.org/wiki/File:Drying_coffee_bean_texture_at_Fairview_Estate,_Kiambu,_KE.jpg"></image-slot>
+        </div>
+        <div style="padding:24px">
+          <div style="display:flex;align-items:center;gap:16px;margin-bottom:15px">
+            <svg viewBox="0 0 76 54" width="76" height="54" aria-hidden="true" style="flex:0 0 auto">
+              <defs>
+                <radialGradient id="cg-ar" cx="34%" cy="28%" r="80%">
+                  <stop offset="0" stop-color="#a9d18d" />
+                  <stop offset="0.5" stop-color="#5c8f57" />
+                  <stop offset="1" stop-color="#2b4d2f" />
+                </radialGradient>
+              </defs>
+              <ellipse cx="38" cy="27" rx="31" ry="18" transform="rotate(-8 38 27)" fill="url(#cg-ar)" />
+              <path d="M9 21 C24 27 24 29 9 35" fill="none" stroke="#1e3a22" stroke-width="2.1" stroke-linecap="round" opacity="0.8" />
+              <path d="M11 20 C26 26 26 30 11 36" fill="none" stroke="#e4f2d8" stroke-width="1" stroke-linecap="round" opacity="0.42" />
+              <path d="M52 14 C62 18 65 27 62 35" fill="none" stroke="#eaf6de" stroke-width="2.2" stroke-linecap="round" opacity="0.28" />
+            </svg>
+            <div style="min-width:0">
+              <h3 style="font-family:'Lora',Georgia,serif;font-weight:500;font-size:28px;margin:0;line-height:1">{{ arName }}</h3>
+              <div style="font-size:12px;color:#4b7a4f;font-weight:600;margin-top:6px">{{ arShare }}</div>
+            </div>
+          </div>
+          <p style="font-size:14.5px;line-height:1.68;color:#4a3b2c;margin:0 0 18px;text-wrap:pretty">{{ arDesc }}</p>
+          <dl style="margin:0">
+            <sc-for list="{{ arFacts }}" as="f" hint-placeholder-count="5">
+              <div style="display:grid;grid-template-columns:minmax(0,0.9fr) minmax(0,1.1fr);gap:10px;padding:8px 0;border-top:1px solid rgba(42,32,24,0.1)">
+                <dt style="font-size:11.5px;color:#8a7860">{{ f.k }}</dt>
+                <dd style="margin:0;font-size:12.5px;font-weight:500">{{ f.v }}</dd>
+              </div>
+            </sc-for>
+          </dl>
+        </div>
+      </article>
+
+      <article style="background:#fffdf7;border:1px solid rgba(42,32,24,0.14);display:flex;flex-direction:column;min-width:0">
+        <div style="height:200px;position:relative;border-bottom:1px solid rgba(42,32,24,0.12)">
+          <image-slot id="cg-bean-robusta" shape="rect" fit="cover" placeholder="{{ spSlotB }}" src="https://upload.wikimedia.org/wikipedia/commons/thumb/c/c5/Beans_Drying_Coffee_Robusta_Balamuri_Coorg_Feb24_A7C_09491.jpg/1920px-Beans_Drying_Coffee_Robusta_Balamuri_Coorg_Feb24_A7C_09491.jpg" credit="Ảnh: Timothy A. Gonsalves · CC BY-SA 4.0 (Wikimedia Commons)" credit-href="https://commons.wikimedia.org/wiki/File:Beans_Drying_Coffee_Robusta_Balamuri_Coorg_Feb24_A7C_09491.jpg"></image-slot>
+        </div>
+        <div style="padding:24px">
+          <div style="display:flex;align-items:center;gap:16px;margin-bottom:15px">
+            <svg viewBox="0 0 76 54" width="76" height="54" aria-hidden="true" style="flex:0 0 auto">
+              <defs>
+                <radialGradient id="cg-ro" cx="36%" cy="28%" r="78%">
+                  <stop offset="0" stop-color="#c98b6c" />
+                  <stop offset="0.5" stop-color="#8c4b2c" />
+                  <stop offset="1" stop-color="#4a2113" />
+                </radialGradient>
+              </defs>
+              <ellipse cx="38" cy="27" rx="25" ry="21" transform="rotate(4 38 27)" fill="url(#cg-ro)" />
+              <path d="M15 26 L61 25" fill="none" stroke="#33150a" stroke-width="2.2" stroke-linecap="round" opacity="0.8" />
+              <path d="M15 24 L61 23" fill="none" stroke="#f0d6c0" stroke-width="1" stroke-linecap="round" opacity="0.38" />
+              <path d="M50 11 C60 16 63 26 59 36" fill="none" stroke="#f3ddc9" stroke-width="2.2" stroke-linecap="round" opacity="0.26" />
+            </svg>
+            <div style="min-width:0">
+              <h3 style="font-family:'Lora',Georgia,serif;font-weight:500;font-size:28px;margin:0;line-height:1">{{ roName }}</h3>
+              <div style="font-size:12px;color:#b23b3f;font-weight:600;margin-top:6px">{{ roShare }}</div>
+            </div>
+          </div>
+          <p style="font-size:14.5px;line-height:1.68;color:#4a3b2c;margin:0 0 18px;text-wrap:pretty">{{ roDesc }}</p>
+          <dl style="margin:0">
+            <sc-for list="{{ roFacts }}" as="f" hint-placeholder-count="5">
+              <div style="display:grid;grid-template-columns:minmax(0,0.9fr) minmax(0,1.1fr);gap:10px;padding:8px 0;border-top:1px solid rgba(42,32,24,0.1)">
+                <dt style="font-size:11.5px;color:#8a7860">{{ f.k }}</dt>
+                <dd style="margin:0;font-size:12.5px;font-weight:500">{{ f.v }}</dd>
+              </div>
+            </sc-for>
+          </dl>
+        </div>
+      </article>
+    </div>
+
+    <div style="margin-top:30px;background:#fffdf7;border:1px solid rgba(42,32,24,0.14);padding:24px;overflow-x:auto">
+      <div style="font-family:'Lora',Georgia,serif;font-size:24px;margin-bottom:16px">{{ compareTitle }}</div>
+      <table style="width:100%;border-collapse:collapse;min-width:520px">
+        <thead>
+          <tr>
+            <sc-for list="{{ compareHead }}" as="h" hint-placeholder-count="3">
+              <th style="text-align:left;font-size:11px;letter-spacing:0.1em;text-transform:uppercase;color:#8a7860;font-weight:700;padding:0 14px 10px 0;border-bottom:1px solid rgba(42,32,24,0.2)">{{ h }}</th>
+            </sc-for>
+          </tr>
+        </thead>
+        <tbody>
+          <sc-for list="{{ compareRows }}" as="row" hint-placeholder-count="6">
+            <tr>
+              <sc-for list="{{ row.cells }}" as="cell" hint-placeholder-count="3">
+                <td style="font-size:13.5px;line-height:1.5;padding:12px 14px 12px 0;border-bottom:1px solid rgba(42,32,24,0.09);vertical-align:top">{{ cell }}</td>
+              </sc-for>
+            </tr>
+          </sc-for>
+        </tbody>
+      </table>
+      <p style="font-size:12px;color:#8a7860;line-height:1.55;margin:16px 0 0">{{ spNote }}</p>
+    </div>
+  </section>
+
+  <section id="map" data-screen-label="03 Map" style="max-width:1280px;margin:32px auto 0;background:#20302a;color:#f2ece0;padding:56px 40px;border-radius:16px">
+    <div>
+      <h2 style="font-family:'Lora',Georgia,serif;font-weight:400;font-size:clamp(30px,3.8vw,48px);line-height:1.08;margin:0 0 16px;max-width:900px;text-wrap:pretty">{{ mapTitle }}</h2>
+      <p style="font-family:'Lora',Georgia,serif;font-size:19px;line-height:1.55;color:#cfc6b4;max-width:720px;margin:0 0 30px;text-wrap:pretty">{{ mapLede }}</p>
+
+      <div style="min-width:0">
+          <div style="background:#17231e;border:1px solid rgba(242,236,224,0.14);border-radius:10px;padding:10px">
+            <svg viewBox="0 0 980 520" role="img" aria-label="{{ mapTitle }}" onClick="{{ onMapClick }}" style="width:100%;height:auto;display:block">
+              {{ mapLayer }}
+              <sc-for list="{{ bubbles }}" as="b" hint-placeholder-count="20">
+                <circle cx="{{ b.cx }}" cy="{{ b.cy }}" r="{{ b.r }}" fill="{{ b.fill }}" fill-opacity="{{ b.opacity }}" stroke="{{ b.stroke }}" stroke-width="{{ b.sw }}" onClick="{{ b.onClick }}" style="cursor:pointer"></circle>
+              </sc-for>
+              <sc-for list="{{ islands }}" as="isl" hint-placeholder-count="2">
+                <rect x="{{ isl.x }}" y="{{ isl.y }}" width="6" height="6" transform="{{ isl.rotate }}" fill="#e0c48c" stroke="#20302a" stroke-width="0.6"><title>{{ isl.name }}</title></rect>
+              </sc-for>
+            </svg>
+          </div>
+          <div style="display:flex;flex-wrap:wrap;gap:18px;align-items:center;margin-top:14px;font-size:11.5px;color:#cfc6b4">
+            <span style="letter-spacing:0.1em;text-transform:uppercase;font-weight:600;color:#9c8f79">{{ legendTitle }}</span>
+            <sc-for list="{{ legend }}" as="l" hint-placeholder-count="3">
+              <span style="display:flex;align-items:center;gap:7px"><span style="width:11px;height:11px;border-radius:50%;background:{{ l.color }}"></span>{{ l.label }}</span>
+            </sc-for>
+            <span style="margin-left:auto;color:#9c8f79">{{ mapHint }}</span>
+          </div>
+          <div style="display:flex;flex-wrap:wrap;gap:7px;margin-top:18px">
+            <sc-for list="{{ chips }}" as="c" hint-placeholder-count="20">
+              <button type="button" onClick="{{ c.onClick }}" style="{{ c.style }}">{{ c.label }}</button>
+            </sc-for>
+          </div>
+        </div>
+
+      <div style="display:grid;grid-template-columns:minmax(0,1.12fr) minmax(0,0.88fr);gap:26px;align-items:start;margin-top:28px">
+        <div style="min-width:0;background:#17231e;border:1px solid rgba(242,236,224,0.14);border-radius:10px;padding:24px">
+          
+          <div style="font-size:11px;letter-spacing:0.12em;text-transform:uppercase;color:#a7d18c;font-weight:700">{{ activeRank }}</div>
+          <h3 style="font-family:'Lora',Georgia,serif;font-weight:500;font-size:32px;margin:8px 0 14px;line-height:1.1">{{ activeName }}</h3>
+          <p style="font-size:13.5px;line-height:1.65;color:#cfc6b4;margin:0 0 18px;text-wrap:pretty">{{ activeNote }}</p>
+          <div style="display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px;padding:16px 0;border-top:1px solid rgba(242,236,224,0.14);border-bottom:1px solid rgba(242,236,224,0.14)">
+            <sc-for list="{{ activeStats }}" as="s" hint-placeholder-count="3">
+              <div>
+                <div style="font-family:'Lora',Georgia,serif;font-size:21px;line-height:1.1;color:#f2ece0">{{ s.v }}</div>
+                <div style="font-size:10.5px;line-height:1.35;color:#9c8f79;margin-top:5px">{{ s.l }}</div>
+              </div>
+            </sc-for>
+          </div>
+          <div style="margin-top:18px">
+            <div style="font-size:11px;letter-spacing:0.1em;text-transform:uppercase;color:#9c8f79;font-weight:600;margin-bottom:8px">{{ speciesTitle }}</div>
+            <div style="font-size:12.5px;color:#f2ece0;margin-bottom:8px">{{ activeSpecies }}</div>
+            <div style="display:flex;height:9px;border-radius:99px;overflow:hidden;background:rgba(242,236,224,0.12)">
+              <div style="{{ arabicaBarStyle }}"></div>
+              <div style="{{ robustaBarStyle }}"></div>
+            </div>
+          </div>
+          <div style="margin-top:22px">
+            <div style="font-size:11px;letter-spacing:0.1em;text-transform:uppercase;color:#9c8f79;font-weight:600;margin-bottom:10px">{{ flavorTitle }}</div>
+            <div style="display:flex;gap:16px;align-items:center;flex-wrap:wrap">
+              <svg viewBox="0 0 170 160" width="170" height="160" aria-hidden="true" style="flex:0 0 auto">
+                <circle cx="85" cy="76" r="54" fill="none" stroke="rgba(242,236,224,0.16)" stroke-width="1"></circle>
+                <circle cx="85" cy="76" r="36" fill="none" stroke="rgba(242,236,224,0.1)" stroke-width="1"></circle>
+                <circle cx="85" cy="76" r="18" fill="none" stroke="rgba(242,236,224,0.1)" stroke-width="1"></circle>
+                <polygon points="{{ radarPoints }}" fill="{{ radarFill }}" fill-opacity="0.34" stroke="{{ radarFill }}" stroke-width="1.6"></polygon>
+                <sc-for list="{{ radarAxes }}" as="a" hint-placeholder-count="5">
+                  <text x="{{ a.x }}" y="{{ a.y }}" text-anchor="middle" dominant-baseline="middle" fill="#9c8f79" font-size="9.5" font-family="'Source Sans 3',sans-serif">{{ a.label }}</text>
+                </sc-for>
+              </svg>
+              <p style="flex:1 1 140px;min-width:0;font-size:13px;line-height:1.6;color:#cfc6b4;margin:0;text-wrap:pretty">{{ activeTagline }}</p>
+            </div>
+          </div>
+          <p style="font-size:11.5px;line-height:1.55;color:#9c8f79;margin:18px 0 0">{{ activeRegions }}</p>
+        </div>
+        <div style="min-width:0;background:#17231e;border:1px solid rgba(242,236,224,0.14);border-radius:10px;padding:24px">
+          <div style="margin-top:24px;padding-top:22px;border-top:1px solid rgba(242,236,224,0.14)">
+            <div style="font-family:'Lora',Georgia,serif;font-size:22px;margin-bottom:4px">{{ rankTitle }}</div>
+            <p style="font-size:11.5px;color:#9c8f79;margin:0 0 16px;line-height:1.5">{{ rankSub }}</p>
+            <div style="display:flex;flex-direction:column;gap:2px;max-height:520px;overflow-y:auto">
+              <sc-for list="{{ ranks }}" as="r" hint-placeholder-count="20">
+                <button type="button" onClick="{{ r.onClick }}" style="{{ r.rowStyle }}">
+                  <span style="font-size:11px;color:#9c8f79;width:20px;text-align:right;flex:0 0 auto">{{ r.i }}</span>
+                  <span style="font-size:12.5px;flex:1 1 auto;text-align:left;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;min-width:0">{{ r.name }}</span>
+                  <span style="flex:0 0 56px;height:9px;background:rgba(242,236,224,0.1);border-radius:99px;overflow:hidden"><span style="{{ r.fillStyle }}"></span></span>
+                  <span style="font-size:12px;font-variant-numeric:tabular-nums;flex:0 0 42px;text-align:right">{{ r.val }}</span>
+                </button>
+              </sc-for>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="process" data-screen-label="04 Process" style="max-width:1280px;margin:32px auto 0;padding:56px 40px;background:#fffdf7;border:1px solid rgba(42,32,24,0.12);border-radius:16px">
+    <h2 style="font-family:'Lora',Georgia,serif;font-weight:400;font-size:clamp(30px,3.8vw,48px);line-height:1.08;margin:0 0 16px;text-wrap:pretty">{{ prTitle }}</h2>
+    <p style="font-family:'Lora',Georgia,serif;font-size:20px;line-height:1.55;color:#4a3b2c;max-width:700px;margin:0 0 34px;text-wrap:pretty">{{ prLede }}</p>
+    <div style="height:300px;position:relative;margin-bottom:34px;border:1px solid rgba(42,32,24,0.14)">
+      <image-slot id="cg-process" shape="rect" fit="cover" placeholder="{{ prSlot }}" src="https://upload.wikimedia.org/wikipedia/commons/thumb/e/e0/Women_drying_coffee.jpg/1920px-Women_drying_coffee.jpg" credit="Ảnh: Philip Asedri Dradrio · CC BY-SA 4.0 (Wikimedia Commons)" credit-href="https://commons.wikimedia.org/wiki/File:Women_drying_coffee.jpg"></image-slot>
+    </div>
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:1px;background:rgba(42,32,24,0.14);border:1px solid rgba(42,32,24,0.14)">
+      <sc-for list="{{ prSteps }}" as="s" hint-placeholder-count="7">
+        <div style="background:#fffdf7;padding:24px 22px 26px;min-width:0">
+          <div style="display:flex;align-items:center;gap:10px;margin-bottom:12px">
+            <span style="width:26px;height:26px;border-radius:50%;background:#4b7a4f;color:#f7f1e4;font-size:12px;font-weight:700;display:flex;align-items:center;justify-content:center;flex:0 0 auto">{{ s.n }}</span>
+            <h3 style="font-family:'Lora',Georgia,serif;font-weight:500;font-size:21px;margin:0;line-height:1.15">{{ s.name }}</h3>
+          </div>
+          <p style="font-size:13.5px;line-height:1.68;color:#4a3b2c;margin:0;text-wrap:pretty">{{ s.body }}</p>
+        </div>
+      </sc-for>
+    </div>
+  </section>
+
+  <section id="brewing" data-screen-label="05 Brewing" style="max-width:1280px;margin:32px auto 0;padding:56px 40px;background:#fffdf7;border:1px solid rgba(42,32,24,0.12);border-radius:16px">
+    <h2 style="font-family:'Lora',Georgia,serif;font-weight:400;font-size:clamp(30px,3.8vw,48px);line-height:1.08;margin:0 0 16px;text-wrap:pretty">{{ brTitle }}</h2>
+    <p style="font-family:'Lora',Georgia,serif;font-size:20px;line-height:1.55;color:#4a3b2c;max-width:720px;margin:0 0 34px;text-wrap:pretty">{{ brLede }}</p>
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(290px,1fr));gap:20px">
+      <sc-for list="{{ brMethods }}" as="m" hint-placeholder-count="8">
+        <article style="background:#fffdf7;border:1px solid rgba(42,32,24,0.14);padding:22px;min-width:0;display:flex;flex-direction:column;gap:14px">
+          <div>
+            <h3 style="font-family:'Lora',Georgia,serif;font-weight:500;font-size:23px;margin:0 0 5px;line-height:1.1">{{ m.name }}</h3>
+            <div style="font-size:11px;letter-spacing:0.1em;text-transform:uppercase;color:#4b7a4f;font-weight:600">{{ m.origin }}</div>
+          </div>
+          <div style="display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:1px;background:rgba(42,32,24,0.12)">
+            <sc-for list="{{ m.specs }}" as="sp" hint-placeholder-count="3">
+              <div style="background:#f7f1e4;padding:10px 8px;text-align:center">
+                <div style="font-size:9.5px;letter-spacing:0.08em;text-transform:uppercase;color:#8a7860;margin-bottom:4px">{{ sp.k }}</div>
+                <div style="font-size:12.5px;font-weight:600;line-height:1.25">{{ sp.v }}</div>
+              </div>
+            </sc-for>
+          </div>
+          <p style="font-size:13.5px;line-height:1.65;color:#4a3b2c;margin:0;text-wrap:pretty">{{ m.body }}</p>
+        </article>
+      </sc-for>
+    </div>
+    <div style="height:300px;position:relative;margin-top:26px;border:1px solid rgba(42,32,24,0.14)">
+      <image-slot id="cg-brew" shape="rect" fit="cover" placeholder="{{ brSlot }}" src="https://upload.wikimedia.org/wikipedia/commons/d/dd/Vietnamese_coffee_brewing_with_metal_filter.jpg" credit="Ảnh: HungryHuy · CC BY 2.0 (Wikimedia Commons)" credit-href="https://commons.wikimedia.org/wiki/File:Vietnamese_coffee_brewing_with_metal_filter.jpg"></image-slot>
+    </div>
+  </section>
+
+  <section id="tasting" data-screen-label="06 Tasting" style="max-width:1280px;margin:32px auto 0;padding:56px 40px;background:#fffdf7;border:1px solid rgba(42,32,24,0.12);border-radius:16px">
+    <h2 style="font-family:'Lora',Georgia,serif;font-weight:400;font-size:clamp(30px,3.8vw,48px);line-height:1.08;margin:0 0 16px;text-wrap:pretty">{{ taTitle }}</h2>
+    <p style="font-family:'Lora',Georgia,serif;font-size:20px;line-height:1.55;color:#4a3b2c;max-width:720px;margin:0 0 34px;text-wrap:pretty">{{ taLede }}</p>
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:26px;align-items:start">
+      <div style="min-width:0;display:flex;flex-direction:column;gap:1px;background:rgba(42,32,24,0.14);border:1px solid rgba(42,32,24,0.14)">
+        <sc-for list="{{ taAxes }}" as="a" hint-placeholder-count="5">
+          <div style="background:#fffdf7;padding:18px 20px">
+            <h3 style="font-family:'Lora',Georgia,serif;font-weight:500;font-size:20px;margin:0 0 6px">{{ a.k }}</h3>
+            <p style="font-size:13.5px;line-height:1.62;color:#4a3b2c;margin:0;text-wrap:pretty">{{ a.v }}</p>
+          </div>
+        </sc-for>
+      </div>
+      <div style="min-width:0;display:flex;flex-direction:column;gap:18px">
+        <sc-for list="{{ taWheel }}" as="g" hint-placeholder-count="4">
+          <div style="background:#fffdf7;border:1px solid rgba(42,32,24,0.14);padding:18px 20px">
+            <div style="font-size:11px;letter-spacing:0.12em;text-transform:uppercase;font-weight:700;color:{{ g.color }};margin-bottom:12px">{{ g.group }}</div>
+            <div style="display:flex;flex-wrap:wrap;gap:8px">
+              <sc-for list="{{ g.notes }}" as="n" hint-placeholder-count="6">
+                <span style="font-size:12.5px;padding:6px 12px;border-radius:99px;background:{{ g.bg }};color:#3a2d20">{{ n }}</span>
+              </sc-for>
+            </div>
+          </div>
+        </sc-for>
+        <ol style="margin:0;padding-left:22px;display:flex;flex-direction:column;gap:9px">
+          <sc-for list="{{ taHowto }}" as="h" hint-placeholder-count="3">
+            <li style="font-size:13.5px;line-height:1.6;color:#4a3b2c">{{ h }}</li>
+          </sc-for>
+        </ol>
+      </div>
+    </div>
+  </section>
+
+  <section id="history" data-screen-label="07 History" style="max-width:1280px;margin:32px auto 0;background:#efe6d2;padding:56px 40px;border:1px solid rgba(42,32,24,0.12);border-radius:16px">
+    <div>
+      <h2 style="font-family:'Lora',Georgia,serif;font-weight:400;font-size:clamp(30px,3.8vw,48px);line-height:1.08;margin:0 0 16px;text-wrap:pretty">{{ hiTitle }}</h2>
+      <p style="font-family:'Lora',Georgia,serif;font-size:20px;line-height:1.55;color:#4a3b2c;max-width:760px;margin:0 0 44px;text-wrap:pretty">{{ hiLede }}</p>
+      <div style="display:flex;flex-direction:column;gap:0">
+        <sc-for list="{{ timeline }}" as="t" hint-placeholder-count="10">
+          <div style="display:grid;grid-template-columns:minmax(0,150px) 30px minmax(0,1fr);gap:0;align-items:start">
+            <div style="text-align:right;padding:0 20px 44px 0">
+              <div style="font-family:'Lora',Georgia,serif;font-size:24px;line-height:1.1;color:#2a2018">{{ t.year }}</div>
+              <div style="font-size:10px;letter-spacing:0.1em;text-transform:uppercase;font-weight:700;margin-top:7px;color:{{ t.badgeColor }}">{{ t.badge }}</div>
+            </div>
+            <div style="position:relative;display:flex;justify-content:center;align-self:stretch">
+              <span style="position:absolute;top:0;bottom:0;width:1px;background:rgba(42,32,24,0.2)"></span>
+              <span style="position:relative;margin-top:8px;width:13px;height:13px;border-radius:50%;background:{{ t.dotColor }};border:3px solid #efe6d2"></span>
+            </div>
+            <div style="padding:0 0 44px 22px;min-width:0">
+              <h3 style="font-family:'Lora',Georgia,serif;font-weight:500;font-size:25px;line-height:1.2;margin:0 0 10px;text-wrap:pretty">{{ t.title }}</h3>
+              <p style="font-size:14.5px;line-height:1.72;color:#4a3b2c;margin:0 0 12px;max-width:680px;text-wrap:pretty">{{ t.body }}</p>
+              <div style="display:flex;flex-wrap:wrap;gap:14px;align-items:center">
+                <span style="font-size:11.5px;color:#8a7860">{{ t.refs }}</span>
+                <sc-if value="{{ t.hasCountry }}" hint-placeholder-val="{{ false }}">
+                  <a href="#map" onClick="{{ t.onSelect }}" style="font-size:11.5px;font-weight:600;color:#4b7a4f;text-decoration:none;border-bottom:1px solid rgba(75,122,79,0.4)">{{ t.linkLabel }}</a>
+                </sc-if>
+              </div>
+            </div>
+          </div>
+        </sc-for>
+      </div>
+    </div>
+  </section>
+
+  <section id="vietnam" data-screen-label="08 Vietnam" style="max-width:1280px;margin:32px auto 0;padding:56px 40px;background:#fffdf7;border:1px solid rgba(42,32,24,0.12);border-radius:16px">
+    <h2 style="font-family:'Lora',Georgia,serif;font-weight:400;font-size:clamp(30px,3.8vw,48px);line-height:1.08;margin:0 0 16px;max-width:900px;text-wrap:pretty">{{ vnTitle }}</h2>
+    <p style="font-family:'Lora',Georgia,serif;font-size:20px;line-height:1.55;color:#4a3b2c;max-width:740px;margin:0 0 30px;text-wrap:pretty">{{ vnLede }}</p>
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:1px;background:rgba(42,32,24,0.14);border:1px solid rgba(42,32,24,0.14);margin-bottom:34px">
+      <sc-for list="{{ vnStats }}" as="s" hint-placeholder-count="4">
+        <div style="background:#fffdf7;padding:20px 18px">
+          <div style="font-family:'Lora',Georgia,serif;font-size:27px;line-height:1.05;color:#b23b3f">{{ s.v }}</div>
+          <div style="font-size:12px;line-height:1.4;color:#6e5f4d;margin-top:8px">{{ s.l }}</div>
+        </div>
+      </sc-for>
+    </div>
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:34px">
+      <div style="min-width:0">
+        <sc-for list="{{ vnParas }}" as="p" hint-placeholder-count="3">
+          <p style="font-family:'Lora',Georgia,serif;font-size:18px;line-height:1.74;margin:0 0 22px;text-wrap:pretty">{{ p }}</p>
+        </sc-for>
+        <div style="display:flex;flex-direction:column;gap:1px;background:rgba(42,32,24,0.14);border:1px solid rgba(42,32,24,0.14)">
+          <sc-for list="{{ vnRegions }}" as="r" hint-placeholder-count="4">
+            <div style="background:#fffdf7;padding:16px 18px;display:grid;grid-template-columns:minmax(0,1fr) auto;gap:10px;align-items:baseline">
+              <div style="min-width:0">
+                <div style="font-family:'Lora',Georgia,serif;font-size:19px;margin-bottom:5px">{{ r.name }}</div>
+                <div style="font-size:12.5px;line-height:1.55;color:#6e5f4d;text-wrap:pretty">{{ r.note }}</div>
+              </div>
+              <div style="font-size:11.5px;font-weight:600;color:#4b7a4f;white-space:nowrap">{{ r.alt }}</div>
+            </div>
+          </sc-for>
+        </div>
+      </div>
+      <div style="min-width:0;position:relative;align-self:stretch;border:1px solid rgba(42,32,24,0.14)">
+        <image-slot id="cg-vietnam" shape="rect" fit="cover" placeholder="{{ vnSlot }}" src="https://upload.wikimedia.org/wikipedia/commons/thumb/9/92/Vietnamese_coffee_with_milk_and_ice.jpg/1920px-Vietnamese_coffee_with_milk_and_ice.jpg" credit="Ảnh: ePi.Longo · CC BY-SA 2.0 (Wikimedia Commons)" credit-href="https://commons.wikimedia.org/wiki/File:Vietnamese_coffee_with_milk_and_ice.jpg"></image-slot>
+      </div>
+    </div>
+  </section>
+
+  <section id="health" data-screen-label="09 Health" style="max-width:1280px;margin:32px auto 0;padding:56px 40px;background:#fffdf7;border:1px solid rgba(42,32,24,0.12);border-radius:16px">
+    <h2 style="font-family:'Lora',Georgia,serif;font-weight:400;font-size:clamp(30px,3.8vw,48px);line-height:1.08;margin:0 0 16px;text-wrap:pretty">{{ heTitle }}</h2>
+    <p style="font-family:'Lora',Georgia,serif;font-size:20px;line-height:1.55;color:#4a3b2c;max-width:720px;margin:0 0 34px;text-wrap:pretty">{{ heLede }}</p>
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:26px;align-items:start">
+      <div style="min-width:0;display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:1px;background:rgba(42,32,24,0.14);border:1px solid rgba(42,32,24,0.14)">
+        <sc-for list="{{ hePoints }}" as="p" hint-placeholder-count="4">
+          <div style="background:#fffdf7;padding:20px">
+            <h3 style="font-family:'Lora',Georgia,serif;font-weight:500;font-size:20px;margin:0 0 8px;line-height:1.2">{{ p.h }}</h3>
+            <p style="font-size:13.5px;line-height:1.65;color:#4a3b2c;margin:0;text-wrap:pretty">{{ p.b }}</p>
+          </div>
+        </sc-for>
+      </div>
+      <div style="min-width:0;background:#fffdf7;border:1px solid rgba(42,32,24,0.14);padding:24px">
+        <div style="font-family:'Lora',Georgia,serif;font-size:22px;margin-bottom:20px;line-height:1.2">{{ heChartTitle }}</div>
+        <div style="display:flex;flex-direction:column;gap:14px">
+          <sc-for list="{{ heCaffeine }}" as="c" hint-placeholder-count="6">
+            <div>
+              <div style="display:flex;justify-content:space-between;font-size:12.5px;margin-bottom:6px">
+                <span style="color:#4a3b2c">{{ c.label }}</span>
+                <span style="font-weight:600;font-variant-numeric:tabular-nums">{{ c.val }}</span>
+              </div>
+              <div style="height:9px;background:#efe6d2;border-radius:99px;overflow:hidden">
+                <div style="{{ c.barStyle }}"></div>
+              </div>
+            </div>
+          </sc-for>
+        </div>
+        <p style="font-size:11.5px;color:#8a7860;line-height:1.6;margin:20px 0 0">{{ heNote }}</p>
+      </div>
+    </div>
+  </section>
+
+  <section id="economy" data-screen-label="10 Economy" style="max-width:1280px;margin:32px auto 0;padding:56px 40px;background:#fffdf7;border:1px solid rgba(42,32,24,0.12);border-radius:16px">
+    <h2 style="font-family:'Lora',Georgia,serif;font-weight:400;font-size:clamp(30px,3.8vw,48px);line-height:1.08;margin:0 0 16px;text-wrap:pretty">{{ ecTitle }}</h2>
+    <p style="font-family:'Lora',Georgia,serif;font-size:20px;line-height:1.55;color:#4a3b2c;max-width:720px;margin:0 0 34px;text-wrap:pretty">{{ ecLede }}</p>
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:34px;align-items:start">
+      <div style="min-width:0">
+        <sc-for list="{{ ecParas }}" as="p" hint-placeholder-count="3">
+          <p style="font-family:'Lora',Georgia,serif;font-size:18px;line-height:1.74;margin:0 0 22px;text-wrap:pretty">{{ p }}</p>
+        </sc-for>
+      </div>
+      <div style="min-width:0">
+        <div style="background:#fffdf7;border:1px solid rgba(42,32,24,0.14);padding:24px">
+          <div style="font-family:'Lora',Georgia,serif;font-size:21px;line-height:1.25;margin-bottom:20px">{{ ecChainTitle }}</div>
+          <div style="display:flex;height:34px;border-radius:6px;overflow:hidden;margin-bottom:18px">
+            <sc-for list="{{ ecChain }}" as="c" hint-placeholder-count="5">
+              <div style="{{ c.segStyle }}"></div>
+            </sc-for>
+          </div>
+          <div style="display:flex;flex-direction:column;gap:10px">
+            <sc-for list="{{ ecChain }}" as="c" hint-placeholder-count="5">
+              <div style="display:flex;align-items:center;gap:10px;font-size:13px">
+                <span style="width:11px;height:11px;border-radius:3px;background:{{ c.color }};flex:0 0 auto"></span>
+                <span style="flex:1 1 auto;color:#4a3b2c;min-width:0">{{ c.label }}</span>
+                <span style="font-weight:600;font-variant-numeric:tabular-nums">{{ c.pct }}</span>
+              </div>
+            </sc-for>
+          </div>
+          <p style="font-size:11.5px;color:#8a7860;line-height:1.6;margin:18px 0 0">{{ ecChainNote }}</p>
+        </div>
+        <div style="height:220px;position:relative;margin-top:22px;border:1px solid rgba(42,32,24,0.14)">
+          <image-slot id="cg-economy" shape="rect" fit="cover" placeholder="{{ ecSlot }}" src="https://upload.wikimedia.org/wikipedia/commons/thumb/e/ee/NP_coffee_sacks_%285867722798%29.jpg/1920px-NP_coffee_sacks_%285867722798%29.jpg" credit="Ảnh: CIAT · CC BY-SA 2.0 (Wikimedia Commons)" credit-href="https://commons.wikimedia.org/wiki/File:NP_coffee_sacks_(5867722798).jpg"></image-slot>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="glossary" data-screen-label="11 Glossary" style="max-width:1280px;margin:32px auto 0;padding:56px 40px;background:#fffdf7;border:1px solid rgba(42,32,24,0.12);border-radius:16px">
+    <h2 style="font-family:'Lora',Georgia,serif;font-weight:400;font-size:clamp(30px,3.8vw,48px);line-height:1.08;margin:0 0 16px;text-wrap:pretty">{{ glTitle }}</h2>
+    <p style="font-family:'Lora',Georgia,serif;font-size:20px;line-height:1.55;color:#4a3b2c;max-width:720px;margin:0 0 30px;text-wrap:pretty">{{ glLede }}</p>
+    <dl style="margin:0;display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:1px;background:rgba(42,32,24,0.14);border:1px solid rgba(42,32,24,0.14)">
+      <sc-for list="{{ terms }}" as="t" hint-placeholder-count="13">
+        <div style="background:#fffdf7;padding:18px 20px">
+          <dt style="font-family:'Lora',Georgia,serif;font-size:19px;margin-bottom:6px">{{ t.term }}</dt>
+          <dd style="margin:0;font-size:13px;line-height:1.65;color:#4a3b2c;text-wrap:pretty">{{ t.def }}</dd>
+        </div>
+      </sc-for>
+    </dl>
+  </section>
+
+  <section id="sources" data-screen-label="12 Sources" style="max-width:1280px;margin:32px auto 48px;padding:56px 40px;background:#fffdf7;border:1px solid rgba(42,32,24,0.12);border-radius:16px">
+    <h2 style="font-family:'Lora',Georgia,serif;font-weight:400;font-size:clamp(26px,3vw,38px);line-height:1.1;margin:0 0 24px">{{ soTitle }}</h2>
+    <ol style="margin:0;padding-left:24px;display:flex;flex-direction:column;gap:10px;max-width:860px">
+      <sc-for list="{{ sources }}" as="s" hint-placeholder-count="9">
+        <li style="font-size:13.5px;line-height:1.6">
+          <a href="{{ s.url }}" target="_blank" rel="noopener">{{ s.name }}</a>
+          <span style="color:#8a7860"> — {{ s.note }}</span>
+        </li>
+      </sc-for>
+    </ol>
+  </section>
+
+  <footer style="background:#20302a;color:#cfc6b4;padding:52px 0 30px">
+    <div style="max-width:1280px;margin:0 auto;padding:0 24px;display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:38px">
+      <div style="min-width:0">
+        <div style="display:flex;align-items:center;gap:9px;margin-bottom:14px;color:#f2ece0">
+          <svg viewBox="0 0 34 34" width="24" height="24" aria-hidden="true">
+            <ellipse cx="17" cy="17" rx="11" ry="14.4" transform="rotate(-16 17 17)" fill="#7fae68" />
+            <path d="M17.4 3.2 C13.2 8.4 13.8 24 17.8 30.6" fill="none" stroke="#1c3521" stroke-width="1.8" stroke-linecap="round" opacity="0.85" />
+          </svg>
+          <span style="font-weight:700;font-size:15px">Coffee Globe</span>
+        </div>
+        <p style="font-size:13px;line-height:1.7;margin:0;max-width:380px;text-wrap:pretty">{{ footerAbout }}</p>
+      </div>
+      <div style="min-width:0">
+        <h4 style="font-size:11px;letter-spacing:0.12em;text-transform:uppercase;color:#a7d18c;margin:0 0 12px">{{ footerSourcesH }}</h4>
+        <p style="font-size:12.5px;line-height:1.7;margin:0;text-wrap:pretty">{{ footerNote }}</p>
+      </div>
+    </div>
+    <div style="max-width:1280px;margin:26px auto 0;padding:18px 24px 0;border-top:1px solid rgba(242,236,224,0.14);display:flex;flex-wrap:wrap;gap:16px;justify-content:space-between;font-size:11.5px;color:#9c8f79">
+      <span>{{ footerCopy }}</span>
+      <a href="#top" style="color:#a7d18c;text-decoration:none">{{ backToTop }}</a>
+    </div>
+  </footer>
+
+  <sc-if value="{{ termOpen }}" hint-placeholder-val="{{ false }}">
+    <div style="position:fixed;left:50%;bottom:24px;transform:translateX(-50%);z-index:80;max-width:460px;background:#2a2018;color:#f2ece0;border-radius:10px;padding:16px 20px;box-shadow:0 20px 50px rgba(0,0,0,0.32);animation:cg-in .16s ease-out">
+      <div style="font-family:'Lora',Georgia,serif;font-size:18px;margin-bottom:6px;color:#a7d18c">{{ termName }}</div>
+      <div style="font-size:13px;line-height:1.6">{{ termDef }}</div>
+    </div>
+  </sc-if>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;lang&quot;:{&quot;editor&quot;:&quot;enum&quot;,&quot;options&quot;:[&quot;vi&quot;,&quot;en&quot;],&quot;default&quot;:&quot;vi&quot;,&quot;tsType&quot;:&quot;'vi' | 'en'&quot;,&quot;section&quot;:&quot;Nội dung&quot;},&quot;accent&quot;:{&quot;editor&quot;:&quot;color&quot;,&quot;options&quot;:[&quot;#4b7a4f&quot;,&quot;#a8752c&quot;,&quot;#b23b3f&quot;,&quot;#2a2018&quot;],&quot;default&quot;:&quot;#4b7a4f&quot;,&quot;tsType&quot;:&quot;string&quot;,&quot;section&quot;:&quot;Thương hiệu&quot;}}">
+class Component extends DCLogic {
+  state = { lang: null, active: "vietnam", query: "", term: null, mod: null, loadError: null };
+
+  componentDidMount() {
+    let tries = 0;
+    const poll = () => {
+      if (window.CoffeeContent && window.CoffeePage) {
+        this.setState({ mod: { c: window.CoffeeContent, p: window.CoffeePage } });
+      } else if (tries++ < 100) {
+        setTimeout(poll, 50);
+      } else {
+        this.setState({ loadError: "coffee-content.js / coffee-page.js did not load" });
+      }
+    };
+    poll();
+    this._key = e => {
+      if (e.key === "/" && document.activeElement && document.activeElement.tagName !== "INPUT") {
+        const i = document.querySelector('input[type="search"]');
+        if (i) { e.preventDefault(); i.focus(); }
+      }
+    };
+    window.addEventListener("keydown", this._key);
+  }
+  componentWillUnmount() { window.removeEventListener("keydown", this._key); }
+
+  get lang() { return this.state.lang || this.props.lang || "vi"; }
+
+  get accent() { return this.props.accent || "#4b7a4f"; }
+
+  speciesColor(d) { return d.arabica >= 65 ? "#4b7a4f" : d.arabica <= 35 ? "#b23b3f" : "#a8752c"; }
+
+  mapHtml(svgSrc, DATA, ISO, activeId) {
+    if (this._cacheKey === activeId && this._cache) return this._cache;
+    const byIso = {};
+    Object.keys(ISO).forEach(slug => { byIso[ISO[slug]] = slug; });
+    const out = svgSrc.replace(/<path ([^>]*?)class="country"([^>]*?)>/g, (m, a, b) => {
+      const idm = (a + b).match(/data-id="([^"]+)"/);
+      const slug = idm ? byIso[idm[1]] : null;
+      if (!slug) return `<path ${a}${b} fill="#2d3f36" stroke="#20302a" stroke-width="0.6" />`;
+      const d = DATA.find(x => x.id === slug);
+      const col = this.speciesColor(d);
+      const isActive = slug === activeId;
+      return `<path ${a}${b} data-slug="${slug}" fill="${isActive ? col : col}" fill-opacity="${isActive ? 0.95 : 0.42}" stroke="${isActive ? "#f2ece0" : col}" stroke-width="${isActive ? 1.4 : 0.7}" style="cursor:pointer" />`;
+    });
+    this._cacheKey = activeId; this._cache = out;
+    return out;
+  }
+
+  buildIndex(P, T, lang) {
+    const S = P.sections, idx = [];
+    const push = (id, kicker, title, snippet) => idx.push({ id, kicker, title, snippet });
+    P.nav.forEach(n => {
+      const s = S[n.id];
+      if (s) push(n.id, P.ui.chapter + " " + s.n, s.title, s.lede || "");
+    });
+    (S.brewing.methods || []).forEach(m => push("brewing", S.brewing.title, m[0], m[5]));
+    (S.process.steps || []).forEach(s => push("process", S.process.title, s[0], s[1]));
+    (S.vietnam.regions || []).forEach(r => push("vietnam", S.vietnam.title, r[0], r[2]));
+    (S.health.points || []).forEach(p => push("health", S.health.title, p[0], p[1]));
+    P.terms.forEach(t => push("glossary", S.glossary.title, t[0], t[1]));
+    (T.timeline || []).forEach(t => push("history", t.year, t.title, t.body.slice(0, 120) + "…"));
+    return idx;
+  }
+
+  renderVals() {
+    const m = this.state.mod;
+    if (!m) return this.state.loadError ? { heroTitle: "Lỗi tải dữ liệu", heroSubtitle: this.state.loadError, heroByline: "", heroCaption: "", heroSlot: "" } : {};
+    try {
+      return this.buildVals(m);
+    } catch (e) {
+      console.error("Coffee Globe: renderVals threw", e);
+      return { heroTitle: "Lỗi hiển thị", heroSubtitle: String(e && e.stack || e), heroByline: "", heroCaption: "", heroSlot: "" };
+    }
+  }
+
+  buildVals(m) {
+    const { DATA, I18N, COUNTRIES_SVG, ISLANDS } = m.c;
+    const { PAGE, ISO } = m.p;
+    const lang = this.lang, P = PAGE[lang], T = I18N[lang], S = P.sections, accent = this.accent;
+    const sorted = DATA.slice().sort((a, b) => b.prod - a.prod);
+    const active = DATA.find(d => d.id === this.state.active) || sorted[0];
+    const maxProd = sorted[0].prod;
+    const bagWord = lang === "en" ? "bags" : "bao";
+
+    const select = id => () => this.setState({ active: id });
+    const btn = on => `font-family:inherit;font-size:12px;font-weight:600;padding:9px 13px;border:none;cursor:pointer;background:${on ? accent : "transparent"};color:${on ? "#f7f1e4" : "#6e5f4d"}`;
+
+    // search
+    const q = this.state.query.trim().toLowerCase();
+    const idx = this.buildIndex(P, T, lang);
+    const results = q.length < 2 ? [] : idx.filter(r =>
+      (r.title + " " + r.snippet + " " + r.kicker).toLowerCase().includes(q)
+    ).slice(0, 12).map(r => ({ ...r, href: "#" + r.id, snippet: r.snippet.length > 110 ? r.snippet.slice(0, 110) + "…" : r.snippet }));
+
+    // radar
+    const axes = [
+      { k: "acidity", label: T.axes.acidity }, { k: "aroma", label: T.axes.aroma },
+      { k: "sweetness", label: T.axes.sweetness }, { k: "bitterness", label: T.axes.bitterness },
+      { k: "body", label: T.axes.body }
+    ];
+    const cx = 85, cy = 76, R = 54;
+    const pt = (i, v) => {
+      const a = -Math.PI / 2 + i * (2 * Math.PI / axes.length), r = (v / 5) * R;
+      return [cx + r * Math.cos(a), cy + r * Math.sin(a)];
+    };
+    const radarPoints = axes.map((a, i) => pt(i, active.flavor[a.k]).map(n => n.toFixed(1)).join(",")).join(" ");
+    const radarAxes = axes.map((a, i) => {
+      const [x, y] = pt(i, 6.35);
+      return { label: a.label, x: x.toFixed(1), y: y.toFixed(1) };
+    });
+
+    const dName = d => lang === "en" ? d.name_en : d.name;
+    const speciesLabel = d => d.arabica >= 65 ? T.legend[0] : d.arabica <= 35 ? T.legend[1] : T.legend[2];
+    const rankPos = sorted.findIndex(d => d.id === active.id) + 1;
+
+    const wheelColors = ["#b23b3f", "#a8752c", "#4b7a4f", "#6e5f4d"];
+    const wheelBg = ["#f3dcd6", "#f0e2c8", "#dfe8d3", "#e9e2d4"];
+    const chainColors = ["#4b7a4f", "#86a16e", "#a8752c", "#b23b3f", "#6e5f4d"];
+    const maxCaf = Math.max(...S.health.caffeine.map(c => c[1]));
+
+    const chNum = n => (lang === "en" ? "Chapter " : "Chương ") + n;
+    const termChips = P.terms.slice(0, 6).map(t => ({
+      label: t[0], show: () => this.setState({ term: t })
+    }));
+
+    return {
+      nav: P.nav.map(n => ({ label: n.label, href: "#" + n.id })),
+      query: this.state.query,
+      onSearch: e => this.setState({ query: e.target.value }),
+      clearSearch: () => this.setState({ query: "" }),
+      searchPlaceholder: P.search.placeholder,
+      searchOpen: q.length >= 2,
+      noResults: q.length >= 2 && results.length === 0,
+      searchEmpty: P.search.empty,
+      searchCount: P.search.count(results.length),
+      results,
+      setVi: () => this.setState({ lang: "vi" }),
+      setEn: () => this.setState({ lang: "en" }),
+      viBtnStyle: btn(lang === "vi"),
+      enBtnStyle: btn(lang === "en"),
+
+      heroTitle: P.hero.title, heroSubtitle: P.hero.subtitle,
+      heroByline: P.hero.byline, heroCaption: P.hero.heroCaption,
+      heroSlot: P.hero.heroSlot,
+
+      ovN: chNum(S.overview.n), ovTitle: S.overview.title, ovLede: S.overview.lede,
+      ovParas: S.overview.paras, ovPull: S.overview.pull,
+      ovFacts: S.overview.facts.map(f => ({ v: f[0], l: f[1] })),
+      infoTitle: P.infobox.title, infoNote: P.infobox.note, infoSlot: P.infobox.slot,
+      infoRows: P.infobox.rows.map(r => ({ k: r[0], v: r[1] })),
+      termChips, hideTerm: () => this.setState({ term: null }),
+      termOpen: !!this.state.term,
+      termName: this.state.term ? this.state.term[0] : "",
+      termDef: this.state.term ? this.state.term[1] : "",
+
+      spN: chNum(S.species.n), spTitle: S.species.title, spLede: S.species.lede, spNote: S.species.note,
+      spSlotA: S.species.slotA, spSlotB: S.species.slotB,
+      arName: T.varieties.arabica.name, arShare: T.varieties.arabica.share, arDesc: T.varieties.arabica.desc,
+      arFacts: T.varieties.arabica.facts.map(f => ({ k: f[0], v: f[1] })),
+      roName: T.varieties.robusta.name, roShare: T.varieties.robusta.share, roDesc: T.varieties.robusta.desc,
+      roFacts: T.varieties.robusta.facts.map(f => ({ k: f[0], v: f[1] })),
+      compareTitle: T.compareTitle, compareHead: T.compareHead,
+      compareRows: T.compareRows.map(r => ({ cells: r })),
+
+      mapN: chNum(S.map.n), mapTitle: S.map.title, mapLede: S.map.lede, mapHint: S.map.hint,
+      legendTitle: S.map.legendTitle,
+      legend: [
+        { label: T.legend[0], color: "#4b7a4f" },
+        { label: T.legend[1], color: "#b23b3f" },
+        { label: T.legend[2], color: "#a8752c" }
+      ],
+      mapLayer: React.createElement("g", { dangerouslySetInnerHTML: { __html: this.mapHtml(COUNTRIES_SVG, DATA, ISO, active.id) } }),
+      islands: ISLANDS.map(isl => ({
+        x: (isl.x - 3).toFixed(2), y: (isl.y - 3).toFixed(2),
+        rotate: `rotate(45 ${isl.x} ${isl.y})`,
+        name: lang === "en" ? isl.name_en : isl.name_vi
+      })),
+      onMapClick: e => {
+        const slug = e.target && e.target.getAttribute && e.target.getAttribute("data-slug");
+        if (slug) this.setState({ active: slug });
+      },
+      bubbles: DATA.map(d => {
+        const on = d.id === active.id;
+        return {
+          cx: d.x, cy: d.y, r: (3.2 + Math.sqrt(d.prod / maxProd) * 15).toFixed(1),
+          fill: this.speciesColor(d), opacity: on ? 1 : 0.9,
+          stroke: on ? "#f2ece0" : "rgba(23,35,30,0.6)", sw: on ? 2.2 : 0.8,
+          onClick: select(d.id)
+        };
+      }),
+      chips: sorted.map(d => ({
+        label: d.flag + " " + dName(d),
+        onClick: select(d.id),
+        style: `font-family:inherit;font-size:12px;padding:7px 12px;border-radius:99px;cursor:pointer;border:1px solid ${d.id === active.id ? "#f2ece0" : "rgba(242,236,224,0.24)"};background:${d.id === active.id ? "rgba(242,236,224,0.14)" : "transparent"};color:${d.id === active.id ? "#f2ece0" : "#cfc6b4"}`
+      })),
+      activeName: active.flag + " " + dName(active),
+      activeRank: T.rankOfWorld(rankPos),
+      activeNote: lang === "en" ? active.note_en : active.note,
+      activeTagline: lang === "en" ? active.tagline_en : active.tagline,
+      activeRegions: T.regionPrefix + (lang === "en" ? active.regions_en : active.regions),
+      activeStats: [
+        { v: active.prod.toFixed(1) + "M", l: T.statLabels[0] },
+        { v: active.share + "%", l: T.statLabels[1] },
+        { v: active.altitude, l: T.statLabels[2] }
+      ],
+      speciesTitle: T.speciesTitle,
+      activeSpecies: speciesLabel(active) + " · Arabica " + active.arabica + "% / Robusta " + (100 - active.arabica) + "%",
+      arabicaBarStyle: `width:${active.arabica}%;background:#4b7a4f`,
+      robustaBarStyle: `width:${100 - active.arabica}%;background:#b23b3f`,
+      flavorTitle: T.flavorTitle,
+      radarPoints, radarAxes, radarFill: this.speciesColor(active),
+      rankTitle: S.map.rankTitle, rankSub: S.map.rankSub,
+      ranks: sorted.map((d, i) => ({
+        i: i + 1, name: d.flag + " " + dName(d), val: d.prod.toFixed(1),
+        onClick: select(d.id),
+        rowStyle: `display:flex;align-items:center;gap:12px;width:100%;padding:8px 10px;border:none;border-radius:7px;cursor:pointer;font-family:inherit;color:${d.id === active.id ? "#f2ece0" : "#cfc6b4"};background:${d.id === active.id ? "rgba(242,236,224,0.1)" : "transparent"}`,
+        fillStyle: `display:block;height:100%;width:${(d.prod / maxProd * 100).toFixed(0)}%;background:${d.id === active.id ? "#e0c48c" : this.speciesColor(d)};border-radius:99px`
+      })),
+
+      prN: chNum(S.process.n), prTitle: S.process.title, prLede: S.process.lede, prSlot: S.process.slot,
+      prSteps: S.process.steps.map((s, i) => ({ n: i + 1, name: s[0], body: s[1] })),
+
+      brN: chNum(S.brewing.n), brTitle: S.brewing.title, brLede: S.brewing.lede, brSlot: S.brewing.slot,
+      brMethods: S.brewing.methods.map(x => ({
+        name: x[0], origin: x[1], body: x[5],
+        specs: [{ k: S.brewing.cols[0], v: x[2] }, { k: S.brewing.cols[1], v: x[3] }, { k: S.brewing.cols[2], v: x[4] }]
+      })),
+
+      taN: chNum(S.tasting.n), taTitle: S.tasting.title, taLede: S.tasting.lede,
+      taAxes: S.tasting.axes.map(a => ({ k: a[0], v: a[1] })),
+      taWheel: S.tasting.wheel.map((g, i) => ({ group: g[0], notes: g[1], color: wheelColors[i % 4], bg: wheelBg[i % 4] })),
+      taHowto: S.tasting.howto,
+
+      hiN: chNum(S.history.n), hiTitle: S.history.title, hiLede: S.history.lede,
+      timeline: T.timeline.map(ev => ({
+        year: ev.year, title: ev.title, body: ev.body,
+        badge: ev.kind === "legend" ? T.badgeLegend : T.badgeDoc,
+        badgeColor: ev.kind === "legend" ? "#a8752c" : "#4b7a4f",
+        dotColor: ev.kind === "legend" ? "#a8752c" : "#4b7a4f",
+        refs: T.srcLabel + ": " + ev.refs.map(n => "[" + n + "]").join(" "),
+        hasCountry: !!ev.country,
+        linkLabel: P.ui.seeOnMap,
+        onSelect: () => { if (ev.country) this.setState({ active: ev.country }); }
+      })),
+
+      vnN: chNum(S.vietnam.n), vnTitle: S.vietnam.title, vnLede: S.vietnam.lede,
+      vnParas: S.vietnam.paras, vnSlot: S.vietnam.slot,
+      vnStats: S.vietnam.stats.map(s => ({ v: s[0], l: s[1] })),
+      vnRegions: S.vietnam.regions.map(r => ({ name: r[0], alt: r[1], note: r[2] })),
+
+      heN: chNum(S.health.n), heTitle: S.health.title, heLede: S.health.lede,
+      hePoints: S.health.points.map(p => ({ h: p[0], b: p[1] })),
+      heChartTitle: S.health.caffeineTitle, heNote: S.health.note,
+      heCaffeine: S.health.caffeine.map(c => ({
+        label: c[0], val: c[1] + " " + c[2],
+        barStyle: `height:100%;width:${(c[1] / maxCaf * 100).toFixed(0)}%;background:${c[1] > 120 ? "#b23b3f" : c[1] > 80 ? "#a8752c" : "#4b7a4f"};border-radius:99px`
+      })),
+
+      ecN: chNum(S.economy.n), ecTitle: S.economy.title, ecLede: S.economy.lede,
+      ecParas: S.economy.paras, ecChainTitle: S.economy.chainTitle,
+      ecChainNote: S.economy.chainNote, ecSlot: S.economy.slot,
+      ecChain: S.economy.chain.map((c, i) => ({
+        label: c[0], pct: c[1] + "%", color: chainColors[i % 5],
+        segStyle: `width:${c[1]}%;background:${chainColors[i % 5]}`
+      })),
+
+      glN: chNum(S.glossary.n), glTitle: S.glossary.title, glLede: S.glossary.lede,
+      terms: P.terms.map(t => ({ term: t[0], def: t[1] })),
+
+      soN: chNum(S.sources.n), soTitle: S.sources.title,
+      sources: T.sources.map(s => ({ name: s.name, url: s.url, note: s.note })),
+
+      footerAbout: P.footer.about, footerSourcesH: P.footer.sourcesH,
+      footerNote: P.footer.note, footerCopy: P.footer.copy, backToTop: P.ui.top,
+      bagWord
+    };
+  }
+}
+</script>
+</body>
+</html>
+ml>
+ };
+  }
+}
+</script>
+</body>
+</html>
+copy, backToTop: P.ui.top,
+      bagWord
+    };
+  }
+}
+</script>
+</body>
+</html>
