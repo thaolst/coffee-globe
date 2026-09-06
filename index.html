@@ -44,8 +44,7 @@
   @keyframes cg-in { from { opacity: 0; transform: translateY(8px); } to { opacity: 1; transform: none; } }
 
 /* ===== Editorial typography: Source Serif 4 display + Source Sans 3 body ===== */
-h1, h2, h3 { font-family:"Source Serif 4",Georgia,"Times New Roman",serif !important; }
-blockquote { font-family:"Source Serif 4",Georgia,"Times New Roman",serif !important; font-size:clamp(21px,2.3vw,27px) !important; font-style:italic; }
+h1, h2, h3, blockquote { font-family:'Source Serif 4',Georgia,'Times New Roman',serif; }
 /* ===== Rhythm: map full-bleed + globe ===== */
 @media (max-width: 760px) { #cg-globe { display:none; } }
 /* ===== Header 3 nấc + scroll-spy + a11y ===== */
@@ -84,7 +83,7 @@ header button:focus-visible, header a:focus-visible, #map circle:focus-visible, 
 </style>
 </helmet>
 
-<div style="font-family:"Source Sans 3",Arial,Helvetica,sans-serif;background:#eee5d2;color:#2a2018;min-height:100vh;overflow-x:hidden">
+<div style="font-family:'Source Sans 3',Arial,Helvetica,sans-serif;background:#eee5d2;color:#2a2018;min-height:100vh;overflow-x:hidden">
 
   <header style="position:sticky;top:0;z-index:60;background:rgba(247,241,228,0.95);backdrop-filter:blur(12px);border-bottom:1px solid rgba(42,32,24,0.12)">
     <div style="max-width:1280px;margin:0 auto;padding:9px 24px;display:flex;align-items:center;gap:18px">
@@ -118,7 +117,7 @@ header button:focus-visible, header a:focus-visible, #map circle:focus-visible, 
             <sc-for list="{{ results }}" as="r" hint-placeholder-count="3">
               <a href="{{ r.href }}" onClick="{{ clearSearch }}" style="display:block;padding:10px;border-radius:8px;text-decoration:none;color:#2a2018" style-hover="background:#f3ebd9">
                 <div style="font-size:12.0px;letter-spacing:0.1em;text-transform:uppercase;color:#4b7a4f;font-weight:700;margin-bottom:4px">{{ r.kicker }}</div>
-                <div style="font-family:"Source Sans 3",Arial,Helvetica,sans-serif;font-size:17.5px;line-height:1.25">{{ r.title }}</div>
+                <div style="font-family:'Source Sans 3',Arial,Helvetica,sans-serif;font-size:17.5px;line-height:1.25">{{ r.title }}</div>
                 <div style="font-size:13.5px;color:#57493a;line-height:1.45;margin-top:4px">{{ r.snippet }}</div>
               </a>
             </sc-for>
@@ -133,8 +132,8 @@ header button:focus-visible, header a:focus-visible, #map circle:focus-visible, 
         <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="#2a2018" stroke-width="2.2" stroke-linecap="round" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="M20 20l-3.5-3.5"/></svg>
       </button>
       <div style="display:flex;flex:0 0 auto;border:1px solid rgba(42,32,24,0.18);border-radius:8px;overflow:hidden">
-        <button type="button" onClick="{{ setVi }}" style="{{ viBtnStyle }}">VI</button>
-        <button type="button" onClick="{{ setEn }}" style="{{ enBtnStyle }}">EN</button>
+        <button type="button" onClick="{{ setVi }}" aria-pressed="{{ viPressed }}" style="{{ viBtnStyle }}">VI</button>
+        <button type="button" onClick="{{ setEn }}" aria-pressed="{{ enPressed }}" style="{{ enBtnStyle }}">EN</button>
       </div>
       <button type="button" class="dc-burger" aria-label="Mở menu" aria-expanded="false" style="display:none;flex-direction:column;align-items:center;justify-content:center;gap:4px;width:38px;height:38px;border:1px solid rgba(42,32,24,0.18);border-radius:8px;background:#fffdf7;cursor:pointer">
         <span style="display:block;width:17px;height:2px;background:#2a2018;border-radius:1px"></span>
@@ -150,8 +149,8 @@ header button:focus-visible, header a:focus-visible, #map circle:focus-visible, 
     </div>
     <div style="position:absolute;inset:0;background:linear-gradient(180deg,rgba(28,19,13,0.66) 0%,rgba(28,19,13,0.34) 40%,rgba(28,19,13,0.88) 100%);pointer-events:none"></div>
     <div style="position:relative;max-width:1280px;margin:0 auto;padding:88px 24px 32px;min-height:48vh;display:flex;flex-direction:column;justify-content:flex-end;pointer-events:none">
-      <h1 style="font-family:"Source Sans 3",Arial,Helvetica,sans-serif;font-weight:500;font-size:clamp(42px,6.5vw,78px);line-height:1.02;letter-spacing:-0.015em;margin:0 0 16px">{{ heroTitle }}</h1>
-      <p style="font-family:"Source Sans 3",Arial,Helvetica,sans-serif;font-size:20px;line-height:1.42;max-width:700px;color:#f2e7d2;margin:0 0 24px;text-wrap:pretty">{{ heroSubtitle }}</p>
+      <h1 style="font-family:'Source Serif 4',Georgia,'Times New Roman',serif;font-weight:500;font-size:clamp(42px,6.5vw,78px);line-height:1.02;letter-spacing:-0.015em;margin:0 0 16px">{{ heroTitle }}</h1>
+      <p style="font-family:'Source Sans 3',Arial,Helvetica,sans-serif;font-size:20px;line-height:1.42;max-width:700px;color:#f2e7d2;margin:0 0 24px;text-wrap:pretty">{{ heroSubtitle }}</p>
       <div style="display:flex;flex-wrap:wrap;gap:16px;align-items:center;font-size:13.5px;color:#dccfb6;letter-spacing:0.03em">
         <span>{{ heroByline }}</span>
       </div>
@@ -164,21 +163,21 @@ header button:focus-visible, header a:focus-visible, #map circle:focus-visible, 
   <section id="overview" data-screen-label="01 Overview" style="max-width:1280px;margin:48px auto 0;padding:56px 40px;background:#fffdf7;border:1px solid rgba(42,32,24,0.12);border-radius:16px">
     <div class="dc-mob-stack" style="display:grid;grid-template-columns:minmax(0,1fr) minmax(260px,340px);gap:52px">
       <div style="min-width:0">
-        <h2 style="font-family:"Source Sans 3",Arial,Helvetica,sans-serif;font-weight:400;font-size:clamp(28px,3.6vw,46px);line-height:1.08;letter-spacing:-0.015em;margin:0 0 18px;text-wrap:pretty">{{ ovTitle }}</h2>
-        <p style="font-family:"Source Sans 3",Arial,Helvetica,sans-serif;font-size:20px;line-height:1.5;color:#4a3b2c;margin:0 0 32px;text-wrap:pretty">{{ ovLede }}</p>
+        <h2 style="font-family:'Source Serif 4',Georgia,'Times New Roman',serif;font-weight:400;font-size:clamp(28px,3.6vw,46px);line-height:1.08;letter-spacing:-0.015em;margin:0 0 18px;text-wrap:pretty">{{ ovTitle }}</h2>
+        <p style="font-family:'Source Sans 3',Arial,Helvetica,sans-serif;font-size:20px;line-height:1.5;color:#4a3b2c;margin:0 0 32px;text-wrap:pretty">{{ ovLede }}</p>
         <sc-for list="{{ ovParas }}" as="p" hint-placeholder-count="3">
-          <p style="font-family:"Source Sans 3",Arial,Helvetica,sans-serif;font-size:19px;line-height:1.74;margin:0 0 22px;text-wrap:pretty">{{ p }}</p>
+          <p style="font-family:'Source Sans 3',Arial,Helvetica,sans-serif;font-size:19px;line-height:1.74;margin:0 0 22px;text-wrap:pretty">{{ p }}</p>
         </sc-for>
         <div style="display:flex;flex-wrap:wrap;gap:9px;margin:4px 0 32px">
           <sc-for list="{{ termChips }}" as="c" hint-placeholder-count="5">
             <button type="button" onMouseEnter="{{ c.show }}" onMouseLeave="{{ hideTerm }}" onFocus="{{ c.show }}" onBlur="{{ hideTerm }}" style="font-family:inherit;font-size:14px;font-weight:500;padding:7px 13px;border-radius:99px;border:1px solid rgba(42,32,24,0.2);background:#fffdf7;color:#4a3b2c;cursor:help" style-hover="border-color:#4b7a4f;color:#2a2018">{{ c.label }}</button>
           </sc-for>
         </div>
-        <blockquote style="margin:0 0 36px;padding:24px 28px;background:#efe6d2;border-left:3px solid #4b7a4f;font-family:"Source Sans 3",Arial,Helvetica,sans-serif;font-size:22px;line-height:1.45;font-style:italic;color:#3a2d20;text-wrap:pretty">{{ ovPull }}</blockquote>
+        <blockquote style="margin:0 0 36px;padding:24px 28px;background:#efe6d2;border-left:3px solid #4b7a4f;font-family:'Source Serif 4',Georgia,'Times New Roman',serif;font-size:22px;line-height:1.45;font-style:italic;color:#3a2d20;text-wrap:pretty">{{ ovPull }}</blockquote>
         <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(148px,1fr));gap:1px;background:rgba(42,32,24,0.14);border:1px solid rgba(42,32,24,0.14)">
           <sc-for list="{{ ovFacts }}" as="f" hint-placeholder-count="4">
             <div style="background:#f7f1e4;padding:20px 18px">
-              <div style="font-family:"Source Sans 3",Arial,Helvetica,sans-serif;font-size:30px;line-height:1;color:#4b7a4f">{{ f.v }}</div>
+              <div style="font-family:'Source Sans 3',Arial,Helvetica,sans-serif;font-size:30px;line-height:1;color:#4b7a4f">{{ f.v }}</div>
               <div style="font-size:13.5px;line-height:1.42;color:#57493a;margin-top:8px">{{ f.l }}</div>
             </div>
           </sc-for>
@@ -211,8 +210,8 @@ header button:focus-visible, header a:focus-visible, #map circle:focus-visible, 
   </section>
 
   <section id="species" data-screen-label="02 Species" style="max-width:1280px;margin:32px auto 0;padding:56px 40px;background:#fffdf7;border:1px solid rgba(42,32,24,0.12);border-radius:16px">
-    <h2 style="font-family:"Source Sans 3",Arial,Helvetica,sans-serif;font-weight:400;font-size:clamp(28px,3.6vw,46px);line-height:1.08;margin:0 0 16px;max-width:880px;text-wrap:pretty">{{ spTitle }}</h2>
-    <p style="font-family:"Source Sans 3",Arial,Helvetica,sans-serif;font-size:20px;line-height:1.55;color:#4a3b2c;max-width:740px;margin:0 0 38px;text-wrap:pretty">{{ spLede }}</p>
+    <h2 style="font-family:'Source Serif 4',Georgia,'Times New Roman',serif;font-weight:400;font-size:clamp(28px,3.6vw,46px);line-height:1.08;margin:0 0 16px;max-width:880px;text-wrap:pretty">{{ spTitle }}</h2>
+    <p style="font-family:'Source Sans 3',Arial,Helvetica,sans-serif;font-size:20px;line-height:1.55;color:#4a3b2c;max-width:740px;margin:0 0 38px;text-wrap:pretty">{{ spLede }}</p>
 
     <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:26px">
       <article style="background:#fffdf7;border:1px solid rgba(42,32,24,0.14);display:flex;flex-direction:column;min-width:0">
@@ -235,7 +234,7 @@ header button:focus-visible, header a:focus-visible, #map circle:focus-visible, 
               <path d="M52 14 C62 18 65 27 62 35" fill="none" stroke="#eaf6de" stroke-width="2.2" stroke-linecap="round" opacity="0.28" />
             </svg>
             <div style="min-width:0">
-              <h3 style="font-family:"Source Sans 3",Arial,Helvetica,sans-serif;font-weight:500;font-size:27px;margin:0;line-height:1">{{ arName }}</h3>
+              <h3 style="font-family:'Source Serif 4',Georgia,'Times New Roman',serif;font-weight:500;font-size:27px;margin:0;line-height:1">{{ arName }}</h3>
               <div style="font-size:13.5px;color:#4b7a4f;font-weight:600;margin-top:6px">{{ arShare }}</div>
             </div>
           </div>
@@ -271,7 +270,7 @@ header button:focus-visible, header a:focus-visible, #map circle:focus-visible, 
               <path d="M50 11 C60 16 63 26 59 36" fill="none" stroke="#f3ddc9" stroke-width="2.2" stroke-linecap="round" opacity="0.26" />
             </svg>
             <div style="min-width:0">
-              <h3 style="font-family:"Source Sans 3",Arial,Helvetica,sans-serif;font-weight:500;font-size:27px;margin:0;line-height:1">{{ roName }}</h3>
+              <h3 style="font-family:'Source Serif 4',Georgia,'Times New Roman',serif;font-weight:500;font-size:27px;margin:0;line-height:1">{{ roName }}</h3>
               <div style="font-size:13.5px;color:#b23b3f;font-weight:600;margin-top:6px">{{ roShare }}</div>
             </div>
           </div>
@@ -289,7 +288,7 @@ header button:focus-visible, header a:focus-visible, #map circle:focus-visible, 
     </div>
 
     <div style="margin-top:30px;background:#fffdf7;border:1px solid rgba(42,32,24,0.14);padding:24px;overflow-x:auto">
-      <div style="font-family:"Source Sans 3",Arial,Helvetica,sans-serif;font-size:24px;margin-bottom:16px">{{ compareTitle }}</div>
+      <div style="font-family:'Source Sans 3',Arial,Helvetica,sans-serif;font-size:24px;margin-bottom:16px">{{ compareTitle }}</div>
       <table style="width:100%;border-collapse:collapse;min-width:520px">
         <thead>
           <tr>
@@ -315,8 +314,8 @@ header button:focus-visible, header a:focus-visible, #map circle:focus-visible, 
   <section id="map" data-screen-label="03 Map" style="margin:40px 0 0;background:#20302a;color:#f2ece0;padding:0">
   <div style="max-width:1280px;margin:0 auto;padding:64px 24px">
     <div>
-      <h2 style="font-family:"Source Sans 3",Arial,Helvetica,sans-serif;font-weight:400;font-size:clamp(28px,3.6vw,46px);line-height:1.08;margin:0 0 16px;max-width:900px;text-wrap:pretty">{{ mapTitle }}</h2>
-      <p style="font-family:"Source Sans 3",Arial,Helvetica,sans-serif;font-size:20px;line-height:1.55;color:#e9e0ce;max-width:720px;margin:0 0 30px;text-wrap:pretty">{{ mapLede }}</p>
+      <h2 style="font-family:'Source Serif 4',Georgia,'Times New Roman',serif;font-weight:400;font-size:clamp(28px,3.6vw,46px);line-height:1.08;margin:0 0 16px;max-width:900px;text-wrap:pretty">{{ mapTitle }}</h2>
+      <p style="font-family:'Source Sans 3',Arial,Helvetica,sans-serif;font-size:20px;line-height:1.55;color:#e9e0ce;max-width:720px;margin:0 0 30px;text-wrap:pretty">{{ mapLede }}</p>
 
       <div style="min-width:0">
           <div style="background:#17231e;border:1px solid rgba(242,236,224,0.14);border-radius:10px;padding:10px">
@@ -348,12 +347,13 @@ header button:focus-visible, header a:focus-visible, #map circle:focus-visible, 
         <div style="min-width:0;background:#17231e;border:1px solid rgba(242,236,224,0.14);border-radius:10px;padding:24px">
           
           <div style="font-size:12.5px;letter-spacing:0.12em;text-transform:uppercase;color:#a7d18c;font-weight:700">{{ activeRank }}</div>
-          <h3 style="font-family:"Source Sans 3",Arial,Helvetica,sans-serif;font-weight:500;font-size:30px;margin:8px 0 14px;line-height:1.1">{{ activeName }}</h3>
+          <h3 style="font-family:'Source Serif 4',Georgia,'Times New Roman',serif;font-weight:500;font-size:30px;margin:8px 0 14px;line-height:1.1">{{ activeName }}</h3>
+          <span class="cg-act" style="display:none">{{ activeId }}</span>
           <p style="font-size:15px;line-height:1.65;color:#e9e0ce;margin:0 0 18px;text-wrap:pretty">{{ activeNote }}</p>
           <div class="dc-mob-stack" style="display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px;padding:16px 0;border-top:1px solid rgba(242,236,224,0.14);border-bottom:1px solid rgba(242,236,224,0.14)">
             <sc-for list="{{ activeStats }}" as="s" hint-placeholder-count="3">
               <div>
-                <div style="font-family:"Source Sans 3",Arial,Helvetica,sans-serif;font-size:21px;line-height:1.1;color:#f2ece0">{{ s.v }}</div>
+                <div style="font-family:'Source Sans 3',Arial,Helvetica,sans-serif;font-size:21px;line-height:1.1;color:#f2ece0">{{ s.v }}</div>
                 <div style="font-size:12.5px;line-height:1.35;color:#cbbfa9;margin-top:5px">{{ s.l }}</div>
               </div>
             </sc-for>
@@ -385,7 +385,7 @@ header button:focus-visible, header a:focus-visible, #map circle:focus-visible, 
         </div>
         <div style="min-width:0;background:#17231e;border:1px solid rgba(242,236,224,0.14);border-radius:10px;padding:24px">
           <div style="margin-top:24px;padding-top:22px;border-top:1px solid rgba(242,236,224,0.14)">
-            <div style="font-family:"Source Sans 3",Arial,Helvetica,sans-serif;font-size:22px;margin-bottom:4px">{{ rankTitle }}</div>
+            <div style="font-family:'Source Sans 3',Arial,Helvetica,sans-serif;font-size:22px;margin-bottom:4px">{{ rankTitle }}</div>
             <p style="font-size:13px;color:#cbbfa9;margin:0 0 16px;line-height:1.5">{{ rankSub }}</p>
             <div style="display:flex;flex-direction:column;gap:2px;max-height:520px;overflow-y:auto">
               <sc-for list="{{ ranks }}" as="r" hint-placeholder-count="20">
@@ -406,8 +406,8 @@ header button:focus-visible, header a:focus-visible, #map circle:focus-visible, 
   </section>
 
   <section id="process" data-screen-label="04 Process" style="max-width:1280px;margin:32px auto 0;padding:56px 40px;background:#fffdf7;border:1px solid rgba(42,32,24,0.12);border-radius:16px">
-    <h2 style="font-family:"Source Sans 3",Arial,Helvetica,sans-serif;font-weight:400;font-size:clamp(28px,3.6vw,46px);line-height:1.08;margin:0 0 16px;text-wrap:pretty">{{ prTitle }}</h2>
-    <p style="font-family:"Source Sans 3",Arial,Helvetica,sans-serif;font-size:20px;line-height:1.55;color:#4a3b2c;max-width:700px;margin:0 0 34px;text-wrap:pretty">{{ prLede }}</p>
+    <h2 style="font-family:'Source Serif 4',Georgia,'Times New Roman',serif;font-weight:400;font-size:clamp(28px,3.6vw,46px);line-height:1.08;margin:0 0 16px;text-wrap:pretty">{{ prTitle }}</h2>
+    <p style="font-family:'Source Sans 3',Arial,Helvetica,sans-serif;font-size:20px;line-height:1.55;color:#4a3b2c;max-width:700px;margin:0 0 34px;text-wrap:pretty">{{ prLede }}</p>
     <div style="height:300px;position:relative;margin-bottom:34px;border:1px solid rgba(42,32,24,0.14)">
       <image-slot id="cg-process" alt="Người phơi cà phê trên sân" shape="rect" fit="cover" placeholder="{{ prSlot }}" src="https://upload.wikimedia.org/wikipedia/commons/thumb/e/e0/Women_drying_coffee.jpg/1920px-Women_drying_coffee.jpg" credit="Ảnh: Philip Asedri Dradrio · CC BY-SA 4.0 (Wikimedia Commons)" credit-href="https://commons.wikimedia.org/wiki/File:Women_drying_coffee.jpg"></image-slot>
     </div>
@@ -416,7 +416,7 @@ header button:focus-visible, header a:focus-visible, #map circle:focus-visible, 
         <div style="background:#fffdf7;padding:24px 22px 26px;min-width:0">
           <div style="display:flex;align-items:center;gap:10px;margin-bottom:12px">
             <span style="width:26px;height:26px;border-radius:50%;background:#4b7a4f;color:#f7f1e4;font-size:13.5px;font-weight:700;display:flex;align-items:center;justify-content:center;flex:0 0 auto">{{ s.n }}</span>
-            <h3 style="font-family:"Source Sans 3",Arial,Helvetica,sans-serif;font-weight:500;font-size:21px;margin:0;line-height:1.15">{{ s.name }}</h3>
+            <h3 style="font-family:'Source Serif 4',Georgia,'Times New Roman',serif;font-weight:500;font-size:21px;margin:0;line-height:1.15">{{ s.name }}</h3>
           </div>
           <p style="font-size:15px;line-height:1.68;color:#4a3b2c;margin:0;text-wrap:pretty">{{ s.body }}</p>
         </div>
@@ -425,13 +425,13 @@ header button:focus-visible, header a:focus-visible, #map circle:focus-visible, 
   </section>
 
   <section id="brewing" data-screen-label="05 Brewing" style="max-width:1280px;margin:32px auto 0;padding:56px 40px;background:#fffdf7;border:1px solid rgba(42,32,24,0.12);border-radius:16px">
-    <h2 style="font-family:"Source Sans 3",Arial,Helvetica,sans-serif;font-weight:400;font-size:clamp(28px,3.6vw,46px);line-height:1.08;margin:0 0 16px;text-wrap:pretty">{{ brTitle }}</h2>
-    <p style="font-family:"Source Sans 3",Arial,Helvetica,sans-serif;font-size:20px;line-height:1.55;color:#4a3b2c;max-width:720px;margin:0 0 34px;text-wrap:pretty">{{ brLede }}</p>
+    <h2 style="font-family:'Source Serif 4',Georgia,'Times New Roman',serif;font-weight:400;font-size:clamp(28px,3.6vw,46px);line-height:1.08;margin:0 0 16px;text-wrap:pretty">{{ brTitle }}</h2>
+    <p style="font-family:'Source Sans 3',Arial,Helvetica,sans-serif;font-size:20px;line-height:1.55;color:#4a3b2c;max-width:720px;margin:0 0 34px;text-wrap:pretty">{{ brLede }}</p>
     <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(290px,1fr));gap:20px">
       <sc-for list="{{ brMethods }}" as="m" hint-placeholder-count="8">
         <article style="background:#fffdf7;border:1px solid rgba(42,32,24,0.14);padding:22px;min-width:0;display:flex;flex-direction:column;gap:14px">
           <div>
-            <h3 style="font-family:"Source Sans 3",Arial,Helvetica,sans-serif;font-weight:500;font-size:23px;margin:0 0 5px;line-height:1.1">{{ m.name }}</h3>
+            <h3 style="font-family:'Source Serif 4',Georgia,'Times New Roman',serif;font-weight:500;font-size:23px;margin:0 0 5px;line-height:1.1">{{ m.name }}</h3>
             <div style="font-size:12.5px;letter-spacing:0.1em;text-transform:uppercase;color:#4b7a4f;font-weight:600">{{ m.origin }}</div>
           </div>
           <div style="display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:1px;background:rgba(42,32,24,0.12)">
@@ -452,13 +452,13 @@ header button:focus-visible, header a:focus-visible, #map circle:focus-visible, 
   </section>
 
   <section id="tasting" data-screen-label="06 Tasting" style="max-width:1280px;margin:32px auto 0;padding:56px 40px;background:#fffdf7;border:1px solid rgba(42,32,24,0.12);border-radius:16px">
-    <h2 style="font-family:"Source Sans 3",Arial,Helvetica,sans-serif;font-weight:400;font-size:clamp(28px,3.6vw,46px);line-height:1.08;margin:0 0 16px;text-wrap:pretty">{{ taTitle }}</h2>
-    <p style="font-family:"Source Sans 3",Arial,Helvetica,sans-serif;font-size:20px;line-height:1.55;color:#4a3b2c;max-width:720px;margin:0 0 34px;text-wrap:pretty">{{ taLede }}</p>
+    <h2 style="font-family:'Source Serif 4',Georgia,'Times New Roman',serif;font-weight:400;font-size:clamp(28px,3.6vw,46px);line-height:1.08;margin:0 0 16px;text-wrap:pretty">{{ taTitle }}</h2>
+    <p style="font-family:'Source Sans 3',Arial,Helvetica,sans-serif;font-size:20px;line-height:1.55;color:#4a3b2c;max-width:720px;margin:0 0 34px;text-wrap:pretty">{{ taLede }}</p>
     <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:26px">
       <div style="min-width:0;display:flex;flex-direction:column;gap:1px;background:rgba(42,32,24,0.14);border:1px solid rgba(42,32,24,0.14)">
         <sc-for list="{{ taAxes }}" as="a" hint-placeholder-count="5">
           <div style="background:#fffdf7;padding:18px 20px;flex:1 1 0;display:flex;flex-direction:column;justify-content:center">
-            <h3 style="font-family:"Source Sans 3",Arial,Helvetica,sans-serif;font-weight:500;font-size:20px;margin:0 0 6px">{{ a.k }}</h3>
+            <h3 style="font-family:'Source Serif 4',Georgia,'Times New Roman',serif;font-weight:500;font-size:20px;margin:0 0 6px">{{ a.k }}</h3>
             <p style="font-size:15px;line-height:1.62;color:#4a3b2c;margin:0;text-wrap:pretty">{{ a.v }}</p>
           </div>
         </sc-for>
@@ -485,13 +485,13 @@ header button:focus-visible, header a:focus-visible, #map circle:focus-visible, 
 
   <section id="history" data-screen-label="07 History" style="max-width:1280px;margin:32px auto 0;background:#efe6d2;padding:56px 40px;border:1px solid rgba(42,32,24,0.12);border-radius:16px">
     <div>
-      <h2 style="font-family:"Source Sans 3",Arial,Helvetica,sans-serif;font-weight:400;font-size:clamp(28px,3.6vw,46px);line-height:1.08;margin:0 0 16px;text-wrap:pretty">{{ hiTitle }}</h2>
-      <p style="font-family:"Source Sans 3",Arial,Helvetica,sans-serif;font-size:20px;line-height:1.55;color:#4a3b2c;max-width:760px;margin:0 0 44px;text-wrap:pretty">{{ hiLede }}</p>
+      <h2 style="font-family:'Source Serif 4',Georgia,'Times New Roman',serif;font-weight:400;font-size:clamp(28px,3.6vw,46px);line-height:1.08;margin:0 0 16px;text-wrap:pretty">{{ hiTitle }}</h2>
+      <p style="font-family:'Source Sans 3',Arial,Helvetica,sans-serif;font-size:20px;line-height:1.55;color:#4a3b2c;max-width:760px;margin:0 0 44px;text-wrap:pretty">{{ hiLede }}</p>
       <div style="display:flex;flex-direction:column;gap:0">
         <sc-for list="{{ timeline }}" as="t" hint-placeholder-count="10">
           <div class="dc-mob-tl" style="display:grid;grid-template-columns:minmax(0,150px) 30px minmax(0,1fr);gap:0;align-items:start">
             <div style="text-align:right;padding:0 20px 44px 0">
-              <div style="font-family:"Source Sans 3",Arial,Helvetica,sans-serif;font-size:24px;line-height:1.1;color:#2a2018">{{ t.year }}</div>
+              <div style="font-family:'Source Sans 3',Arial,Helvetica,sans-serif;font-size:24px;line-height:1.1;color:#2a2018">{{ t.year }}</div>
               <div style="font-size:12.0px;letter-spacing:0.1em;text-transform:uppercase;font-weight:700;margin-top:7px;color:{{ t.badgeColor }}">{{ t.badge }}</div>
             </div>
             <div style="position:relative;display:flex;justify-content:center;align-self:stretch">
@@ -499,7 +499,7 @@ header button:focus-visible, header a:focus-visible, #map circle:focus-visible, 
               <span style="position:relative;margin-top:8px;width:13px;height:13px;border-radius:50%;background:{{ t.dotColor }};border:3px solid #efe6d2"></span>
             </div>
             <div style="padding:0 0 44px 22px;min-width:0">
-              <h3 style="font-family:"Source Sans 3",Arial,Helvetica,sans-serif;font-weight:500;font-size:25px;line-height:1.2;margin:0 0 10px;text-wrap:pretty">{{ t.title }}</h3>
+              <h3 style="font-family:'Source Serif 4',Georgia,'Times New Roman',serif;font-weight:500;font-size:25px;line-height:1.2;margin:0 0 10px;text-wrap:pretty">{{ t.title }}</h3>
               <p style="font-size:15.5px;line-height:1.72;color:#4a3b2c;margin:0 0 12px;max-width:680px;text-wrap:pretty">{{ t.body }}</p>
               <div style="display:flex;flex-wrap:wrap;gap:14px;align-items:center">
                 <span style="font-size:13px;color:#6b5b47">{{ t.refs }}</span>
@@ -515,12 +515,12 @@ header button:focus-visible, header a:focus-visible, #map circle:focus-visible, 
   </section>
 
   <section id="vietnam" data-screen-label="08 Vietnam" style="max-width:1280px;margin:32px auto 0;padding:56px 40px;background:#fffdf7;border:1px solid rgba(42,32,24,0.12);border-radius:16px">
-    <h2 style="font-family:"Source Sans 3",Arial,Helvetica,sans-serif;font-weight:400;font-size:clamp(28px,3.6vw,46px);line-height:1.08;margin:0 0 16px;max-width:900px;text-wrap:pretty">{{ vnTitle }}</h2>
-    <p style="font-family:"Source Sans 3",Arial,Helvetica,sans-serif;font-size:20px;line-height:1.55;color:#4a3b2c;max-width:740px;margin:0 0 30px;text-wrap:pretty">{{ vnLede }}</p>
+    <h2 style="font-family:'Source Serif 4',Georgia,'Times New Roman',serif;font-weight:400;font-size:clamp(28px,3.6vw,46px);line-height:1.08;margin:0 0 16px;max-width:900px;text-wrap:pretty">{{ vnTitle }}</h2>
+    <p style="font-family:'Source Sans 3',Arial,Helvetica,sans-serif;font-size:20px;line-height:1.55;color:#4a3b2c;max-width:740px;margin:0 0 30px;text-wrap:pretty">{{ vnLede }}</p>
     <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:1px;background:rgba(42,32,24,0.14);border:1px solid rgba(42,32,24,0.14);margin-bottom:34px">
       <sc-for list="{{ vnStats }}" as="s" hint-placeholder-count="4">
         <div style="background:#fffdf7;padding:20px 18px">
-          <div style="font-family:"Source Sans 3",Arial,Helvetica,sans-serif;font-size:26px;line-height:1.05;color:#b23b3f">{{ s.v }}</div>
+          <div style="font-family:'Source Sans 3',Arial,Helvetica,sans-serif;font-size:26px;line-height:1.05;color:#b23b3f">{{ s.v }}</div>
           <div style="font-size:13.5px;line-height:1.4;color:#57493a;margin-top:8px">{{ s.l }}</div>
         </div>
       </sc-for>
@@ -528,13 +528,13 @@ header button:focus-visible, header a:focus-visible, #map circle:focus-visible, 
     <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:34px">
       <div style="min-width:0">
         <sc-for list="{{ vnParas }}" as="p" hint-placeholder-count="3">
-          <p style="font-family:"Source Sans 3",Arial,Helvetica,sans-serif;font-size:19px;line-height:1.74;margin:0 0 22px;text-wrap:pretty">{{ p }}</p>
+          <p style="font-family:'Source Sans 3',Arial,Helvetica,sans-serif;font-size:19px;line-height:1.74;margin:0 0 22px;text-wrap:pretty">{{ p }}</p>
         </sc-for>
         <div style="display:flex;flex-direction:column;gap:1px;background:rgba(42,32,24,0.14);border:1px solid rgba(42,32,24,0.14)">
           <sc-for list="{{ vnRegions }}" as="r" hint-placeholder-count="4">
             <div style="background:#fffdf7;padding:16px 18px;display:grid;grid-template-columns:minmax(0,1fr) auto;gap:10px;align-items:baseline">
               <div style="min-width:0">
-                <div style="font-family:"Source Sans 3",Arial,Helvetica,sans-serif;font-size:20px;margin-bottom:5px">{{ r.name }}</div>
+                <div style="font-family:'Source Sans 3',Arial,Helvetica,sans-serif;font-size:20px;margin-bottom:5px">{{ r.name }}</div>
                 <div style="font-size:14px;line-height:1.55;color:#57493a;text-wrap:pretty">{{ r.note }}</div>
               </div>
               <div style="font-size:13px;font-weight:600;color:#4b7a4f;white-space:nowrap">{{ r.alt }}</div>
@@ -549,19 +549,19 @@ header button:focus-visible, header a:focus-visible, #map circle:focus-visible, 
   </section>
 
   <section id="health" data-screen-label="09 Health" style="max-width:1280px;margin:32px auto 0;padding:56px 40px;background:#fffdf7;border:1px solid rgba(42,32,24,0.12);border-radius:16px">
-    <h2 style="font-family:"Source Sans 3",Arial,Helvetica,sans-serif;font-weight:400;font-size:clamp(28px,3.6vw,46px);line-height:1.08;margin:0 0 16px;text-wrap:pretty">{{ heTitle }}</h2>
-    <p style="font-family:"Source Sans 3",Arial,Helvetica,sans-serif;font-size:20px;line-height:1.55;color:#4a3b2c;max-width:720px;margin:0 0 34px;text-wrap:pretty">{{ heLede }}</p>
+    <h2 style="font-family:'Source Serif 4',Georgia,'Times New Roman',serif;font-weight:400;font-size:clamp(28px,3.6vw,46px);line-height:1.08;margin:0 0 16px;text-wrap:pretty">{{ heTitle }}</h2>
+    <p style="font-family:'Source Sans 3',Arial,Helvetica,sans-serif;font-size:20px;line-height:1.55;color:#4a3b2c;max-width:720px;margin:0 0 34px;text-wrap:pretty">{{ heLede }}</p>
     <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:26px">
       <div style="min-width:0;display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:1px;background:rgba(42,32,24,0.14);border:1px solid rgba(42,32,24,0.14)">
         <sc-for list="{{ hePoints }}" as="p" hint-placeholder-count="4">
           <div style="background:#fffdf7;padding:20px">
-            <h3 style="font-family:"Source Sans 3",Arial,Helvetica,sans-serif;font-weight:500;font-size:20px;margin:0 0 8px;line-height:1.2">{{ p.h }}</h3>
+            <h3 style="font-family:'Source Serif 4',Georgia,'Times New Roman',serif;font-weight:500;font-size:20px;margin:0 0 8px;line-height:1.2">{{ p.h }}</h3>
             <p style="font-size:15px;line-height:1.65;color:#4a3b2c;margin:0;text-wrap:pretty">{{ p.b }}</p>
           </div>
         </sc-for>
       </div>
       <div style="min-width:0;background:#fffdf7;border:1px solid rgba(42,32,24,0.14);padding:24px">
-        <div style="font-family:"Source Sans 3",Arial,Helvetica,sans-serif;font-size:22px;margin-bottom:20px;line-height:1.2">{{ heChartTitle }}</div>
+        <div style="font-family:'Source Sans 3',Arial,Helvetica,sans-serif;font-size:22px;margin-bottom:20px;line-height:1.2">{{ heChartTitle }}</div>
         <div style="display:flex;flex-direction:column;gap:14px">
           <sc-for list="{{ heCaffeine }}" as="c" hint-placeholder-count="6">
             <div>
@@ -581,17 +581,17 @@ header button:focus-visible, header a:focus-visible, #map circle:focus-visible, 
   </section>
 
   <section id="economy" data-screen-label="10 Economy" style="max-width:1280px;margin:32px auto 0;padding:56px 40px;background:#fffdf7;border:1px solid rgba(42,32,24,0.12);border-radius:16px">
-    <h2 style="font-family:"Source Sans 3",Arial,Helvetica,sans-serif;font-weight:400;font-size:clamp(28px,3.6vw,46px);line-height:1.08;margin:0 0 16px;text-wrap:pretty">{{ ecTitle }}</h2>
-    <p style="font-family:"Source Sans 3",Arial,Helvetica,sans-serif;font-size:20px;line-height:1.55;color:#4a3b2c;max-width:720px;margin:0 0 34px;text-wrap:pretty">{{ ecLede }}</p>
+    <h2 style="font-family:'Source Serif 4',Georgia,'Times New Roman',serif;font-weight:400;font-size:clamp(28px,3.6vw,46px);line-height:1.08;margin:0 0 16px;text-wrap:pretty">{{ ecTitle }}</h2>
+    <p style="font-family:'Source Sans 3',Arial,Helvetica,sans-serif;font-size:20px;line-height:1.55;color:#4a3b2c;max-width:720px;margin:0 0 34px;text-wrap:pretty">{{ ecLede }}</p>
     <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:34px">
       <div style="min-width:0">
         <sc-for list="{{ ecParas }}" as="p" hint-placeholder-count="3">
-          <p style="font-family:"Source Sans 3",Arial,Helvetica,sans-serif;font-size:19px;line-height:1.74;margin:0 0 22px;text-wrap:pretty">{{ p }}</p>
+          <p style="font-family:'Source Sans 3',Arial,Helvetica,sans-serif;font-size:19px;line-height:1.74;margin:0 0 22px;text-wrap:pretty">{{ p }}</p>
         </sc-for>
       </div>
       <div style="min-width:0;display:flex;flex-direction:column">
         <div style="background:#fffdf7;border:1px solid rgba(42,32,24,0.14);padding:24px">
-          <div style="font-family:"Source Sans 3",Arial,Helvetica,sans-serif;font-size:21px;line-height:1.25;margin-bottom:20px">{{ ecChainTitle }}</div>
+          <div style="font-family:'Source Sans 3',Arial,Helvetica,sans-serif;font-size:21px;line-height:1.25;margin-bottom:20px">{{ ecChainTitle }}</div>
           <div style="display:flex;height:34px;border-radius:6px;overflow:hidden;margin-bottom:18px">
             <sc-for list="{{ ecChain }}" as="c" hint-placeholder-count="5">
               <div style="{{ c.segStyle }}"></div>
@@ -616,12 +616,12 @@ header button:focus-visible, header a:focus-visible, #map circle:focus-visible, 
   </section>
 
   <section id="glossary" data-screen-label="11 Glossary" style="max-width:1280px;margin:32px auto 0;padding:56px 40px;background:#fffdf7;border:1px solid rgba(42,32,24,0.12);border-radius:16px">
-    <h2 style="font-family:"Source Sans 3",Arial,Helvetica,sans-serif;font-weight:400;font-size:clamp(28px,3.6vw,46px);line-height:1.08;margin:0 0 16px;text-wrap:pretty">{{ glTitle }}</h2>
-    <p style="font-family:"Source Sans 3",Arial,Helvetica,sans-serif;font-size:20px;line-height:1.55;color:#4a3b2c;max-width:720px;margin:0 0 30px;text-wrap:pretty">{{ glLede }}</p>
+    <h2 style="font-family:'Source Serif 4',Georgia,'Times New Roman',serif;font-weight:400;font-size:clamp(28px,3.6vw,46px);line-height:1.08;margin:0 0 16px;text-wrap:pretty">{{ glTitle }}</h2>
+    <p style="font-family:'Source Sans 3',Arial,Helvetica,sans-serif;font-size:20px;line-height:1.55;color:#4a3b2c;max-width:720px;margin:0 0 30px;text-wrap:pretty">{{ glLede }}</p>
     <dl style="margin:0;display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:1px;background:rgba(42,32,24,0.14);border:1px solid rgba(42,32,24,0.14)">
       <sc-for list="{{ terms }}" as="t" hint-placeholder-count="13">
         <div style="background:#fffdf7;padding:18px 20px">
-          <dt style="font-family:"Source Sans 3",Arial,Helvetica,sans-serif;font-size:20px;margin-bottom:6px">{{ t.term }}</dt>
+          <dt style="font-family:'Source Sans 3',Arial,Helvetica,sans-serif;font-size:20px;margin-bottom:6px">{{ t.term }}</dt>
           <dd style="margin:0;font-size:14.5px;line-height:1.65;color:#4a3b2c;text-wrap:pretty">{{ t.def }}</dd>
         </div>
       </sc-for>
@@ -629,7 +629,7 @@ header button:focus-visible, header a:focus-visible, #map circle:focus-visible, 
   </section>
 
   <section id="sources" data-screen-label="12 Sources" style="max-width:1280px;margin:32px auto 48px;padding:56px 40px;background:#efe6d2;border:1px solid rgba(42,32,24,0.12);border-radius:16px">
-    <h2 style="font-family:"Source Sans 3",Arial,Helvetica,sans-serif;font-weight:400;font-size:clamp(26px,3vw,38px);line-height:1.1;margin:0 0 24px">{{ soTitle }}</h2>
+    <h2 style="font-family:'Source Serif 4',Georgia,'Times New Roman',serif;font-weight:400;font-size:clamp(26px,3vw,38px);line-height:1.1;margin:0 0 24px">{{ soTitle }}</h2>
     <ol style="margin:0;padding-left:24px;display:flex;flex-direction:column;gap:10px;max-width:860px">
       <sc-for list="{{ sources }}" as="s" hint-placeholder-count="9">
         <li style="font-size:15px;line-height:1.6">
@@ -665,7 +665,7 @@ header button:focus-visible, header a:focus-visible, #map circle:focus-visible, 
 
   <sc-if value="{{ termOpen }}" hint-placeholder-val="{{ false }}">
     <div style="position:fixed;left:50%;bottom:24px;transform:translateX(-50%);z-index:80;max-width:460px;background:#2a2018;color:#f2ece0;border-radius:10px;padding:16px 20px;box-shadow:0 20px 50px rgba(0,0,0,0.32);animation:cg-in .16s ease-out">
-      <div style="font-family:"Source Sans 3",Arial,Helvetica,sans-serif;font-size:19px;margin-bottom:6px;color:#a7d18c">{{ termName }}</div>
+      <div style="font-family:'Source Sans 3',Arial,Helvetica,sans-serif;font-size:19px;margin-bottom:6px;color:#a7d18c">{{ termName }}</div>
       <div style="font-size:14.5px;line-height:1.6">{{ termDef }}</div>
     </div>
   </sc-if>
@@ -812,6 +812,8 @@ class Component extends DCLogic {
       setEn: () => this.setState({ lang: "en" }),
       viBtnStyle: btn(lang === "vi"),
       enBtnStyle: btn(lang === "en"),
+      viPressed: lang === "vi",
+      enPressed: lang === "en",
 
       heroTitle: P.hero.title, heroSubtitle: P.hero.subtitle,
       heroByline: P.hero.byline, heroCaption: P.hero.heroCaption,
@@ -868,6 +870,7 @@ class Component extends DCLogic {
         onClick: select(d.id),
         style: `font-family:inherit;font-size:13.5px;padding:7px 12px;border-radius:99px;cursor:pointer;border:1px solid ${d.id === active.id ? "#f2ece0" : "rgba(242,236,224,0.24)"};background:${d.id === active.id ? "rgba(242,236,224,0.14)" : "transparent"};color:${d.id === active.id ? "#f2ece0" : "#cfc6b4"}`
       })),
+      activeId: this.state.active,
       activeName: active.flag + " " + dName(active),
       activeRank: T.rankOfWorld(rankPos),
       activeNote: lang === "en" ? active.note_en : active.note,
@@ -979,28 +982,35 @@ class Component extends DCLogic {
   function bootGlobe() {
     var cv = document.getElementById('cg-globe');
     if (!cv || !cv.getContext) return;
-    var mq = window.matchMedia('(max-width: 760px)');
-    var run = !mq.matches;
+    var mqHide = window.matchMedia('(max-width: 760px)');
+    var mqPrm = window.matchMedia('(prefers-reduced-motion: reduce)');
+    var hidden = mqHide.matches;
+    var reduce = mqPrm.matches;
     var spots = [
-      [-0.42, -1.2, 5.5], [0.60, 1.85, 4.2], [0.62, 2.35, 4.6], [0.46, 1.95, 4.0],
-      [0.36, 2.25, 4.4], [0.72, 2.75, 5.2], [0.30, 0.55, 4.0], [-0.15, 0.45, 3.8]
+      { id: "brazil", la: -0.17, lo: -0.82 }, { id: "colombia", la: 0.07, lo: -1.29 },
+      { id: "guatemala", la: 0.26, lo: -1.57 }, { id: "ethiopia", la: 0.16, lo: 0.66 },
+      { id: "kenya", la: -0.02, lo: 0.65 }, { id: "vietnam", la: 0.35, lo: 1.83 },
+      { id: "indonesia", la: -0.05, lo: 2.09 }, { id: "india", la: 0.36, lo: 1.36 }
     ];
-    var t0 = null;
-    function frame(ts) {
-      if (!run) return;
-      if (!t0) t0 = ts;
-      var t = (ts - t0) / 1000;
+    var t0 = null, lastTs = 0;
+    function draw(ts) {
+      if (hidden) return;
+      if (ts === undefined) ts = lastTs || performance.now();
+      lastTs = ts;
       cv = document.getElementById('cg-globe');           /* re-query moi frame */
-      if (!cv) { requestAnimationFrame(frame); return; }
+      if (!cv) return;
       var r = cv.getBoundingClientRect();
       var w = Math.round(r.width);
-      if (w < 20 || getComputedStyle(cv).display === 'none') { requestAnimationFrame(frame); return; }
+      if (w < 20 || getComputedStyle(cv).display === 'none') return;
       var dpr = Math.min(window.devicePixelRatio || 1, 2);
       var pw = Math.round(w * dpr);
       var ctx = cv.getContext('2d');
       if (cv.width !== pw) { cv.width = pw; cv.height = pw; ctx.setTransform(dpr, 0, 0, dpr, 0, 0); }
       ctx.clearRect(0, 0, w, w);
-      var R = w / 2 - 7, cx = w / 2, cy = w / 2, rot = t * 0.22;
+      var R = w / 2 - 7, cx = w / 2, cy = w / 2;
+      if (!t0) t0 = ts;
+      var t = (ts - t0) / 1000;
+      var rot = reduce ? 0.6 : t * 0.22;                   /* reduce: dung yen */
       ctx.lineWidth = 1;
       ctx.beginPath(); ctx.arc(cx, cy, R, 0, 7); ctx.strokeStyle = 'rgba(242,236,224,0.55)'; ctx.stroke();
       for (var k = 0; k < 8; k++) {
@@ -1017,25 +1027,77 @@ class Component extends DCLogic {
         ctx.strokeStyle = 'rgba(242,236,224,0.14)'; ctx.stroke();
       }
       ctx.beginPath(); ctx.ellipse(cx, cy, R, R * 0.22, 0, 0, 7); ctx.strokeStyle = 'rgba(242,236,224,0.18)'; ctx.stroke();
+      var act = window.__cgActive || 'vietnam';
       for (var s = 0; s < spots.length; s++) {
-        var la2 = spots[s][0], lo = spots[s][1], rr = spots[s][2];
-        var x = Math.cos(la2) * Math.sin(lo + rot), y = Math.sin(la2), z = Math.cos(la2) * Math.cos(lo + rot);
+        var sp = spots[s];
+        var x = Math.cos(sp.la) * Math.sin(sp.lo + rot), y = Math.sin(sp.la), z = Math.cos(sp.la) * Math.cos(sp.lo + rot);
         if (z > -0.12) {
           var px = cx + x * R, py = cy - y * R, front = z > 0.05;
+          var isAct = sp.id === act;
+          var rr = (isAct ? 6.6 : 4.6) * (front ? 1 : 0.8);
           ctx.beginPath();
-          ctx.arc(px, py, front ? rr : rr * 0.8, 0, 7);
-          ctx.fillStyle = front ? 'rgba(167,209,140,0.9)' : 'rgba(167,209,140,0.28)';
+          ctx.arc(px, py, rr, 0, 7);
+          ctx.fillStyle = isAct
+            ? (front ? 'rgba(242,236,224,0.98)' : 'rgba(242,236,224,0.4)')
+            : (front ? 'rgba(167,209,140,0.9)' : 'rgba(167,209,140,0.28)');
           ctx.fill();
+          if (isAct) {
+            ctx.beginPath();
+            ctx.arc(px, py, rr + 3.4, 0, 7);
+            ctx.strokeStyle = front ? 'rgba(242,236,224,0.85)' : 'rgba(242,236,224,0.35)';
+            ctx.lineWidth = 1.6;
+            ctx.stroke();
+          }
         }
       }
-      requestAnimationFrame(frame);
+      window.__cgDrawn = (window.__cgDrawn || 0) + 1;
     }
-    window.addEventListener('resize', function () { if (run) requestAnimationFrame(frame); });
-    if (mq.addEventListener) mq.addEventListener('change', function (e) { run = !e.matches; if (run) requestAnimationFrame(frame); });
-    if (run) requestAnimationFrame(frame);
+    function loop(ts) {
+      if (hidden || reduce) return;
+      draw(ts);
+      requestAnimationFrame(loop);
+    }
+    window.__cgRedraw = function () { if (!hidden) requestAnimationFrame(draw); };
+    window.addEventListener('resize', function () { if (!hidden) requestAnimationFrame(draw); });
+    if (mqHide.addEventListener) mqHide.addEventListener('change', function (e) {
+      hidden = e.matches;
+      if (!hidden) requestAnimationFrame(draw);
+    });
+    if (mqPrm.addEventListener) mqPrm.addEventListener('change', function (e) {
+      reduce = e.matches;
+      if (reduce) { draw(); } else { t0 = null; requestAnimationFrame(loop); }
+    });
+    if (!hidden) { if (reduce) { requestAnimationFrame(draw); } else { requestAnimationFrame(loop); } }
   }
 
   function bootHeader() {
+    function sync() {
+      var header = document.querySelector('header');
+      var en = null, vi = null;
+      if (header) {
+        header.querySelectorAll('button').forEach(function (b) {
+          var tx = (b.textContent || '').trim();
+          if (tx === 'EN') en = b; else if (tx === 'VI') vi = b;
+        });
+      }
+      var enOn = en && en.getAttribute('aria-pressed') === 'true';
+      var lang = enOn ? 'en' : 'vi';
+      if (document.documentElement.lang !== lang) document.documentElement.lang = lang;
+      var cidEl = document.querySelector('.cg-act');
+      var cid = cidEl ? (cidEl.textContent || '').trim() : 'vietnam';
+      window.__cgActive = cid;
+      if (window.__cgRedraw) window.__cgRedraw();
+    }
+    /* lang + active country: DC re-render thay node -> observer attribute tren body */
+    if (window.MutationObserver) {
+      var sy = null;
+      var obs = new MutationObserver(function () {
+        clearTimeout(sy);
+        sy = setTimeout(sync, 80);
+      });
+      obs.observe(document.body, { attributes: true, attributeFilter: ['aria-pressed'], childList: true, characterData: true, subtree: true });
+    }
+    setTimeout(sync, 200);
     /* delegation: khong mat khi DC thay node */
     document.addEventListener('click', function (e) {
       var t = e.target;
