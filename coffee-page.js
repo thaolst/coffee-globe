@@ -6,7 +6,7 @@ window.CoffeePage.PAGE = {
     tagline: "Hồ sơ cà phê thế giới",
     langLabel: "VI",
     nav: [
-      { id: "overview", label: "Cà phê là gì" },
+      { id: "overview", label: "Giới thiệu" },
       { id: "species", label: "Giống" },
       { id: "map", label: "Bản đồ" },
       { id: "process", label: "Từ hạt đến ly" },
@@ -243,7 +243,7 @@ window.CoffeePage.PAGE = {
     tagline: "A world profile of coffee",
     langLabel: "EN",
     nav: [
-      { id: "overview", label: "What coffee is" },
+      { id: "overview", label: "About" },
       { id: "species", label: "Species" },
       { id: "map", label: "Map" },
       { id: "process", label: "Bean to cup" },
