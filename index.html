@@ -9,7 +9,7 @@
 <x-dc>
 <helmet>
 <meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>Coffee Globe — Hồ sơ cà phê thế giới</title>
+<title>Coffee Globe - Hồ sơ cà phê thế giới</title>
 <link rel="preconnect" href="https://fonts.googleapis.com" />
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="anonymous" />
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Source+Sans+3:wght@400;500;600;700&display=swap" />
@@ -27,7 +27,7 @@
 </style>
 </helmet>
 
-<div style="font-family:'Source Sans 3',system-ui,sans-serif;background:#eee5d2;color:#2a2018;min-height:100vh;overflow-x:hidden">
+<div style="font-family:Arial,Helvetica,sans-serif;background:#eee5d2;color:#2a2018;min-height:100vh;overflow-x:hidden">
 
   <header style="position:sticky;top:0;z-index:60;background:rgba(247,241,228,0.95);backdrop-filter:blur(12px);border-bottom:1px solid rgba(42,32,24,0.12)">
     <div style="max-width:1280px;margin:0 auto;padding:9px 24px;display:flex;align-items:center;gap:18px">
@@ -61,7 +61,7 @@
             <sc-for list="{{ results }}" as="r" hint-placeholder-count="3">
               <a href="{{ r.href }}" onClick="{{ clearSearch }}" style="display:block;padding:10px;border-radius:8px;text-decoration:none;color:#2a2018" style-hover="background:#f3ebd9">
                 <div style="font-size:12px;letter-spacing:0.1em;text-transform:uppercase;color:#4b7a4f;font-weight:700;margin-bottom:4px">{{ r.kicker }}</div>
-                <div style="font-family:'Lora',Georgia,serif;font-size:18px;line-height:1.25">{{ r.title }}</div>
+                <div style="font-family:Arial,Helvetica,sans-serif;font-size:18px;line-height:1.25">{{ r.title }}</div>
                 <div style="font-size:14px;color:#57493a;line-height:1.45;margin-top:4px">{{ r.snippet }}</div>
               </a>
             </sc-for>
@@ -85,8 +85,8 @@
     </div>
     <div style="position:absolute;inset:0;background:linear-gradient(180deg,rgba(28,19,13,0.66) 0%,rgba(28,19,13,0.34) 40%,rgba(28,19,13,0.88) 100%);pointer-events:none"></div>
     <div style="position:relative;max-width:1280px;margin:0 auto;padding:88px 24px 32px;min-height:48vh;display:flex;flex-direction:column;justify-content:flex-end;pointer-events:none">
-      <h1 style="font-family:'Lora',Georgia,serif;font-weight:400;font-size:clamp(46px,8vw,110px);line-height:0.95;letter-spacing:-0.02em;margin:0 0 16px">{{ heroTitle }}</h1>
-      <p style="font-family:'Lora',Georgia,serif;font-size:clamp(20px,2.3vw,28px);line-height:1.42;max-width:700px;color:#f2e7d2;margin:0 0 24px;text-wrap:pretty">{{ heroSubtitle }}</p>
+      <h1 style="font-family:Arial,Helvetica,sans-serif;font-weight:400;font-size:clamp(46px,8vw,110px);line-height:0.95;letter-spacing:-0.02em;margin:0 0 16px">{{ heroTitle }}</h1>
+      <p style="font-family:Arial,Helvetica,sans-serif;font-size:clamp(20px,2.3vw,28px);line-height:1.42;max-width:700px;color:#f2e7d2;margin:0 0 24px;text-wrap:pretty">{{ heroSubtitle }}</p>
       <div style="display:flex;flex-wrap:wrap;gap:16px;align-items:center;font-size:14px;color:#dccfb6;letter-spacing:0.03em">
         <span>{{ heroByline }}</span>
       </div>
@@ -97,21 +97,21 @@
   <section id="overview" data-screen-label="01 Overview" style="max-width:1280px;margin:48px auto 0;padding:56px 40px;background:#fffdf7;border:1px solid rgba(42,32,24,0.12);border-radius:16px">
     <div style="display:grid;grid-template-columns:minmax(0,1fr) minmax(260px,340px);gap:52px">
       <div style="min-width:0">
-        <h2 style="font-family:'Lora',Georgia,serif;font-weight:400;font-size:clamp(32px,4.2vw,52px);line-height:1.08;letter-spacing:-0.015em;margin:0 0 18px;text-wrap:pretty">{{ ovTitle }}</h2>
-        <p style="font-family:'Lora',Georgia,serif;font-size:22.5px;line-height:1.5;color:#4a3b2c;margin:0 0 32px;text-wrap:pretty">{{ ovLede }}</p>
+        <h2 style="font-family:Arial,Helvetica,sans-serif;font-weight:400;font-size:clamp(32px,4.2vw,52px);line-height:1.08;letter-spacing:-0.015em;margin:0 0 18px;text-wrap:pretty">{{ ovTitle }}</h2>
+        <p style="font-family:Arial,Helvetica,sans-serif;font-size:22.5px;line-height:1.5;color:#4a3b2c;margin:0 0 32px;text-wrap:pretty">{{ ovLede }}</p>
         <sc-for list="{{ ovParas }}" as="p" hint-placeholder-count="3">
-          <p style="font-family:'Lora',Georgia,serif;font-size:20px;line-height:1.74;margin:0 0 22px;text-wrap:pretty">{{ p }}</p>
+          <p style="font-family:Arial,Helvetica,sans-serif;font-size:20px;line-height:1.74;margin:0 0 22px;text-wrap:pretty">{{ p }}</p>
         </sc-for>
         <div style="display:flex;flex-wrap:wrap;gap:9px;margin:4px 0 32px">
           <sc-for list="{{ termChips }}" as="c" hint-placeholder-count="5">
             <button type="button" onMouseEnter="{{ c.show }}" onMouseLeave="{{ hideTerm }}" onFocus="{{ c.show }}" onBlur="{{ hideTerm }}" style="font-family:inherit;font-size:14.5px;font-weight:500;padding:7px 13px;border-radius:99px;border:1px solid rgba(42,32,24,0.2);background:#fffdf7;color:#4a3b2c;cursor:help" style-hover="border-color:#4b7a4f;color:#2a2018">{{ c.label }}</button>
           </sc-for>
         </div>
-        <blockquote style="margin:0 0 36px;padding:24px 28px;background:#efe6d2;border-left:3px solid #4b7a4f;font-family:'Lora',Georgia,serif;font-size:23.5px;line-height:1.45;font-style:italic;color:#3a2d20;text-wrap:pretty">{{ ovPull }}</blockquote>
+        <blockquote style="margin:0 0 36px;padding:24px 28px;background:#efe6d2;border-left:3px solid #4b7a4f;font-family:Arial,Helvetica,sans-serif;font-size:23.5px;line-height:1.45;font-style:italic;color:#3a2d20;text-wrap:pretty">{{ ovPull }}</blockquote>
         <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(148px,1fr));gap:1px;background:rgba(42,32,24,0.14);border:1px solid rgba(42,32,24,0.14)">
           <sc-for list="{{ ovFacts }}" as="f" hint-placeholder-count="4">
             <div style="background:#f7f1e4;padding:20px 18px">
-              <div style="font-family:'Lora',Georgia,serif;font-size:33px;line-height:1;color:#4b7a4f">{{ f.v }}</div>
+              <div style="font-family:Arial,Helvetica,sans-serif;font-size:33px;line-height:1;color:#4b7a4f">{{ f.v }}</div>
               <div style="font-size:14px;line-height:1.42;color:#57493a;margin-top:8px">{{ f.l }}</div>
             </div>
           </sc-for>
@@ -144,8 +144,8 @@
   </section>
 
   <section id="species" data-screen-label="02 Species" style="max-width:1280px;margin:32px auto 0;padding:56px 40px;background:#fffdf7;border:1px solid rgba(42,32,24,0.12);border-radius:16px">
-    <h2 style="font-family:'Lora',Georgia,serif;font-weight:400;font-size:clamp(30px,3.8vw,48px);line-height:1.08;margin:0 0 16px;max-width:880px;text-wrap:pretty">{{ spTitle }}</h2>
-    <p style="font-family:'Lora',Georgia,serif;font-size:21.5px;line-height:1.55;color:#4a3b2c;max-width:740px;margin:0 0 38px;text-wrap:pretty">{{ spLede }}</p>
+    <h2 style="font-family:Arial,Helvetica,sans-serif;font-weight:400;font-size:clamp(30px,3.8vw,48px);line-height:1.08;margin:0 0 16px;max-width:880px;text-wrap:pretty">{{ spTitle }}</h2>
+    <p style="font-family:Arial,Helvetica,sans-serif;font-size:21.5px;line-height:1.55;color:#4a3b2c;max-width:740px;margin:0 0 38px;text-wrap:pretty">{{ spLede }}</p>
 
     <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:26px">
       <article style="background:#fffdf7;border:1px solid rgba(42,32,24,0.14);display:flex;flex-direction:column;min-width:0">
@@ -168,7 +168,7 @@
               <path d="M52 14 C62 18 65 27 62 35" fill="none" stroke="#eaf6de" stroke-width="2.2" stroke-linecap="round" opacity="0.28" />
             </svg>
             <div style="min-width:0">
-              <h3 style="font-family:'Lora',Georgia,serif;font-weight:500;font-size:29px;margin:0;line-height:1">{{ arName }}</h3>
+              <h3 style="font-family:Arial,Helvetica,sans-serif;font-weight:500;font-size:29px;margin:0;line-height:1">{{ arName }}</h3>
               <div style="font-size:14px;color:#4b7a4f;font-weight:600;margin-top:6px">{{ arShare }}</div>
             </div>
           </div>
@@ -204,7 +204,7 @@
               <path d="M50 11 C60 16 63 26 59 36" fill="none" stroke="#f3ddc9" stroke-width="2.2" stroke-linecap="round" opacity="0.26" />
             </svg>
             <div style="min-width:0">
-              <h3 style="font-family:'Lora',Georgia,serif;font-weight:500;font-size:29px;margin:0;line-height:1">{{ roName }}</h3>
+              <h3 style="font-family:Arial,Helvetica,sans-serif;font-weight:500;font-size:29px;margin:0;line-height:1">{{ roName }}</h3>
               <div style="font-size:14px;color:#b23b3f;font-weight:600;margin-top:6px">{{ roShare }}</div>
             </div>
           </div>
@@ -222,7 +222,7 @@
     </div>
 
     <div style="margin-top:30px;background:#fffdf7;border:1px solid rgba(42,32,24,0.14);padding:24px;overflow-x:auto">
-      <div style="font-family:'Lora',Georgia,serif;font-size:25.5px;margin-bottom:16px">{{ compareTitle }}</div>
+      <div style="font-family:Arial,Helvetica,sans-serif;font-size:25.5px;margin-bottom:16px">{{ compareTitle }}</div>
       <table style="width:100%;border-collapse:collapse;min-width:520px">
         <thead>
           <tr>
@@ -247,8 +247,8 @@
 
   <section id="map" data-screen-label="03 Map" style="max-width:1280px;margin:32px auto 0;background:#20302a;color:#f2ece0;padding:56px 40px;border-radius:16px">
     <div>
-      <h2 style="font-family:'Lora',Georgia,serif;font-weight:400;font-size:clamp(30px,3.8vw,48px);line-height:1.08;margin:0 0 16px;max-width:900px;text-wrap:pretty">{{ mapTitle }}</h2>
-      <p style="font-family:'Lora',Georgia,serif;font-size:20.5px;line-height:1.55;color:#e9e0ce;max-width:720px;margin:0 0 30px;text-wrap:pretty">{{ mapLede }}</p>
+      <h2 style="font-family:Arial,Helvetica,sans-serif;font-weight:400;font-size:clamp(30px,3.8vw,48px);line-height:1.08;margin:0 0 16px;max-width:900px;text-wrap:pretty">{{ mapTitle }}</h2>
+      <p style="font-family:Arial,Helvetica,sans-serif;font-size:20.5px;line-height:1.55;color:#e9e0ce;max-width:720px;margin:0 0 30px;text-wrap:pretty">{{ mapLede }}</p>
 
       <div style="min-width:0">
           <div style="background:#17231e;border:1px solid rgba(242,236,224,0.14);border-radius:10px;padding:10px">
@@ -280,12 +280,12 @@
         <div style="min-width:0;background:#17231e;border:1px solid rgba(242,236,224,0.14);border-radius:10px;padding:24px">
           
           <div style="font-size:13px;letter-spacing:0.12em;text-transform:uppercase;color:#a7d18c;font-weight:700">{{ activeRank }}</div>
-          <h3 style="font-family:'Lora',Georgia,serif;font-weight:500;font-size:33px;margin:8px 0 14px;line-height:1.1">{{ activeName }}</h3>
+          <h3 style="font-family:Arial,Helvetica,sans-serif;font-weight:500;font-size:33px;margin:8px 0 14px;line-height:1.1">{{ activeName }}</h3>
           <p style="font-size:15.5px;line-height:1.65;color:#e9e0ce;margin:0 0 18px;text-wrap:pretty">{{ activeNote }}</p>
           <div style="display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px;padding:16px 0;border-top:1px solid rgba(242,236,224,0.14);border-bottom:1px solid rgba(242,236,224,0.14)">
             <sc-for list="{{ activeStats }}" as="s" hint-placeholder-count="3">
               <div>
-                <div style="font-family:'Lora',Georgia,serif;font-size:22.5px;line-height:1.1;color:#f2ece0">{{ s.v }}</div>
+                <div style="font-family:Arial,Helvetica,sans-serif;font-size:22.5px;line-height:1.1;color:#f2ece0">{{ s.v }}</div>
                 <div style="font-size:12.5px;line-height:1.35;color:#cbbfa9;margin-top:5px">{{ s.l }}</div>
               </div>
             </sc-for>
@@ -317,7 +317,7 @@
         </div>
         <div style="min-width:0;background:#17231e;border:1px solid rgba(242,236,224,0.14);border-radius:10px;padding:24px">
           <div style="margin-top:24px;padding-top:22px;border-top:1px solid rgba(242,236,224,0.14)">
-            <div style="font-family:'Lora',Georgia,serif;font-size:23.5px;margin-bottom:4px">{{ rankTitle }}</div>
+            <div style="font-family:Arial,Helvetica,sans-serif;font-size:23.5px;margin-bottom:4px">{{ rankTitle }}</div>
             <p style="font-size:13.5px;color:#cbbfa9;margin:0 0 16px;line-height:1.5">{{ rankSub }}</p>
             <div style="display:flex;flex-direction:column;gap:2px;max-height:520px;overflow-y:auto">
               <sc-for list="{{ ranks }}" as="r" hint-placeholder-count="20">
@@ -336,8 +336,8 @@
   </section>
 
   <section id="process" data-screen-label="04 Process" style="max-width:1280px;margin:32px auto 0;padding:56px 40px;background:#fffdf7;border:1px solid rgba(42,32,24,0.12);border-radius:16px">
-    <h2 style="font-family:'Lora',Georgia,serif;font-weight:400;font-size:clamp(30px,3.8vw,48px);line-height:1.08;margin:0 0 16px;text-wrap:pretty">{{ prTitle }}</h2>
-    <p style="font-family:'Lora',Georgia,serif;font-size:21.5px;line-height:1.55;color:#4a3b2c;max-width:700px;margin:0 0 34px;text-wrap:pretty">{{ prLede }}</p>
+    <h2 style="font-family:Arial,Helvetica,sans-serif;font-weight:400;font-size:clamp(30px,3.8vw,48px);line-height:1.08;margin:0 0 16px;text-wrap:pretty">{{ prTitle }}</h2>
+    <p style="font-family:Arial,Helvetica,sans-serif;font-size:21.5px;line-height:1.55;color:#4a3b2c;max-width:700px;margin:0 0 34px;text-wrap:pretty">{{ prLede }}</p>
     <div style="height:300px;position:relative;margin-bottom:34px;border:1px solid rgba(42,32,24,0.14)">
       <image-slot id="cg-process" shape="rect" fit="cover" placeholder="{{ prSlot }}" src="https://upload.wikimedia.org/wikipedia/commons/thumb/e/e0/Women_drying_coffee.jpg/1920px-Women_drying_coffee.jpg" credit="Ảnh: Philip Asedri Dradrio · CC BY-SA 4.0 (Wikimedia Commons)" credit-href="https://commons.wikimedia.org/wiki/File:Women_drying_coffee.jpg"></image-slot>
     </div>
@@ -346,7 +346,7 @@
         <div style="background:#fffdf7;padding:24px 22px 26px;min-width:0">
           <div style="display:flex;align-items:center;gap:10px;margin-bottom:12px">
             <span style="width:26px;height:26px;border-radius:50%;background:#4b7a4f;color:#f7f1e4;font-size:14px;font-weight:700;display:flex;align-items:center;justify-content:center;flex:0 0 auto">{{ s.n }}</span>
-            <h3 style="font-family:'Lora',Georgia,serif;font-weight:500;font-size:22.5px;margin:0;line-height:1.15">{{ s.name }}</h3>
+            <h3 style="font-family:Arial,Helvetica,sans-serif;font-weight:500;font-size:22.5px;margin:0;line-height:1.15">{{ s.name }}</h3>
           </div>
           <p style="font-size:15.5px;line-height:1.68;color:#4a3b2c;margin:0;text-wrap:pretty">{{ s.body }}</p>
         </div>
@@ -355,13 +355,13 @@
   </section>
 
   <section id="brewing" data-screen-label="05 Brewing" style="max-width:1280px;margin:32px auto 0;padding:56px 40px;background:#fffdf7;border:1px solid rgba(42,32,24,0.12);border-radius:16px">
-    <h2 style="font-family:'Lora',Georgia,serif;font-weight:400;font-size:clamp(30px,3.8vw,48px);line-height:1.08;margin:0 0 16px;text-wrap:pretty">{{ brTitle }}</h2>
-    <p style="font-family:'Lora',Georgia,serif;font-size:21.5px;line-height:1.55;color:#4a3b2c;max-width:720px;margin:0 0 34px;text-wrap:pretty">{{ brLede }}</p>
+    <h2 style="font-family:Arial,Helvetica,sans-serif;font-weight:400;font-size:clamp(30px,3.8vw,48px);line-height:1.08;margin:0 0 16px;text-wrap:pretty">{{ brTitle }}</h2>
+    <p style="font-family:Arial,Helvetica,sans-serif;font-size:21.5px;line-height:1.55;color:#4a3b2c;max-width:720px;margin:0 0 34px;text-wrap:pretty">{{ brLede }}</p>
     <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(290px,1fr));gap:20px">
       <sc-for list="{{ brMethods }}" as="m" hint-placeholder-count="8">
         <article style="background:#fffdf7;border:1px solid rgba(42,32,24,0.14);padding:22px;min-width:0;display:flex;flex-direction:column;gap:14px">
           <div>
-            <h3 style="font-family:'Lora',Georgia,serif;font-weight:500;font-size:24.5px;margin:0 0 5px;line-height:1.1">{{ m.name }}</h3>
+            <h3 style="font-family:Arial,Helvetica,sans-serif;font-weight:500;font-size:24.5px;margin:0 0 5px;line-height:1.1">{{ m.name }}</h3>
             <div style="font-size:13px;letter-spacing:0.1em;text-transform:uppercase;color:#4b7a4f;font-weight:600">{{ m.origin }}</div>
           </div>
           <div style="display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:1px;background:rgba(42,32,24,0.12)">
@@ -382,13 +382,13 @@
   </section>
 
   <section id="tasting" data-screen-label="06 Tasting" style="max-width:1280px;margin:32px auto 0;padding:56px 40px;background:#fffdf7;border:1px solid rgba(42,32,24,0.12);border-radius:16px">
-    <h2 style="font-family:'Lora',Georgia,serif;font-weight:400;font-size:clamp(30px,3.8vw,48px);line-height:1.08;margin:0 0 16px;text-wrap:pretty">{{ taTitle }}</h2>
-    <p style="font-family:'Lora',Georgia,serif;font-size:21.5px;line-height:1.55;color:#4a3b2c;max-width:720px;margin:0 0 34px;text-wrap:pretty">{{ taLede }}</p>
+    <h2 style="font-family:Arial,Helvetica,sans-serif;font-weight:400;font-size:clamp(30px,3.8vw,48px);line-height:1.08;margin:0 0 16px;text-wrap:pretty">{{ taTitle }}</h2>
+    <p style="font-family:Arial,Helvetica,sans-serif;font-size:21.5px;line-height:1.55;color:#4a3b2c;max-width:720px;margin:0 0 34px;text-wrap:pretty">{{ taLede }}</p>
     <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:26px">
       <div style="min-width:0;display:flex;flex-direction:column;gap:1px;background:rgba(42,32,24,0.14);border:1px solid rgba(42,32,24,0.14)">
         <sc-for list="{{ taAxes }}" as="a" hint-placeholder-count="5">
           <div style="background:#fffdf7;padding:18px 20px;flex:1 1 0;display:flex;flex-direction:column;justify-content:center">
-            <h3 style="font-family:'Lora',Georgia,serif;font-weight:500;font-size:21.5px;margin:0 0 6px">{{ a.k }}</h3>
+            <h3 style="font-family:Arial,Helvetica,sans-serif;font-weight:500;font-size:21.5px;margin:0 0 6px">{{ a.k }}</h3>
             <p style="font-size:15.5px;line-height:1.62;color:#4a3b2c;margin:0;text-wrap:pretty">{{ a.v }}</p>
           </div>
         </sc-for>
@@ -415,13 +415,13 @@
 
   <section id="history" data-screen-label="07 History" style="max-width:1280px;margin:32px auto 0;background:#efe6d2;padding:56px 40px;border:1px solid rgba(42,32,24,0.12);border-radius:16px">
     <div>
-      <h2 style="font-family:'Lora',Georgia,serif;font-weight:400;font-size:clamp(30px,3.8vw,48px);line-height:1.08;margin:0 0 16px;text-wrap:pretty">{{ hiTitle }}</h2>
-      <p style="font-family:'Lora',Georgia,serif;font-size:21.5px;line-height:1.55;color:#4a3b2c;max-width:760px;margin:0 0 44px;text-wrap:pretty">{{ hiLede }}</p>
+      <h2 style="font-family:Arial,Helvetica,sans-serif;font-weight:400;font-size:clamp(30px,3.8vw,48px);line-height:1.08;margin:0 0 16px;text-wrap:pretty">{{ hiTitle }}</h2>
+      <p style="font-family:Arial,Helvetica,sans-serif;font-size:21.5px;line-height:1.55;color:#4a3b2c;max-width:760px;margin:0 0 44px;text-wrap:pretty">{{ hiLede }}</p>
       <div style="display:flex;flex-direction:column;gap:0">
         <sc-for list="{{ timeline }}" as="t" hint-placeholder-count="10">
           <div style="display:grid;grid-template-columns:minmax(0,150px) 30px minmax(0,1fr);gap:0;align-items:start">
             <div style="text-align:right;padding:0 20px 44px 0">
-              <div style="font-family:'Lora',Georgia,serif;font-size:25.5px;line-height:1.1;color:#2a2018">{{ t.year }}</div>
+              <div style="font-family:Arial,Helvetica,sans-serif;font-size:25.5px;line-height:1.1;color:#2a2018">{{ t.year }}</div>
               <div style="font-size:12px;letter-spacing:0.1em;text-transform:uppercase;font-weight:700;margin-top:7px;color:{{ t.badgeColor }}">{{ t.badge }}</div>
             </div>
             <div style="position:relative;display:flex;justify-content:center;align-self:stretch">
@@ -429,7 +429,7 @@
               <span style="position:relative;margin-top:8px;width:13px;height:13px;border-radius:50%;background:{{ t.dotColor }};border:3px solid #efe6d2"></span>
             </div>
             <div style="padding:0 0 44px 22px;min-width:0">
-              <h3 style="font-family:'Lora',Georgia,serif;font-weight:500;font-size:26px;line-height:1.2;margin:0 0 10px;text-wrap:pretty">{{ t.title }}</h3>
+              <h3 style="font-family:Arial,Helvetica,sans-serif;font-weight:500;font-size:26px;line-height:1.2;margin:0 0 10px;text-wrap:pretty">{{ t.title }}</h3>
               <p style="font-size:16.5px;line-height:1.72;color:#4a3b2c;margin:0 0 12px;max-width:680px;text-wrap:pretty">{{ t.body }}</p>
               <div style="display:flex;flex-wrap:wrap;gap:14px;align-items:center">
                 <span style="font-size:13.5px;color:#6b5b47">{{ t.refs }}</span>
@@ -445,12 +445,12 @@
   </section>
 
   <section id="vietnam" data-screen-label="08 Vietnam" style="max-width:1280px;margin:32px auto 0;padding:56px 40px;background:#fffdf7;border:1px solid rgba(42,32,24,0.12);border-radius:16px">
-    <h2 style="font-family:'Lora',Georgia,serif;font-weight:400;font-size:clamp(30px,3.8vw,48px);line-height:1.08;margin:0 0 16px;max-width:900px;text-wrap:pretty">{{ vnTitle }}</h2>
-    <p style="font-family:'Lora',Georgia,serif;font-size:21.5px;line-height:1.55;color:#4a3b2c;max-width:740px;margin:0 0 30px;text-wrap:pretty">{{ vnLede }}</p>
+    <h2 style="font-family:Arial,Helvetica,sans-serif;font-weight:400;font-size:clamp(30px,3.8vw,48px);line-height:1.08;margin:0 0 16px;max-width:900px;text-wrap:pretty">{{ vnTitle }}</h2>
+    <p style="font-family:Arial,Helvetica,sans-serif;font-size:21.5px;line-height:1.55;color:#4a3b2c;max-width:740px;margin:0 0 30px;text-wrap:pretty">{{ vnLede }}</p>
     <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:1px;background:rgba(42,32,24,0.14);border:1px solid rgba(42,32,24,0.14);margin-bottom:34px">
       <sc-for list="{{ vnStats }}" as="s" hint-placeholder-count="4">
         <div style="background:#fffdf7;padding:20px 18px">
-          <div style="font-family:'Lora',Georgia,serif;font-size:28px;line-height:1.05;color:#b23b3f">{{ s.v }}</div>
+          <div style="font-family:Arial,Helvetica,sans-serif;font-size:28px;line-height:1.05;color:#b23b3f">{{ s.v }}</div>
           <div style="font-size:14px;line-height:1.4;color:#57493a;margin-top:8px">{{ s.l }}</div>
         </div>
       </sc-for>
@@ -458,13 +458,13 @@
     <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:34px">
       <div style="min-width:0">
         <sc-for list="{{ vnParas }}" as="p" hint-placeholder-count="3">
-          <p style="font-family:'Lora',Georgia,serif;font-size:19.5px;line-height:1.74;margin:0 0 22px;text-wrap:pretty">{{ p }}</p>
+          <p style="font-family:Arial,Helvetica,sans-serif;font-size:19.5px;line-height:1.74;margin:0 0 22px;text-wrap:pretty">{{ p }}</p>
         </sc-for>
         <div style="display:flex;flex-direction:column;gap:1px;background:rgba(42,32,24,0.14);border:1px solid rgba(42,32,24,0.14)">
           <sc-for list="{{ vnRegions }}" as="r" hint-placeholder-count="4">
             <div style="background:#fffdf7;padding:16px 18px;display:grid;grid-template-columns:minmax(0,1fr) auto;gap:10px;align-items:baseline">
               <div style="min-width:0">
-                <div style="font-family:'Lora',Georgia,serif;font-size:20.5px;margin-bottom:5px">{{ r.name }}</div>
+                <div style="font-family:Arial,Helvetica,sans-serif;font-size:20.5px;margin-bottom:5px">{{ r.name }}</div>
                 <div style="font-size:14.5px;line-height:1.55;color:#57493a;text-wrap:pretty">{{ r.note }}</div>
               </div>
               <div style="font-size:13.5px;font-weight:600;color:#4b7a4f;white-space:nowrap">{{ r.alt }}</div>
@@ -479,19 +479,19 @@
   </section>
 
   <section id="health" data-screen-label="09 Health" style="max-width:1280px;margin:32px auto 0;padding:56px 40px;background:#fffdf7;border:1px solid rgba(42,32,24,0.12);border-radius:16px">
-    <h2 style="font-family:'Lora',Georgia,serif;font-weight:400;font-size:clamp(30px,3.8vw,48px);line-height:1.08;margin:0 0 16px;text-wrap:pretty">{{ heTitle }}</h2>
-    <p style="font-family:'Lora',Georgia,serif;font-size:21.5px;line-height:1.55;color:#4a3b2c;max-width:720px;margin:0 0 34px;text-wrap:pretty">{{ heLede }}</p>
+    <h2 style="font-family:Arial,Helvetica,sans-serif;font-weight:400;font-size:clamp(30px,3.8vw,48px);line-height:1.08;margin:0 0 16px;text-wrap:pretty">{{ heTitle }}</h2>
+    <p style="font-family:Arial,Helvetica,sans-serif;font-size:21.5px;line-height:1.55;color:#4a3b2c;max-width:720px;margin:0 0 34px;text-wrap:pretty">{{ heLede }}</p>
     <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:26px">
       <div style="min-width:0;display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:1px;background:rgba(42,32,24,0.14);border:1px solid rgba(42,32,24,0.14)">
         <sc-for list="{{ hePoints }}" as="p" hint-placeholder-count="4">
           <div style="background:#fffdf7;padding:20px">
-            <h3 style="font-family:'Lora',Georgia,serif;font-weight:500;font-size:21.5px;margin:0 0 8px;line-height:1.2">{{ p.h }}</h3>
+            <h3 style="font-family:Arial,Helvetica,sans-serif;font-weight:500;font-size:21.5px;margin:0 0 8px;line-height:1.2">{{ p.h }}</h3>
             <p style="font-size:15.5px;line-height:1.65;color:#4a3b2c;margin:0;text-wrap:pretty">{{ p.b }}</p>
           </div>
         </sc-for>
       </div>
       <div style="min-width:0;background:#fffdf7;border:1px solid rgba(42,32,24,0.14);padding:24px">
-        <div style="font-family:'Lora',Georgia,serif;font-size:23.5px;margin-bottom:20px;line-height:1.2">{{ heChartTitle }}</div>
+        <div style="font-family:Arial,Helvetica,sans-serif;font-size:23.5px;margin-bottom:20px;line-height:1.2">{{ heChartTitle }}</div>
         <div style="display:flex;flex-direction:column;gap:14px">
           <sc-for list="{{ heCaffeine }}" as="c" hint-placeholder-count="6">
             <div>
@@ -511,17 +511,17 @@
   </section>
 
   <section id="economy" data-screen-label="10 Economy" style="max-width:1280px;margin:32px auto 0;padding:56px 40px;background:#fffdf7;border:1px solid rgba(42,32,24,0.12);border-radius:16px">
-    <h2 style="font-family:'Lora',Georgia,serif;font-weight:400;font-size:clamp(30px,3.8vw,48px);line-height:1.08;margin:0 0 16px;text-wrap:pretty">{{ ecTitle }}</h2>
-    <p style="font-family:'Lora',Georgia,serif;font-size:21.5px;line-height:1.55;color:#4a3b2c;max-width:720px;margin:0 0 34px;text-wrap:pretty">{{ ecLede }}</p>
+    <h2 style="font-family:Arial,Helvetica,sans-serif;font-weight:400;font-size:clamp(30px,3.8vw,48px);line-height:1.08;margin:0 0 16px;text-wrap:pretty">{{ ecTitle }}</h2>
+    <p style="font-family:Arial,Helvetica,sans-serif;font-size:21.5px;line-height:1.55;color:#4a3b2c;max-width:720px;margin:0 0 34px;text-wrap:pretty">{{ ecLede }}</p>
     <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:34px">
       <div style="min-width:0">
         <sc-for list="{{ ecParas }}" as="p" hint-placeholder-count="3">
-          <p style="font-family:'Lora',Georgia,serif;font-size:19.5px;line-height:1.74;margin:0 0 22px;text-wrap:pretty">{{ p }}</p>
+          <p style="font-family:Arial,Helvetica,sans-serif;font-size:19.5px;line-height:1.74;margin:0 0 22px;text-wrap:pretty">{{ p }}</p>
         </sc-for>
       </div>
       <div style="min-width:0;display:flex;flex-direction:column">
         <div style="background:#fffdf7;border:1px solid rgba(42,32,24,0.14);padding:24px">
-          <div style="font-family:'Lora',Georgia,serif;font-size:22.5px;line-height:1.25;margin-bottom:20px">{{ ecChainTitle }}</div>
+          <div style="font-family:Arial,Helvetica,sans-serif;font-size:22.5px;line-height:1.25;margin-bottom:20px">{{ ecChainTitle }}</div>
           <div style="display:flex;height:34px;border-radius:6px;overflow:hidden;margin-bottom:18px">
             <sc-for list="{{ ecChain }}" as="c" hint-placeholder-count="5">
               <div style="{{ c.segStyle }}"></div>
@@ -546,12 +546,12 @@
   </section>
 
   <section id="glossary" data-screen-label="11 Glossary" style="max-width:1280px;margin:32px auto 0;padding:56px 40px;background:#fffdf7;border:1px solid rgba(42,32,24,0.12);border-radius:16px">
-    <h2 style="font-family:'Lora',Georgia,serif;font-weight:400;font-size:clamp(30px,3.8vw,48px);line-height:1.08;margin:0 0 16px;text-wrap:pretty">{{ glTitle }}</h2>
-    <p style="font-family:'Lora',Georgia,serif;font-size:21.5px;line-height:1.55;color:#4a3b2c;max-width:720px;margin:0 0 30px;text-wrap:pretty">{{ glLede }}</p>
+    <h2 style="font-family:Arial,Helvetica,sans-serif;font-weight:400;font-size:clamp(30px,3.8vw,48px);line-height:1.08;margin:0 0 16px;text-wrap:pretty">{{ glTitle }}</h2>
+    <p style="font-family:Arial,Helvetica,sans-serif;font-size:21.5px;line-height:1.55;color:#4a3b2c;max-width:720px;margin:0 0 30px;text-wrap:pretty">{{ glLede }}</p>
     <dl style="margin:0;display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:1px;background:rgba(42,32,24,0.14);border:1px solid rgba(42,32,24,0.14)">
       <sc-for list="{{ terms }}" as="t" hint-placeholder-count="13">
         <div style="background:#fffdf7;padding:18px 20px">
-          <dt style="font-family:'Lora',Georgia,serif;font-size:20.5px;margin-bottom:6px">{{ t.term }}</dt>
+          <dt style="font-family:Arial,Helvetica,sans-serif;font-size:20.5px;margin-bottom:6px">{{ t.term }}</dt>
           <dd style="margin:0;font-size:15px;line-height:1.65;color:#4a3b2c;text-wrap:pretty">{{ t.def }}</dd>
         </div>
       </sc-for>
@@ -559,12 +559,12 @@
   </section>
 
   <section id="sources" data-screen-label="12 Sources" style="max-width:1280px;margin:32px auto 48px;padding:56px 40px;background:#fffdf7;border:1px solid rgba(42,32,24,0.12);border-radius:16px">
-    <h2 style="font-family:'Lora',Georgia,serif;font-weight:400;font-size:clamp(26px,3vw,38px);line-height:1.1;margin:0 0 24px">{{ soTitle }}</h2>
+    <h2 style="font-family:Arial,Helvetica,sans-serif;font-weight:400;font-size:clamp(26px,3vw,38px);line-height:1.1;margin:0 0 24px">{{ soTitle }}</h2>
     <ol style="margin:0;padding-left:24px;display:flex;flex-direction:column;gap:10px;max-width:860px">
       <sc-for list="{{ sources }}" as="s" hint-placeholder-count="9">
         <li style="font-size:15.5px;line-height:1.6">
           <a href="{{ s.url }}" target="_blank" rel="noopener">{{ s.name }}</a>
-          <span style="color:#6b5b47"> — {{ s.note }}</span>
+          <span style="color:#6b5b47"> - {{ s.note }}</span>
         </li>
       </sc-for>
     </ol>
@@ -595,7 +595,7 @@
 
   <sc-if value="{{ termOpen }}" hint-placeholder-val="{{ false }}">
     <div style="position:fixed;left:50%;bottom:24px;transform:translateX(-50%);z-index:80;max-width:460px;background:#2a2018;color:#f2ece0;border-radius:10px;padding:16px 20px;box-shadow:0 20px 50px rgba(0,0,0,0.32);animation:cg-in .16s ease-out">
-      <div style="font-family:'Lora',Georgia,serif;font-size:19.5px;margin-bottom:6px;color:#a7d18c">{{ termName }}</div>
+      <div style="font-family:Arial,Helvetica,sans-serif;font-size:19.5px;margin-bottom:6px;color:#a7d18c">{{ termName }}</div>
       <div style="font-size:15px;line-height:1.6">{{ termDef }}</div>
     </div>
   </sc-if>
