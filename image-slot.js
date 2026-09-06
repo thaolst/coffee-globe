@@ -1138,6 +1138,8 @@
           // (the pick path's credit/credit-href setAttributes) need this
           // flag, not complete, to know a load is in flight.
           this._loadPending = true;
+          var altAttr = this.getAttribute('alt');
+          if (altAttr != null) this._img.alt = altAttr;
           this._img.src = url;
           this._ghost.src = url;
         } else {

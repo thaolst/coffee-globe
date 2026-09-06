@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html lang="vi">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -48,6 +48,26 @@ h1, h2, h3 { font-family:"Source Serif 4",Georgia,"Times New Roman",serif !impor
 blockquote { font-family:"Source Serif 4",Georgia,"Times New Roman",serif !important; font-size:clamp(21px,2.3vw,27px) !important; font-style:italic; }
 /* ===== Rhythm: map full-bleed + globe ===== */
 @media (max-width: 760px) { #cg-globe { display:none; } }
+/* ===== Header 3 nấc + scroll-spy + a11y ===== */
+nav a.dc-active { background:#efe6d2 !important; color:#2a2018 !important; }
+header button:focus-visible, header a:focus-visible, #map circle:focus-visible, nav a:focus-visible { outline:2px solid #4b7a4f; outline-offset:2px; }
+#map circle:focus { stroke:#f2ece0 !important; stroke-width:2.5 !important; }
+@media (min-width: 900px) {
+  .dc-burger, .dc-sbtn { display:none !important; }
+}
+@media (max-width: 899px) {
+  .dc-burger { display:flex !important; }
+  .dc-sbtn { display:flex !important; margin-left:auto; }
+  .dc-swrap { display:none !important; }
+  header.dc-sopen .dc-swrap { display:block !important; position:absolute; top:100%; left:0; right:0; background:#fffdf7; border-bottom:1px solid rgba(42,32,24,0.12); padding:10px 14px; z-index:5; }
+  header.dc-sopen .dc-swrap input[type="search"] { width:100%; display:block !important; }
+  nav.dc-nav { display:none !important; }
+  header.dc-open nav.dc-nav { display:grid !important; grid-template-columns:repeat(2,minmax(0,1fr)); position:absolute; top:100%; left:0; right:0; background:#fffdf7; border-bottom:1px solid rgba(42,32,24,0.12); padding:10px 14px 14px; gap:2px; overflow:visible; z-index:5; box-shadow:0 18px 32px rgba(42,32,24,0.14); }
+  nav.dc-nav a { padding:10px 12px !important; font-size:15px !important; white-space:normal !important; }
+}
+@media (max-width: 640px) {
+  header .dc-sbtn { margin-left:auto; }
+}
 /* ===== Mobile responsive ===== */
 @media (max-width: 640px) {
   .dc-mob-stack { grid-template-columns:minmax(0,1fr) !important; }
@@ -84,13 +104,13 @@ blockquote { font-family:"Source Serif 4",Georgia,"Times New Roman",serif !impor
         <span style="font-weight:700;font-size:17px;letter-spacing:0.01em">Coffee Globe</span>
       </a>
 
-      <nav style="flex:1 1 auto;min-width:0;display:flex;gap:2px;overflow-x:auto;scrollbar-width:none">
+      <nav class="dc-nav" aria-label="Mục lục" style="flex:1 1 auto;min-width:0;display:flex;gap:2px;overflow-x:auto;scrollbar-width:none">
         <sc-for list="{{ nav }}" as="item" hint-placeholder-count="10">
           <a href="{{ item.href }}" style="flex:0 0 auto;padding:8px 10px;border-radius:7px;font-size:14px;font-weight:500;color:#57493a;text-decoration:none;white-space:nowrap" style-hover="background:#efe6d2;color:#2a2018">{{ item.label }}</a>
         </sc-for>
       </nav>
 
-      <div style="position:relative;flex:0 0 auto">
+      <div class="dc-swrap" style="position:relative;flex:0 0 auto">
         <input type="search" value="{{ query }}" onChange="{{ onSearch }}" placeholder="{{ searchPlaceholder }}" style="width:250px;font-family:inherit;font-size:14px;padding:9px 12px;border:1px solid rgba(42,32,24,0.18);border-radius:8px;background:#fffdf7;color:#2a2018;min-height:38px" style-focus="outline:2px solid #4b7a4f;outline-offset:1px;border-color:#4b7a4f" />
         <sc-if value="{{ searchOpen }}" hint-placeholder-val="{{ false }}">
           <div style="position:absolute;top:44px;right:0;width:390px;max-height:62vh;overflow:auto;background:#fffdf7;border:1px solid rgba(42,32,24,0.16);border-radius:10px;box-shadow:0 18px 44px rgba(42,32,24,0.2);padding:6px">
@@ -109,10 +129,18 @@ blockquote { font-family:"Source Serif 4",Georgia,"Times New Roman",serif !impor
         </sc-if>
       </div>
 
+      <button type="button" class="dc-sbtn" aria-label="Mở tìm kiếm" style="display:none;flex:0 0 auto;align-items:center;justify-content:center;width:38px;height:38px;border:1px solid rgba(42,32,24,0.18);border-radius:8px;background:#fffdf7;cursor:pointer">
+        <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="#2a2018" stroke-width="2.2" stroke-linecap="round" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="M20 20l-3.5-3.5"/></svg>
+      </button>
       <div style="display:flex;flex:0 0 auto;border:1px solid rgba(42,32,24,0.18);border-radius:8px;overflow:hidden">
         <button type="button" onClick="{{ setVi }}" style="{{ viBtnStyle }}">VI</button>
         <button type="button" onClick="{{ setEn }}" style="{{ enBtnStyle }}">EN</button>
       </div>
+      <button type="button" class="dc-burger" aria-label="Mở menu" aria-expanded="false" style="display:none;flex-direction:column;align-items:center;justify-content:center;gap:4px;width:38px;height:38px;border:1px solid rgba(42,32,24,0.18);border-radius:8px;background:#fffdf7;cursor:pointer">
+        <span style="display:block;width:17px;height:2px;background:#2a2018;border-radius:1px"></span>
+        <span style="display:block;width:17px;height:2px;background:#2a2018;border-radius:1px"></span>
+        <span style="display:block;width:17px;height:2px;background:#2a2018;border-radius:1px"></span>
+      </button>
     </div>
   </header>
 
@@ -128,7 +156,7 @@ blockquote { font-family:"Source Serif 4",Georgia,"Times New Roman",serif !impor
         <span>{{ heroByline }}</span>
       </div>
     </div>
-    <div style="position:relative;max-width:1280px;margin:0 auto;padding:0 24px 24px;font-size:13px;color:#cbbfa9;font-style:italic;pointer-events:none">{{ heroCaption }}</div>
+    <div style="position:relative;max-width:1280px;margin:0 auto;padding:0 24px 24px;font-size:13px;color:#dccdb4;font-style:italic;pointer-events:none">{{ heroCaption }}</div>
   
     <canvas id="cg-globe" width="300" height="300" aria-hidden="true" style="position:absolute;top:56px;right:clamp(16px,5vw,72px);width:clamp(150px,19vw,230px);height:clamp(150px,19vw,230px);opacity:0.95;pointer-events:none"></canvas>
 </section>
@@ -159,7 +187,7 @@ blockquote { font-family:"Source Serif 4",Georgia,"Times New Roman",serif !impor
 
       <aside style="min-width:0;display:flex;flex-direction:column;background:#fffdf7;border:1px solid rgba(42,32,24,0.16)">
         <div style="height:168px;position:relative">
-          <image-slot id="cg-infobox" shape="rect" fit="cover" placeholder="{{ infoSlot }}" src="https://images.unsplash.com/photo-1500353391678-d7b57979d6d2?fm=jpg&amp;q=80&amp;w=1600&amp;auto=format&amp;fit=crop" credit="Photo by Nathan Dumlao on Unsplash" credit-href="https://unsplash.com/@nate_dumlao"></image-slot>
+          <image-slot id="cg-infobox" alt="Tách cà phê sữa trên bàn" shape="rect" fit="cover" placeholder="{{ infoSlot }}" src="https://images.unsplash.com/photo-1500353391678-d7b57979d6d2?fm=jpg&amp;q=80&amp;w=1600&amp;auto=format&amp;fit=crop" credit="Photo by Nathan Dumlao on Unsplash" credit-href="https://unsplash.com/@nate_dumlao"></image-slot>
         </div>
         <div style="padding:20px">
           <div style="font-size:12.5px;letter-spacing:0.14em;text-transform:uppercase;color:#4b7a4f;font-weight:700;margin-bottom:12px">{{ infoTitle }}</div>
@@ -175,7 +203,7 @@ blockquote { font-family:"Source Serif 4",Georgia,"Times New Roman",serif !impor
         </div>
         <div style="flex:1 1 auto;min-height:240px;position:relative;margin:16px 0 0;border-top:1px solid rgba(42,32,24,0.1);display:flex">
           <div style="flex:1;min-width:0;position:relative">
-          <image-slot id="cg-infobox-2" shape="rect" fit="cover" src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/5c/Coffee_cherries_on_bush_at_Fairview_Estate%2C_Kiambu%2C_KE.jpg/1280px-Coffee_cherries_on_bush_at_Fairview_Estate%2C_Kiambu%2C_KE.jpg" credit="Ảnh: Daniel Case · CC BY-SA 4.0 (Wikimedia Commons)" credit-href="https://commons.wikimedia.org/wiki/File:Coffee_cherries_on_bush_at_Fairview_Estate,_Kiambu,_KE.jpg"></image-slot>
+          <image-slot id="cg-infobox-2" alt="Chùm quả cà phê chín đỏ trên cây" shape="rect" fit="cover" src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/5c/Coffee_cherries_on_bush_at_Fairview_Estate%2C_Kiambu%2C_KE.jpg/1280px-Coffee_cherries_on_bush_at_Fairview_Estate%2C_Kiambu%2C_KE.jpg" credit="Ảnh: Daniel Case · CC BY-SA 4.0 (Wikimedia Commons)" credit-href="https://commons.wikimedia.org/wiki/File:Coffee_cherries_on_bush_at_Fairview_Estate,_Kiambu,_KE.jpg"></image-slot>
           </div>
         </div>
       </aside>
@@ -189,7 +217,7 @@ blockquote { font-family:"Source Serif 4",Georgia,"Times New Roman",serif !impor
     <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:26px">
       <article style="background:#fffdf7;border:1px solid rgba(42,32,24,0.14);display:flex;flex-direction:column;min-width:0">
         <div style="height:200px;position:relative;border-bottom:1px solid rgba(42,32,24,0.12)">
-          <image-slot id="cg-bean-arabica" shape="rect" fit="cover" placeholder="{{ spSlotA }}" src="https://upload.wikimedia.org/wikipedia/commons/thumb/b/b5/Medium_roasted_Arabica_coffee_beans.jpg/1280px-Medium_roasted_Arabica_coffee_beans.jpg" credit="Ảnh: Sage Ross · CC BY-SA 3.0 (Wikimedia Commons)" credit-href="https://commons.wikimedia.org/wiki/File:Medium_roasted_Arabica_coffee_beans.jpg"></image-slot>
+          <image-slot id="cg-bean-arabica" alt="Hạt cà phê arabica rang nâu" shape="rect" fit="cover" placeholder="{{ spSlotA }}" src="https://upload.wikimedia.org/wikipedia/commons/thumb/b/b5/Medium_roasted_Arabica_coffee_beans.jpg/1280px-Medium_roasted_Arabica_coffee_beans.jpg" credit="Ảnh: Sage Ross · CC BY-SA 3.0 (Wikimedia Commons)" credit-href="https://commons.wikimedia.org/wiki/File:Medium_roasted_Arabica_coffee_beans.jpg"></image-slot>
         </div>
         <div style="padding:24px">
           <div style="display:flex;align-items:center;gap:16px;margin-bottom:15px">
@@ -225,7 +253,7 @@ blockquote { font-family:"Source Serif 4",Georgia,"Times New Roman",serif !impor
 
       <article style="background:#fffdf7;border:1px solid rgba(42,32,24,0.14);display:flex;flex-direction:column;min-width:0">
         <div style="height:200px;position:relative;border-bottom:1px solid rgba(42,32,24,0.12)">
-          <image-slot id="cg-bean-robusta" shape="rect" fit="cover" placeholder="{{ spSlotB }}" src="https://upload.wikimedia.org/wikipedia/commons/c/ca/Coffee_beans_robusta.jpg" credit="Ảnh: DXLINH · CC BY-SA 3.0 (Wikimedia Commons)" credit-href="https://commons.wikimedia.org/wiki/File:Coffee_beans_robusta.jpg"></image-slot>
+          <image-slot id="cg-bean-robusta" alt="Hạt cà phê robusta rang" shape="rect" fit="cover" placeholder="{{ spSlotB }}" src="https://upload.wikimedia.org/wikipedia/commons/c/ca/Coffee_beans_robusta.jpg" credit="Ảnh: DXLINH · CC BY-SA 3.0 (Wikimedia Commons)" credit-href="https://commons.wikimedia.org/wiki/File:Coffee_beans_robusta.jpg"></image-slot>
         </div>
         <div style="padding:24px">
           <div style="display:flex;align-items:center;gap:16px;margin-bottom:15px">
@@ -295,7 +323,7 @@ blockquote { font-family:"Source Serif 4",Georgia,"Times New Roman",serif !impor
             <svg viewBox="0 0 980 520" role="img" aria-label="{{ mapTitle }}" onClick="{{ onMapClick }}" style="width:100%;height:auto;display:block">
               {{ mapLayer }}
               <sc-for list="{{ bubbles }}" as="b" hint-placeholder-count="20">
-                <circle cx="{{ b.cx }}" cy="{{ b.cy }}" r="{{ b.r }}" fill="{{ b.fill }}" fill-opacity="{{ b.opacity }}" stroke="{{ b.stroke }}" stroke-width="{{ b.sw }}" onClick="{{ b.onClick }}" style="cursor:pointer"></circle>
+                <circle cx="{{ b.cx }}" cy="{{ b.cy }}" r="{{ b.r }}" fill="{{ b.fill }}" fill-opacity="{{ b.opacity }}" stroke="{{ b.stroke }}" stroke-width="{{ b.sw }}" onClick="{{ b.onClick }}" role="button" tabindex="0" aria-label="{{ b.name }}" style="cursor:pointer"><title>{{ b.name }}</title></circle>
               </sc-for>
               <sc-for list="{{ islands }}" as="isl" hint-placeholder-count="2">
                 <rect x="{{ isl.x }}" y="{{ isl.y }}" width="6" height="6" transform="{{ isl.rotate }}" fill="#e0c48c" stroke="#20302a" stroke-width="0.6"><title>{{ isl.name }}</title></rect>
@@ -381,7 +409,7 @@ blockquote { font-family:"Source Serif 4",Georgia,"Times New Roman",serif !impor
     <h2 style="font-family:"Source Sans 3",Arial,Helvetica,sans-serif;font-weight:400;font-size:clamp(28px,3.6vw,46px);line-height:1.08;margin:0 0 16px;text-wrap:pretty">{{ prTitle }}</h2>
     <p style="font-family:"Source Sans 3",Arial,Helvetica,sans-serif;font-size:20px;line-height:1.55;color:#4a3b2c;max-width:700px;margin:0 0 34px;text-wrap:pretty">{{ prLede }}</p>
     <div style="height:300px;position:relative;margin-bottom:34px;border:1px solid rgba(42,32,24,0.14)">
-      <image-slot id="cg-process" shape="rect" fit="cover" placeholder="{{ prSlot }}" src="https://upload.wikimedia.org/wikipedia/commons/thumb/e/e0/Women_drying_coffee.jpg/1920px-Women_drying_coffee.jpg" credit="Ảnh: Philip Asedri Dradrio · CC BY-SA 4.0 (Wikimedia Commons)" credit-href="https://commons.wikimedia.org/wiki/File:Women_drying_coffee.jpg"></image-slot>
+      <image-slot id="cg-process" alt="Người phơi cà phê trên sân" shape="rect" fit="cover" placeholder="{{ prSlot }}" src="https://upload.wikimedia.org/wikipedia/commons/thumb/e/e0/Women_drying_coffee.jpg/1920px-Women_drying_coffee.jpg" credit="Ảnh: Philip Asedri Dradrio · CC BY-SA 4.0 (Wikimedia Commons)" credit-href="https://commons.wikimedia.org/wiki/File:Women_drying_coffee.jpg"></image-slot>
     </div>
     <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:1px;background:rgba(42,32,24,0.14);border:1px solid rgba(42,32,24,0.14)">
       <sc-for list="{{ prSteps }}" as="s" hint-placeholder-count="7">
@@ -419,7 +447,7 @@ blockquote { font-family:"Source Serif 4",Georgia,"Times New Roman",serif !impor
       </sc-for>
     </div>
     <div style="height:300px;position:relative;margin-top:26px;border:1px solid rgba(42,32,24,0.14)">
-      <image-slot id="cg-brew" shape="rect" fit="cover" placeholder="{{ brSlot }}" src="https://upload.wikimedia.org/wikipedia/commons/d/dd/Vietnamese_coffee_brewing_with_metal_filter.jpg" credit="Ảnh: HungryHuy · CC BY 2.0 (Wikimedia Commons)" credit-href="https://commons.wikimedia.org/wiki/File:Vietnamese_coffee_brewing_with_metal_filter.jpg"></image-slot>
+      <image-slot id="cg-brew" alt="Pha cà phê phin Việt Nam" shape="rect" fit="cover" placeholder="{{ brSlot }}" src="https://upload.wikimedia.org/wikipedia/commons/d/dd/Vietnamese_coffee_brewing_with_metal_filter.jpg" credit="Ảnh: HungryHuy · CC BY 2.0 (Wikimedia Commons)" credit-href="https://commons.wikimedia.org/wiki/File:Vietnamese_coffee_brewing_with_metal_filter.jpg"></image-slot>
     </div>
   </section>
 
@@ -515,7 +543,7 @@ blockquote { font-family:"Source Serif 4",Georgia,"Times New Roman",serif !impor
         </div>
       </div>
       <div style="min-width:0;position:relative;align-self:stretch;border:1px solid rgba(42,32,24,0.14)">
-        <image-slot id="cg-vietnam" shape="rect" fit="cover" placeholder="{{ vnSlot }}" src="https://upload.wikimedia.org/wikipedia/commons/thumb/9/92/Vietnamese_coffee_with_milk_and_ice.jpg/1920px-Vietnamese_coffee_with_milk_and_ice.jpg" credit="Ảnh: ePi.Longo · CC BY-SA 2.0 (Wikimedia Commons)" credit-href="https://commons.wikimedia.org/wiki/File:Vietnamese_coffee_with_milk_and_ice.jpg"></image-slot>
+        <image-slot id="cg-vietnam" alt="Ly cà phê sữa đá Việt Nam" shape="rect" fit="cover" placeholder="{{ vnSlot }}" src="https://upload.wikimedia.org/wikipedia/commons/thumb/9/92/Vietnamese_coffee_with_milk_and_ice.jpg/1920px-Vietnamese_coffee_with_milk_and_ice.jpg" credit="Ảnh: ePi.Longo · CC BY-SA 2.0 (Wikimedia Commons)" credit-href="https://commons.wikimedia.org/wiki/File:Vietnamese_coffee_with_milk_and_ice.jpg"></image-slot>
       </div>
     </div>
   </section>
@@ -581,7 +609,7 @@ blockquote { font-family:"Source Serif 4",Georgia,"Times New Roman",serif !impor
           <p style="font-size:13px;color:#6b5b47;line-height:1.6;margin:18px 0 0">{{ ecChainNote }}</p>
         </div>
         <div style="flex:1 1 auto;min-height:200px;position:relative;margin-top:22px;border:1px solid rgba(42,32,24,0.14)">
-          <image-slot id="cg-economy" shape="rect" fit="cover" placeholder="{{ ecSlot }}" src="https://upload.wikimedia.org/wikipedia/commons/thumb/e/ee/NP_coffee_sacks_%285867722798%29.jpg/1920px-NP_coffee_sacks_%285867722798%29.jpg" credit="Ảnh: CIAT · CC BY-SA 2.0 (Wikimedia Commons)" credit-href="https://commons.wikimedia.org/wiki/File:NP_coffee_sacks_(5867722798).jpg"></image-slot>
+          <image-slot id="cg-economy" alt="Bao tải cà phê xuất khẩu" shape="rect" fit="cover" placeholder="{{ ecSlot }}" src="https://upload.wikimedia.org/wikipedia/commons/thumb/e/ee/NP_coffee_sacks_%285867722798%29.jpg/1920px-NP_coffee_sacks_%285867722798%29.jpg" credit="Ảnh: CIAT · CC BY-SA 2.0 (Wikimedia Commons)" credit-href="https://commons.wikimedia.org/wiki/File:NP_coffee_sacks_(5867722798).jpg"></image-slot>
         </div>
       </div>
     </div>
@@ -829,6 +857,7 @@ class Component extends DCLogic {
         const on = d.id === active.id;
         return {
           cx: d.x, cy: d.y, r: (3.2 + Math.sqrt(d.prod / maxProd) * 15).toFixed(1),
+          name: dName(d),
           fill: this.speciesColor(d), opacity: on ? 1 : 0.9,
           stroke: on ? "#f2ece0" : "rgba(23,35,30,0.6)", sw: on ? 2.2 : 0.8,
           onClick: select(d.id)
@@ -925,82 +954,133 @@ class Component extends DCLogic {
 </script>
 
 <script>
-/* Globe signature - nhe, canvas 2D, xoay cham (khong Three.js) */
+/* Globe + header: delegation + re-query (ben voi DC re-render) */
 (function () {
-  var cv = document.getElementById('cg-globe');
-  if (!cv || !cv.getContext) return;
-  var ctx = cv.getContext('2d');
-  var mq = window.matchMedia('(max-width: 760px)');
-  var run = true;
-  function ensureSize() {
-    var r = cv.getBoundingClientRect();
-    var w = Math.round(r.width);
-    if (w < 20) return 0;
-    var dpr = Math.min(window.devicePixelRatio || 1, 2);
-    var pw = Math.round(w * dpr);
-    if (cv.width !== pw) { cv.width = pw; cv.height = pw; ctx.setTransform(dpr, 0, 0, dpr, 0, 0); }
-    return w;
+  var raf = window.requestAnimationFrame || function (f) { setTimeout(f, 33); };
+  var booted = false;
+  function tryBoot() {
+    if (booted) return;
+    booted = true;
+    bootGlobe(); bootHeader();
   }
-  var spots = [  /* cac "diem ca phe": lat(rad), lon(rad), ban kinh cham */
-    [-0.42, -1.2, 5.5],  /* Brasil */
-    [0.60, 1.85, 4.2],   /* Ethiopia */
-    [0.62, 2.35, 4.6],   /* Yemen */
-    [0.46, 1.95, 4.0],   /* Kenya */
-    [0.36, 2.25, 4.4],   /* Colombia - gan */
-    [0.72, 2.75, 5.2],   /* Viet Nam */
-    [0.30, 0.55, 4.0],   /* Trung My */
-    [-0.15, 0.45, 3.8]   /* Tay Phi */
-  ];
-  var t0 = null;
-  function frame(ts) {
-    if (!run) return;
-    if (!t0) t0 = ts;
-    var t = (ts - t0) / 1000;
-    var w = ensureSize();
-    if (w < 20) { requestAnimationFrame(frame); return; }
-    ctx.clearRect(0, 0, w, w);
-    var R = w / 2 - 7, cx = w / 2, cy = w / 2;
-    var rot = t * 0.22;
-    ctx.lineWidth = 1;
-    /* vong ngoai */
-    ctx.beginPath(); ctx.arc(cx, cy, R, 0, 7); ctx.strokeStyle = 'rgba(242,236,224,0.55)'; ctx.stroke();
-    /* kinh tuyen (ellipse xoay) */
-    for (var k = 0; k < 8; k++) {
-      var ph = rot + k * Math.PI / 4;
-      ctx.beginPath();
-      ctx.ellipse(cx, cy, R * Math.abs(Math.cos(ph)), R, 0, 0, 7);
-      ctx.strokeStyle = 'rgba(242,236,224,' + (0.10 + 0.16 * Math.abs(Math.cos(ph))) + ')';
-      ctx.stroke();
-    }
-    /* vi tuyen */
-    for (var lat = -1; lat <= 1; lat += 0.5) {
-      if (lat === 0) continue;
-      ctx.beginPath();
-      ctx.ellipse(cx, cy, R * Math.cos(lat * Math.PI / 4), R * Math.sin(Math.abs(lat) * Math.PI / 4), 0, 0, 7);
-      ctx.strokeStyle = 'rgba(242,236,224,0.14)'; ctx.stroke();
-    }
-    ctx.beginPath(); ctx.ellipse(cx, cy, R, R * 0.22, 0, 0, 7); ctx.strokeStyle = 'rgba(242,236,224,0.18)'; ctx.stroke();
-    /* diem ca phe */
-    for (var s = 0; s < spots.length; s++) {
-      var la = spots[s][0], lo = spots[s][1], rr = spots[s][2];
-      var x = Math.cos(la) * Math.sin(lo + rot), y = Math.sin(la), z = Math.cos(la) * Math.cos(lo + rot);
-      if (z > -0.12) {
-        var px = cx + x * R, py = cy - y * R;
-        var front = z > 0.05;
+  var t = null;
+  if (window.MutationObserver) {
+    var mo = new MutationObserver(function () {
+      clearTimeout(t);
+      t = setTimeout(function () { mo.disconnect(); tryBoot(); }, 300);
+    });
+    if (document.body) mo.observe(document.body, { childList: true, subtree: true });
+    t = setTimeout(function () { if (mo) mo.disconnect(); tryBoot(); }, 1500);
+  } else {
+    if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', tryBoot);
+    else setTimeout(tryBoot, 600);
+  }
+
+  function bootGlobe() {
+    var cv = document.getElementById('cg-globe');
+    if (!cv || !cv.getContext) return;
+    var mq = window.matchMedia('(max-width: 760px)');
+    var run = !mq.matches;
+    var spots = [
+      [-0.42, -1.2, 5.5], [0.60, 1.85, 4.2], [0.62, 2.35, 4.6], [0.46, 1.95, 4.0],
+      [0.36, 2.25, 4.4], [0.72, 2.75, 5.2], [0.30, 0.55, 4.0], [-0.15, 0.45, 3.8]
+    ];
+    var t0 = null;
+    function frame(ts) {
+      if (!run) return;
+      if (!t0) t0 = ts;
+      var t = (ts - t0) / 1000;
+      cv = document.getElementById('cg-globe');           /* re-query moi frame */
+      if (!cv) { requestAnimationFrame(frame); return; }
+      var r = cv.getBoundingClientRect();
+      var w = Math.round(r.width);
+      if (w < 20 || getComputedStyle(cv).display === 'none') { requestAnimationFrame(frame); return; }
+      var dpr = Math.min(window.devicePixelRatio || 1, 2);
+      var pw = Math.round(w * dpr);
+      var ctx = cv.getContext('2d');
+      if (cv.width !== pw) { cv.width = pw; cv.height = pw; ctx.setTransform(dpr, 0, 0, dpr, 0, 0); }
+      ctx.clearRect(0, 0, w, w);
+      var R = w / 2 - 7, cx = w / 2, cy = w / 2, rot = t * 0.22;
+      ctx.lineWidth = 1;
+      ctx.beginPath(); ctx.arc(cx, cy, R, 0, 7); ctx.strokeStyle = 'rgba(242,236,224,0.55)'; ctx.stroke();
+      for (var k = 0; k < 8; k++) {
+        var ph = rot + k * Math.PI / 4;
         ctx.beginPath();
-        ctx.arc(px, py, front ? rr : rr * 0.8, 0, 7);
-        ctx.fillStyle = front ? 'rgba(167,209,140,0.9)' : 'rgba(167,209,140,0.28)';
-        ctx.fill();
+        ctx.ellipse(cx, cy, R * Math.abs(Math.cos(ph)), R, 0, 0, 7);
+        ctx.strokeStyle = 'rgba(242,236,224,' + (0.10 + 0.16 * Math.abs(Math.cos(ph))) + ')';
+        ctx.stroke();
       }
+      for (var la = -1; la <= 1; la += 0.5) {
+        if (la === 0) continue;
+        ctx.beginPath();
+        ctx.ellipse(cx, cy, R * Math.cos(la * Math.PI / 4), R * Math.sin(Math.abs(la) * Math.PI / 4), 0, 0, 7);
+        ctx.strokeStyle = 'rgba(242,236,224,0.14)'; ctx.stroke();
+      }
+      ctx.beginPath(); ctx.ellipse(cx, cy, R, R * 0.22, 0, 0, 7); ctx.strokeStyle = 'rgba(242,236,224,0.18)'; ctx.stroke();
+      for (var s = 0; s < spots.length; s++) {
+        var la2 = spots[s][0], lo = spots[s][1], rr = spots[s][2];
+        var x = Math.cos(la2) * Math.sin(lo + rot), y = Math.sin(la2), z = Math.cos(la2) * Math.cos(lo + rot);
+        if (z > -0.12) {
+          var px = cx + x * R, py = cy - y * R, front = z > 0.05;
+          ctx.beginPath();
+          ctx.arc(px, py, front ? rr : rr * 0.8, 0, 7);
+          ctx.fillStyle = front ? 'rgba(167,209,140,0.9)' : 'rgba(167,209,140,0.28)';
+          ctx.fill();
+        }
+      }
+      requestAnimationFrame(frame);
     }
-    requestAnimationFrame(frame);
+    window.addEventListener('resize', function () { if (run) requestAnimationFrame(frame); });
+    if (mq.addEventListener) mq.addEventListener('change', function (e) { run = !e.matches; if (run) requestAnimationFrame(frame); });
+    if (run) requestAnimationFrame(frame);
   }
-  window.addEventListener('resize', function () { if (run) requestAnimationFrame(frame); });
-  if (mq.addEventListener) mq.addEventListener('change', function (e) { run = !e.matches; if (run) requestAnimationFrame(frame); });
-  run = !mq.matches;
-  if (run) requestAnimationFrame(frame);
+
+  function bootHeader() {
+    /* delegation: khong mat khi DC thay node */
+    document.addEventListener('click', function (e) {
+      var t = e.target;
+      var burger = t.closest ? t.closest('.dc-burger') : null;
+      var sbtn = t.closest ? t.closest('.dc-sbtn') : null;
+      var navLink = t.closest ? t.closest('nav.dc-nav a') : null;
+      var header = document.querySelector('header');
+      if (!header) return;
+      if (burger) {
+        var open = header.classList.toggle('dc-open');
+        burger.setAttribute('aria-expanded', open ? 'true' : 'false');
+      }
+      if (sbtn) {
+        var sopen = header.classList.toggle('dc-sopen');
+        sbtn.setAttribute('aria-expanded', sopen ? 'true' : 'false');
+        if (sopen) { var inp = header.querySelector('input[type="search"]'); if (inp) setTimeout(function () { inp.focus(); }, 30); }
+      }
+      if (navLink) header.classList.remove('dc-open');
+    });
+    /* scroll-spy: observer tren section (ben), resolve nav moi khi active */
+    var ids = ['overview', 'species', 'map', 'process', 'brewing', 'tasting', 'history', 'vietnam', 'health', 'economy', 'glossary', 'sources'];
+    if ('IntersectionObserver' in window) {
+      var spy = new IntersectionObserver(function (entries) {
+        entries.forEach(function (en) {
+          if (!en.isIntersecting) return;
+          var header2 = document.querySelector('header');
+          if (!header2) return;
+          header2.querySelectorAll('nav a.dc-active').forEach(function (a) { a.classList.remove('dc-active'); });
+          var a = header2.querySelector('nav a[href="#' + en.target.id + '"]');
+          if (a) a.classList.add('dc-active');
+        });
+      }, { rootMargin: '-35% 0px -55% 0px', threshold: 0 });
+      ids.forEach(function (id) { var s = document.getElementById(id); if (s) spy.observe(s); });
+    }
+    /* map circle: Enter/Space = click */
+    document.addEventListener('keydown', function (e) {
+      var t2 = e.target;
+      if ((e.key === 'Enter' || e.key === ' ') && t2 && t2.matches && t2.matches('#map circle')) {
+        e.preventDefault(); t2.click();
+      }
+    });
+  }
 })();
 </script>
+
 
 </body>
 </html>
