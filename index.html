@@ -55,6 +55,7 @@ header button:focus-visible, header a:focus-visible, #map circle:focus-visible, 
   .dc-burger, .dc-sbtn { display:none !important; }
 }
 @media (max-width: 899px) {
+  header > div { flex-wrap:wrap; padding:8px 14px !important; }
   .dc-burger { display:flex !important; }
   .dc-sbtn { display:flex !important; margin-left:auto; }
   .dc-swrap { display:none !important; }
@@ -64,9 +65,6 @@ header button:focus-visible, header a:focus-visible, #map circle:focus-visible, 
   header.dc-open nav.dc-nav { display:grid !important; grid-template-columns:repeat(2,minmax(0,1fr)); position:absolute; top:100%; left:0; right:0; background:#fffdf7; border-bottom:1px solid rgba(42,32,24,0.12); padding:10px 14px 14px; gap:2px; overflow:visible; z-index:5; box-shadow:0 18px 32px rgba(42,32,24,0.14); }
   nav.dc-nav a { padding:10px 12px !important; font-size:15px !important; white-space:normal !important; }
 }
-@media (max-width: 640px) {
-  header .dc-sbtn { margin-left:auto; }
-}
 /* ===== Mobile responsive ===== */
 @media (max-width: 640px) {
   .dc-mob-stack { grid-template-columns:minmax(0,1fr) !important; }
@@ -74,11 +72,6 @@ header button:focus-visible, header a:focus-visible, #map circle:focus-visible, 
   h1 { font-size:clamp(32px,8vw,52px) !important; letter-spacing:-0.01em; }
   section[style*="padding:56px 40px"] { padding:48px 18px !important; }
   #map > div { padding-left:18px !important; padding-right:18px !important; }
-  /* header: 2 hang tren mobile */
-  header > div { flex-wrap:wrap; gap:6px 14px; padding:8px 14px !important; }
-  header nav { order:5; flex-basis:100%; }
-  header input[type="search"] { display:none; }
-  header > div > div:last-child { margin-left:auto; }
 }
 </style>
 </helmet>
@@ -514,7 +507,7 @@ header button:focus-visible, header a:focus-visible, #map circle:focus-visible, 
     </div>
   </section>
 
-  <section id="vietnam" data-screen-label="08 Vietnam" style="max-width:1280px;margin:32px auto 0;padding:56px 40px;background:#fffdf7;border:1px solid rgba(42,32,24,0.12);border-radius:16px">
+  <section id="vietnam" data-screen-label="08 Vietnam" style="max-width:1280px;margin:32px auto 0;padding:56px 40px;background:#e9f0e3;border:1px solid rgba(42,32,24,0.10);border-radius:16px">
     <h2 style="font-family:'Source Serif 4',Georgia,'Times New Roman',serif;font-weight:400;font-size:clamp(28px,3.6vw,46px);line-height:1.08;margin:0 0 16px;max-width:900px;text-wrap:pretty">{{ vnTitle }}</h2>
     <p style="font-family:'Source Sans 3',Arial,Helvetica,sans-serif;font-size:20px;line-height:1.55;color:#4a3b2c;max-width:740px;margin:0 0 30px;text-wrap:pretty">{{ vnLede }}</p>
     <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:1px;background:rgba(42,32,24,0.14);border:1px solid rgba(42,32,24,0.14);margin-bottom:34px">
@@ -537,7 +530,7 @@ header button:focus-visible, header a:focus-visible, #map circle:focus-visible, 
                 <div style="font-family:'Source Sans 3',Arial,Helvetica,sans-serif;font-size:20px;margin-bottom:5px">{{ r.name }}</div>
                 <div style="font-size:14px;line-height:1.55;color:#57493a;text-wrap:pretty">{{ r.note }}</div>
               </div>
-              <div style="font-size:13px;font-weight:600;color:#4b7a4f;white-space:nowrap">{{ r.alt }}</div>
+              <div style="font-size:13px;font-weight:600;color:#2e6b34;white-space:nowrap">{{ r.alt }}</div>
             </div>
           </sc-for>
         </div>
@@ -803,8 +796,8 @@ class Component extends DCLogic {
       onSearch: e => this.setState({ query: e.target.value }),
       clearSearch: () => this.setState({ query: "" }),
       searchPlaceholder: P.search.placeholder,
-      searchOpen: q.length >= 2,
-      noResults: q.length >= 2 && results.length === 0,
+      searchOpen: q.length >= 3,
+      noResults: q.length >= 3 && results.length === 0,
       searchEmpty: P.search.empty,
       searchCount: P.search.count(results.length),
       results,
