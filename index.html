@@ -39,6 +39,19 @@
   ::selection { background: #dfe8d3; }
   section[id] { scroll-margin-top: 74px; }
   @keyframes cg-in { from { opacity: 0; transform: translateY(8px); } to { opacity: 1; transform: none; } }
+
+/* ===== Mobile responsive ===== */
+@media (max-width: 640px) {
+  .dc-mob-stack { grid-template-columns:minmax(0,1fr) !important; }
+  .dc-mob-tl { grid-template-columns:minmax(0,96px) 14px minmax(0,1fr) !important; }
+  h1 { font-size:clamp(34px,9vw,60px) !important; }
+  section[style*="padding:56px 40px"] { padding:48px 18px !important; }
+  /* header: 2 hang tren mobile */
+  header > div { flex-wrap:wrap; gap:6px 14px; padding:8px 14px !important; }
+  header nav { order:5; flex-basis:100%; }
+  header input[type="search"] { display:none; }
+  header > div > div:last-child { margin-left:auto; }
+}
 </style>
 </helmet>
 
@@ -110,7 +123,7 @@
   </section>
 
   <section id="overview" data-screen-label="01 Overview" style="max-width:1280px;margin:48px auto 0;padding:56px 40px;background:#fffdf7;border:1px solid rgba(42,32,24,0.12);border-radius:16px">
-    <div style="display:grid;grid-template-columns:minmax(0,1fr) minmax(260px,340px);gap:52px">
+    <div class="dc-mob-stack" style="display:grid;grid-template-columns:minmax(0,1fr) minmax(260px,340px);gap:52px">
       <div style="min-width:0">
         <h2 style="font-family:Arial,Helvetica,sans-serif;font-weight:400;font-size:clamp(28px,3.6vw,46px);line-height:1.08;letter-spacing:-0.015em;margin:0 0 18px;text-wrap:pretty">{{ ovTitle }}</h2>
         <p style="font-family:Arial,Helvetica,sans-serif;font-size:20px;line-height:1.5;color:#4a3b2c;margin:0 0 32px;text-wrap:pretty">{{ ovLede }}</p>
@@ -141,7 +154,7 @@
           <div style="font-size:12.5px;letter-spacing:0.14em;text-transform:uppercase;color:#4b7a4f;font-weight:700;margin-bottom:12px">{{ infoTitle }}</div>
           <dl style="margin:0">
             <sc-for list="{{ infoRows }}" as="r" hint-placeholder-count="9">
-              <div style="display:grid;grid-template-columns:minmax(0,0.85fr) minmax(0,1.15fr);gap:12px;padding:9px 0;border-top:1px solid rgba(42,32,24,0.1)">
+              <div class="dc-mob-stack" style="display:grid;grid-template-columns:minmax(0,0.85fr) minmax(0,1.15fr);gap:12px;padding:9px 0;border-top:1px solid rgba(42,32,24,0.1)">
                 <dt style="font-size:13px;color:#6b5b47;line-height:1.4">{{ r.k }}</dt>
                 <dd style="margin:0;font-size:14px;font-weight:500;line-height:1.45">{{ r.v }}</dd>
               </div>
@@ -190,7 +203,7 @@
           <p style="font-size:15.5px;line-height:1.68;color:#4a3b2c;margin:0 0 18px;text-wrap:pretty">{{ arDesc }}</p>
           <dl style="margin:0">
             <sc-for list="{{ arFacts }}" as="f" hint-placeholder-count="5">
-              <div style="display:grid;grid-template-columns:minmax(0,0.9fr) minmax(0,1.1fr);gap:10px;padding:8px 0;border-top:1px solid rgba(42,32,24,0.1)">
+              <div class="dc-mob-stack" style="display:grid;grid-template-columns:minmax(0,0.9fr) minmax(0,1.1fr);gap:10px;padding:8px 0;border-top:1px solid rgba(42,32,24,0.1)">
                 <dt style="font-size:13px;color:#6b5b47">{{ f.k }}</dt>
                 <dd style="margin:0;font-size:14px;font-weight:500">{{ f.v }}</dd>
               </div>
@@ -226,7 +239,7 @@
           <p style="font-size:15.5px;line-height:1.68;color:#4a3b2c;margin:0 0 18px;text-wrap:pretty">{{ roDesc }}</p>
           <dl style="margin:0">
             <sc-for list="{{ roFacts }}" as="f" hint-placeholder-count="5">
-              <div style="display:grid;grid-template-columns:minmax(0,0.9fr) minmax(0,1.1fr);gap:10px;padding:8px 0;border-top:1px solid rgba(42,32,24,0.1)">
+              <div class="dc-mob-stack" style="display:grid;grid-template-columns:minmax(0,0.9fr) minmax(0,1.1fr);gap:10px;padding:8px 0;border-top:1px solid rgba(42,32,24,0.1)">
                 <dt style="font-size:13px;color:#6b5b47">{{ f.k }}</dt>
                 <dd style="margin:0;font-size:14px;font-weight:500">{{ f.v }}</dd>
               </div>
@@ -291,13 +304,13 @@
           </div>
         </div>
 
-      <div style="display:grid;grid-template-columns:minmax(0,1.12fr) minmax(0,0.88fr);gap:26px;margin-top:28px">
+      <div class="dc-mob-stack" style="display:grid;grid-template-columns:minmax(0,1.12fr) minmax(0,0.88fr);gap:26px;margin-top:28px">
         <div style="min-width:0;background:#17231e;border:1px solid rgba(242,236,224,0.14);border-radius:10px;padding:24px">
           
           <div style="font-size:12.5px;letter-spacing:0.12em;text-transform:uppercase;color:#a7d18c;font-weight:700">{{ activeRank }}</div>
           <h3 style="font-family:Arial,Helvetica,sans-serif;font-weight:500;font-size:30px;margin:8px 0 14px;line-height:1.1">{{ activeName }}</h3>
           <p style="font-size:15px;line-height:1.65;color:#e9e0ce;margin:0 0 18px;text-wrap:pretty">{{ activeNote }}</p>
-          <div style="display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px;padding:16px 0;border-top:1px solid rgba(242,236,224,0.14);border-bottom:1px solid rgba(242,236,224,0.14)">
+          <div class="dc-mob-stack" style="display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px;padding:16px 0;border-top:1px solid rgba(242,236,224,0.14);border-bottom:1px solid rgba(242,236,224,0.14)">
             <sc-for list="{{ activeStats }}" as="s" hint-placeholder-count="3">
               <div>
                 <div style="font-family:Arial,Helvetica,sans-serif;font-size:21px;line-height:1.1;color:#f2ece0">{{ s.v }}</div>
@@ -434,7 +447,7 @@
       <p style="font-family:Arial,Helvetica,sans-serif;font-size:20px;line-height:1.55;color:#4a3b2c;max-width:760px;margin:0 0 44px;text-wrap:pretty">{{ hiLede }}</p>
       <div style="display:flex;flex-direction:column;gap:0">
         <sc-for list="{{ timeline }}" as="t" hint-placeholder-count="10">
-          <div style="display:grid;grid-template-columns:minmax(0,150px) 30px minmax(0,1fr);gap:0;align-items:start">
+          <div class="dc-mob-tl" style="display:grid;grid-template-columns:minmax(0,150px) 30px minmax(0,1fr);gap:0;align-items:start">
             <div style="text-align:right;padding:0 20px 44px 0">
               <div style="font-family:Arial,Helvetica,sans-serif;font-size:24px;line-height:1.1;color:#2a2018">{{ t.year }}</div>
               <div style="font-size:12.0px;letter-spacing:0.1em;text-transform:uppercase;font-weight:700;margin-top:7px;color:{{ t.badgeColor }}">{{ t.badge }}</div>
