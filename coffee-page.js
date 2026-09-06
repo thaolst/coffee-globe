@@ -52,11 +52,11 @@ window.CoffeePage.PAGE = {
             overview: {
         n: "01",
         title: "Một trang web, cả thế giới cà phê",
-        lede: "Ly cà phê bạn uống mỗi sáng đã đi một hành trình rất xa trước khi tới tay bạn. Trang này kể lại toàn bộ hành trình đó - từ vườn trồng, qua rang xay, đến từng cách pha - bằng bản đồ, con số và những câu chuyện ai cũng đọc được.",
+        lede: "Có một thức uống bạn cầm trên tay gần như mỗi ngày mà ít khi dừng lại hỏi: nó từ đâu tới, và vì sao nó có vị này mà không phải vị khác? Trang này kể hành trình đó - từ quả mọng đỏ trên cây, qua bàn tay người trồng, người rang, đến tách cà phê đang bốc khói trước mặt bạn.",
         paras: [
-          "Hãy bắt đầu từ bản đồ: hai mươi nước trồng cà phê nhiều nhất thế giới. Bấm vào một nước bất kỳ để xem họ trồng giống gì, sản lượng ra sao, và ly cà phê quen thuộc của họ có gì đặc biệt.",
-          "Cùng là cà phê, sao ly này chua thanh mà ly kia đắng sâu? Mục “Giống” sẽ chỉ ra khác biệt giữa Arabica và Robusta; mục “Cách pha” hướng dẫn tám cách làm quen thuộc - từ Espresso của Ý đến phin Việt Nam.",
-          "Việt Nam có một vị trí riêng ở đây: nước sản xuất cà phê lớn thứ hai thế giới, quê hương của Robusta, của phin và cà phê sữa đá. Kéo xuống mục “Việt Nam” để đọc trọn câu chuyện."
+          "Mọi chuyện bắt đầu từ hai loài cây. Arabica dịu dàng, thanh thoát, chỉ ưa cao nguyên mát lành; Robusta mạnh mẽ, đắng đậm, bám rễ khoẻ nơi đồng bằng nóng ẩm. Chúng khác nhau từ hình hài hạt đến cá tính trong ly - và chính khác biệt ấy làm nên vị cà phê bạn yêu thích.",
+          "Cùng một hạt, mỗi cách pha lại kể một câu chuyện riêng: khi thì đậm đặc, dồn dập như espresso Ý; khi thì chậm rãi, trong veo như phin Việt Nam. Tám cách pha quen thuộc nhất đang chờ bạn ở mục “Cách pha”.",
+          "Còn Việt Nam - nơi bạn đang đọc những dòng này - có một chương đặc biệt trong câu chuyện: quê hương của Robusta, của phin và cà phê sữa đá, nước sản xuất cà phê lớn thứ hai thế giới."
         ],
         facts: [
           ["20", "nước trên bản đồ - bấm để xem từng nước"],
@@ -289,11 +289,11 @@ species: {
             overview: {
         n: "01",
         title: "One website, the whole coffee world",
-        lede: "The coffee you drink each morning travels a long way before it reaches your cup. This page tells that whole journey - from the farm, through roasting and grinding, to each way of brewing - with maps, numbers and stories anyone can follow.",
+        lede: "A drink you hold almost every day, yet rarely stop to ask: where did it come from, and why does it taste this way and not another? This page tells that journey - from a red cherry on the tree, through the farmer's and roaster's hands, to the steaming cup in front of you.",
         paras: [
-          "Start with the map: the twenty countries that grow the most coffee in the world. Click any country to see which varieties they grow, how much they produce, and what makes their everyday cup special.",
-          "Why is one coffee bright and fruity while another is deep and bitter? The “Species” section explains the difference between Arabica and Robusta; “Brewing” walks you through eight familiar methods - from Italian espresso to the Vietnamese phin.",
-          "Vietnam has its own place here: the world’s second-largest coffee producer, home of Robusta, of the phin and iced milk coffee. Scroll down to the “Vietnam” section to read the full story."
+          "It all begins with two plants. Arabica - gentle and refined, at home only in cool highlands; Robusta - bold and bitter, thriving in hot lowlands. They differ from the shape of their beans to the character in the cup - and that difference shapes the coffee you love.",
+          "The same bean, brewed differently, tells a different story: intense and hurried like an Italian espresso, or slow and clear like a Vietnamese phin. Eight familiar methods await you in the “Brewing” section.",
+          "And Vietnam - where you are reading this - holds a special chapter in the story: homeland of Robusta, of the phin and iced milk coffee, and the world's second-largest coffee producer."
         ],
         facts: [
           ["20", "countries on the map - click each one"],
