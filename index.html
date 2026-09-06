@@ -44,29 +44,29 @@
           <path d="M17.4 3.2 C13.2 8.4 13.8 24 17.8 30.6" fill="none" stroke="#1c3521" stroke-width="1.8" stroke-linecap="round" opacity="0.9" />
           <path d="M10.2 8.6 C7.6 13 7.8 21.2 10.4 25.6" fill="none" stroke="#dff0d2" stroke-width="1.2" stroke-linecap="round" opacity="0.38" />
         </svg>
-        <span style="font-weight:700;font-size:17.5px;letter-spacing:0.01em">Coffee Globe</span>
+        <span style="font-weight:700;font-size:17px;letter-spacing:0.01em">Coffee Globe</span>
       </a>
 
       <nav style="flex:1 1 auto;min-width:0;display:flex;gap:2px;overflow-x:auto;scrollbar-width:none">
         <sc-for list="{{ nav }}" as="item" hint-placeholder-count="10">
-          <a href="{{ item.href }}" style="flex:0 0 auto;padding:8px 10px;border-radius:7px;font-size:14.5px;font-weight:500;color:#57493a;text-decoration:none;white-space:nowrap" style-hover="background:#efe6d2;color:#2a2018">{{ item.label }}</a>
+          <a href="{{ item.href }}" style="flex:0 0 auto;padding:8px 10px;border-radius:7px;font-size:14px;font-weight:500;color:#57493a;text-decoration:none;white-space:nowrap" style-hover="background:#efe6d2;color:#2a2018">{{ item.label }}</a>
         </sc-for>
       </nav>
 
       <div style="position:relative;flex:0 0 auto">
-        <input type="search" value="{{ query }}" onChange="{{ onSearch }}" placeholder="{{ searchPlaceholder }}" style="width:250px;font-family:inherit;font-size:14.5px;padding:9px 12px;border:1px solid rgba(42,32,24,0.18);border-radius:8px;background:#fffdf7;color:#2a2018;min-height:38px" style-focus="outline:2px solid #4b7a4f;outline-offset:1px;border-color:#4b7a4f" />
+        <input type="search" value="{{ query }}" onChange="{{ onSearch }}" placeholder="{{ searchPlaceholder }}" style="width:250px;font-family:inherit;font-size:14px;padding:9px 12px;border:1px solid rgba(42,32,24,0.18);border-radius:8px;background:#fffdf7;color:#2a2018;min-height:38px" style-focus="outline:2px solid #4b7a4f;outline-offset:1px;border-color:#4b7a4f" />
         <sc-if value="{{ searchOpen }}" hint-placeholder-val="{{ false }}">
           <div style="position:absolute;top:44px;right:0;width:390px;max-height:62vh;overflow:auto;background:#fffdf7;border:1px solid rgba(42,32,24,0.16);border-radius:10px;box-shadow:0 18px 44px rgba(42,32,24,0.2);padding:6px">
             <div style="padding:8px 10px;font-size:12.5px;letter-spacing:0.1em;text-transform:uppercase;color:#6b5b47;font-weight:600">{{ searchCount }}</div>
             <sc-for list="{{ results }}" as="r" hint-placeholder-count="3">
               <a href="{{ r.href }}" onClick="{{ clearSearch }}" style="display:block;padding:10px;border-radius:8px;text-decoration:none;color:#2a2018" style-hover="background:#f3ebd9">
-                <div style="font-size:12px;letter-spacing:0.1em;text-transform:uppercase;color:#4b7a4f;font-weight:700;margin-bottom:4px">{{ r.kicker }}</div>
-                <div style="font-family:Arial,Helvetica,sans-serif;font-size:18px;line-height:1.25">{{ r.title }}</div>
-                <div style="font-size:14px;color:#57493a;line-height:1.45;margin-top:4px">{{ r.snippet }}</div>
+                <div style="font-size:12.0px;letter-spacing:0.1em;text-transform:uppercase;color:#4b7a4f;font-weight:700;margin-bottom:4px">{{ r.kicker }}</div>
+                <div style="font-family:Arial,Helvetica,sans-serif;font-size:17.5px;line-height:1.25">{{ r.title }}</div>
+                <div style="font-size:13.5px;color:#57493a;line-height:1.45;margin-top:4px">{{ r.snippet }}</div>
               </a>
             </sc-for>
             <sc-if value="{{ noResults }}" hint-placeholder-val="{{ false }}">
-              <div style="padding:10px;font-size:14.5px;color:#57493a;line-height:1.5">{{ searchEmpty }}</div>
+              <div style="padding:10px;font-size:14px;color:#57493a;line-height:1.5">{{ searchEmpty }}</div>
             </sc-if>
           </div>
         </sc-if>
@@ -86,33 +86,33 @@
     <div style="position:absolute;inset:0;background:linear-gradient(180deg,rgba(28,19,13,0.66) 0%,rgba(28,19,13,0.34) 40%,rgba(28,19,13,0.88) 100%);pointer-events:none"></div>
     <div style="position:relative;max-width:1280px;margin:0 auto;padding:88px 24px 32px;min-height:48vh;display:flex;flex-direction:column;justify-content:flex-end;pointer-events:none">
       <h1 style="font-family:Arial,Helvetica,sans-serif;font-weight:400;font-size:clamp(46px,8vw,110px);line-height:0.95;letter-spacing:-0.02em;margin:0 0 16px">{{ heroTitle }}</h1>
-      <p style="font-family:Arial,Helvetica,sans-serif;font-size:clamp(20px,2.3vw,28px);line-height:1.42;max-width:700px;color:#f2e7d2;margin:0 0 24px;text-wrap:pretty">{{ heroSubtitle }}</p>
-      <div style="display:flex;flex-wrap:wrap;gap:16px;align-items:center;font-size:14px;color:#dccfb6;letter-spacing:0.03em">
+      <p style="font-family:Arial,Helvetica,sans-serif;font-size:20px;line-height:1.42;max-width:700px;color:#f2e7d2;margin:0 0 24px;text-wrap:pretty">{{ heroSubtitle }}</p>
+      <div style="display:flex;flex-wrap:wrap;gap:16px;align-items:center;font-size:13.5px;color:#dccfb6;letter-spacing:0.03em">
         <span>{{ heroByline }}</span>
       </div>
     </div>
-    <div style="position:relative;max-width:1280px;margin:0 auto;padding:0 24px 24px;font-size:13.5px;color:#cbbfa9;font-style:italic;pointer-events:none">{{ heroCaption }}</div>
+    <div style="position:relative;max-width:1280px;margin:0 auto;padding:0 24px 24px;font-size:13px;color:#cbbfa9;font-style:italic;pointer-events:none">{{ heroCaption }}</div>
   </section>
 
   <section id="overview" data-screen-label="01 Overview" style="max-width:1280px;margin:48px auto 0;padding:56px 40px;background:#fffdf7;border:1px solid rgba(42,32,24,0.12);border-radius:16px">
     <div style="display:grid;grid-template-columns:minmax(0,1fr) minmax(260px,340px);gap:52px">
       <div style="min-width:0">
-        <h2 style="font-family:Arial,Helvetica,sans-serif;font-weight:400;font-size:clamp(32px,4.2vw,52px);line-height:1.08;letter-spacing:-0.015em;margin:0 0 18px;text-wrap:pretty">{{ ovTitle }}</h2>
-        <p style="font-family:Arial,Helvetica,sans-serif;font-size:22.5px;line-height:1.5;color:#4a3b2c;margin:0 0 32px;text-wrap:pretty">{{ ovLede }}</p>
+        <h2 style="font-family:Arial,Helvetica,sans-serif;font-weight:400;font-size:clamp(28px,3.6vw,46px);line-height:1.08;letter-spacing:-0.015em;margin:0 0 18px;text-wrap:pretty">{{ ovTitle }}</h2>
+        <p style="font-family:Arial,Helvetica,sans-serif;font-size:20px;line-height:1.5;color:#4a3b2c;margin:0 0 32px;text-wrap:pretty">{{ ovLede }}</p>
         <sc-for list="{{ ovParas }}" as="p" hint-placeholder-count="3">
-          <p style="font-family:Arial,Helvetica,sans-serif;font-size:20px;line-height:1.74;margin:0 0 22px;text-wrap:pretty">{{ p }}</p>
+          <p style="font-family:Arial,Helvetica,sans-serif;font-size:19px;line-height:1.74;margin:0 0 22px;text-wrap:pretty">{{ p }}</p>
         </sc-for>
         <div style="display:flex;flex-wrap:wrap;gap:9px;margin:4px 0 32px">
           <sc-for list="{{ termChips }}" as="c" hint-placeholder-count="5">
-            <button type="button" onMouseEnter="{{ c.show }}" onMouseLeave="{{ hideTerm }}" onFocus="{{ c.show }}" onBlur="{{ hideTerm }}" style="font-family:inherit;font-size:14.5px;font-weight:500;padding:7px 13px;border-radius:99px;border:1px solid rgba(42,32,24,0.2);background:#fffdf7;color:#4a3b2c;cursor:help" style-hover="border-color:#4b7a4f;color:#2a2018">{{ c.label }}</button>
+            <button type="button" onMouseEnter="{{ c.show }}" onMouseLeave="{{ hideTerm }}" onFocus="{{ c.show }}" onBlur="{{ hideTerm }}" style="font-family:inherit;font-size:14px;font-weight:500;padding:7px 13px;border-radius:99px;border:1px solid rgba(42,32,24,0.2);background:#fffdf7;color:#4a3b2c;cursor:help" style-hover="border-color:#4b7a4f;color:#2a2018">{{ c.label }}</button>
           </sc-for>
         </div>
-        <blockquote style="margin:0 0 36px;padding:24px 28px;background:#efe6d2;border-left:3px solid #4b7a4f;font-family:Arial,Helvetica,sans-serif;font-size:23.5px;line-height:1.45;font-style:italic;color:#3a2d20;text-wrap:pretty">{{ ovPull }}</blockquote>
+        <blockquote style="margin:0 0 36px;padding:24px 28px;background:#efe6d2;border-left:3px solid #4b7a4f;font-family:Arial,Helvetica,sans-serif;font-size:22px;line-height:1.45;font-style:italic;color:#3a2d20;text-wrap:pretty">{{ ovPull }}</blockquote>
         <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(148px,1fr));gap:1px;background:rgba(42,32,24,0.14);border:1px solid rgba(42,32,24,0.14)">
           <sc-for list="{{ ovFacts }}" as="f" hint-placeholder-count="4">
             <div style="background:#f7f1e4;padding:20px 18px">
-              <div style="font-family:Arial,Helvetica,sans-serif;font-size:33px;line-height:1;color:#4b7a4f">{{ f.v }}</div>
-              <div style="font-size:14px;line-height:1.42;color:#57493a;margin-top:8px">{{ f.l }}</div>
+              <div style="font-family:Arial,Helvetica,sans-serif;font-size:30px;line-height:1;color:#4b7a4f">{{ f.v }}</div>
+              <div style="font-size:13.5px;line-height:1.42;color:#57493a;margin-top:8px">{{ f.l }}</div>
             </div>
           </sc-for>
         </div>
@@ -123,16 +123,16 @@
           <image-slot id="cg-infobox" shape="rect" fit="cover" placeholder="{{ infoSlot }}" src="https://images.unsplash.com/photo-1500353391678-d7b57979d6d2?fm=jpg&amp;q=80&amp;w=1600&amp;auto=format&amp;fit=crop" credit="Photo by Nathan Dumlao on Unsplash" credit-href="https://unsplash.com/@nate_dumlao"></image-slot>
         </div>
         <div style="padding:20px">
-          <div style="font-size:13px;letter-spacing:0.14em;text-transform:uppercase;color:#4b7a4f;font-weight:700;margin-bottom:12px">{{ infoTitle }}</div>
+          <div style="font-size:12.5px;letter-spacing:0.14em;text-transform:uppercase;color:#4b7a4f;font-weight:700;margin-bottom:12px">{{ infoTitle }}</div>
           <dl style="margin:0">
             <sc-for list="{{ infoRows }}" as="r" hint-placeholder-count="9">
               <div style="display:grid;grid-template-columns:minmax(0,0.85fr) minmax(0,1.15fr);gap:12px;padding:9px 0;border-top:1px solid rgba(42,32,24,0.1)">
-                <dt style="font-size:13.5px;color:#6b5b47;line-height:1.4">{{ r.k }}</dt>
-                <dd style="margin:0;font-size:14.5px;font-weight:500;line-height:1.45">{{ r.v }}</dd>
+                <dt style="font-size:13px;color:#6b5b47;line-height:1.4">{{ r.k }}</dt>
+                <dd style="margin:0;font-size:14px;font-weight:500;line-height:1.45">{{ r.v }}</dd>
               </div>
             </sc-for>
           </dl>
-          <div style="font-size:13px;color:#6b5b47;margin-top:13px;line-height:1.5">{{ infoNote }}</div>
+          <div style="font-size:12.5px;color:#6b5b47;margin-top:13px;line-height:1.5">{{ infoNote }}</div>
         </div>
         <div style="flex:1 1 auto;min-height:240px;position:relative;margin:16px 0 0;border-top:1px solid rgba(42,32,24,0.1);display:flex">
           <div style="flex:1;min-width:0;position:relative">
@@ -144,8 +144,8 @@
   </section>
 
   <section id="species" data-screen-label="02 Species" style="max-width:1280px;margin:32px auto 0;padding:56px 40px;background:#fffdf7;border:1px solid rgba(42,32,24,0.12);border-radius:16px">
-    <h2 style="font-family:Arial,Helvetica,sans-serif;font-weight:400;font-size:clamp(30px,3.8vw,48px);line-height:1.08;margin:0 0 16px;max-width:880px;text-wrap:pretty">{{ spTitle }}</h2>
-    <p style="font-family:Arial,Helvetica,sans-serif;font-size:21.5px;line-height:1.55;color:#4a3b2c;max-width:740px;margin:0 0 38px;text-wrap:pretty">{{ spLede }}</p>
+    <h2 style="font-family:Arial,Helvetica,sans-serif;font-weight:400;font-size:clamp(28px,3.6vw,46px);line-height:1.08;margin:0 0 16px;max-width:880px;text-wrap:pretty">{{ spTitle }}</h2>
+    <p style="font-family:Arial,Helvetica,sans-serif;font-size:20px;line-height:1.55;color:#4a3b2c;max-width:740px;margin:0 0 38px;text-wrap:pretty">{{ spLede }}</p>
 
     <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:26px">
       <article style="background:#fffdf7;border:1px solid rgba(42,32,24,0.14);display:flex;flex-direction:column;min-width:0">
@@ -168,16 +168,16 @@
               <path d="M52 14 C62 18 65 27 62 35" fill="none" stroke="#eaf6de" stroke-width="2.2" stroke-linecap="round" opacity="0.28" />
             </svg>
             <div style="min-width:0">
-              <h3 style="font-family:Arial,Helvetica,sans-serif;font-weight:500;font-size:29px;margin:0;line-height:1">{{ arName }}</h3>
-              <div style="font-size:14px;color:#4b7a4f;font-weight:600;margin-top:6px">{{ arShare }}</div>
+              <h3 style="font-family:Arial,Helvetica,sans-serif;font-weight:500;font-size:27px;margin:0;line-height:1">{{ arName }}</h3>
+              <div style="font-size:13.5px;color:#4b7a4f;font-weight:600;margin-top:6px">{{ arShare }}</div>
             </div>
           </div>
-          <p style="font-size:16.5px;line-height:1.68;color:#4a3b2c;margin:0 0 18px;text-wrap:pretty">{{ arDesc }}</p>
+          <p style="font-size:15.5px;line-height:1.68;color:#4a3b2c;margin:0 0 18px;text-wrap:pretty">{{ arDesc }}</p>
           <dl style="margin:0">
             <sc-for list="{{ arFacts }}" as="f" hint-placeholder-count="5">
               <div style="display:grid;grid-template-columns:minmax(0,0.9fr) minmax(0,1.1fr);gap:10px;padding:8px 0;border-top:1px solid rgba(42,32,24,0.1)">
-                <dt style="font-size:13.5px;color:#6b5b47">{{ f.k }}</dt>
-                <dd style="margin:0;font-size:14.5px;font-weight:500">{{ f.v }}</dd>
+                <dt style="font-size:13px;color:#6b5b47">{{ f.k }}</dt>
+                <dd style="margin:0;font-size:14px;font-weight:500">{{ f.v }}</dd>
               </div>
             </sc-for>
           </dl>
@@ -204,16 +204,16 @@
               <path d="M50 11 C60 16 63 26 59 36" fill="none" stroke="#f3ddc9" stroke-width="2.2" stroke-linecap="round" opacity="0.26" />
             </svg>
             <div style="min-width:0">
-              <h3 style="font-family:Arial,Helvetica,sans-serif;font-weight:500;font-size:29px;margin:0;line-height:1">{{ roName }}</h3>
-              <div style="font-size:14px;color:#b23b3f;font-weight:600;margin-top:6px">{{ roShare }}</div>
+              <h3 style="font-family:Arial,Helvetica,sans-serif;font-weight:500;font-size:27px;margin:0;line-height:1">{{ roName }}</h3>
+              <div style="font-size:13.5px;color:#b23b3f;font-weight:600;margin-top:6px">{{ roShare }}</div>
             </div>
           </div>
-          <p style="font-size:16.5px;line-height:1.68;color:#4a3b2c;margin:0 0 18px;text-wrap:pretty">{{ roDesc }}</p>
+          <p style="font-size:15.5px;line-height:1.68;color:#4a3b2c;margin:0 0 18px;text-wrap:pretty">{{ roDesc }}</p>
           <dl style="margin:0">
             <sc-for list="{{ roFacts }}" as="f" hint-placeholder-count="5">
               <div style="display:grid;grid-template-columns:minmax(0,0.9fr) minmax(0,1.1fr);gap:10px;padding:8px 0;border-top:1px solid rgba(42,32,24,0.1)">
-                <dt style="font-size:13.5px;color:#6b5b47">{{ f.k }}</dt>
-                <dd style="margin:0;font-size:14.5px;font-weight:500">{{ f.v }}</dd>
+                <dt style="font-size:13px;color:#6b5b47">{{ f.k }}</dt>
+                <dd style="margin:0;font-size:14px;font-weight:500">{{ f.v }}</dd>
               </div>
             </sc-for>
           </dl>
@@ -222,12 +222,12 @@
     </div>
 
     <div style="margin-top:30px;background:#fffdf7;border:1px solid rgba(42,32,24,0.14);padding:24px;overflow-x:auto">
-      <div style="font-family:Arial,Helvetica,sans-serif;font-size:25.5px;margin-bottom:16px">{{ compareTitle }}</div>
+      <div style="font-family:Arial,Helvetica,sans-serif;font-size:24px;margin-bottom:16px">{{ compareTitle }}</div>
       <table style="width:100%;border-collapse:collapse;min-width:520px">
         <thead>
           <tr>
             <sc-for list="{{ compareHead }}" as="h" hint-placeholder-count="3">
-              <th style="text-align:left;font-size:13px;letter-spacing:0.1em;text-transform:uppercase;color:#6b5b47;font-weight:700;padding:0 14px 10px 0;border-bottom:1px solid rgba(42,32,24,0.2)">{{ h }}</th>
+              <th style="text-align:left;font-size:12.5px;letter-spacing:0.1em;text-transform:uppercase;color:#6b5b47;font-weight:700;padding:0 14px 10px 0;border-bottom:1px solid rgba(42,32,24,0.2)">{{ h }}</th>
             </sc-for>
           </tr>
         </thead>
@@ -235,20 +235,20 @@
           <sc-for list="{{ compareRows }}" as="row" hint-placeholder-count="6">
             <tr>
               <sc-for list="{{ row.cells }}" as="cell" hint-placeholder-count="3">
-                <td style="font-size:15.5px;line-height:1.5;padding:12px 14px 12px 0;border-bottom:1px solid rgba(42,32,24,0.09);vertical-align:top">{{ cell }}</td>
+                <td style="font-size:15px;line-height:1.5;padding:12px 14px 12px 0;border-bottom:1px solid rgba(42,32,24,0.09);vertical-align:top">{{ cell }}</td>
               </sc-for>
             </tr>
           </sc-for>
         </tbody>
       </table>
-      <p style="font-size:14px;color:#6b5b47;line-height:1.55;margin:16px 0 0">{{ spNote }}</p>
+      <p style="font-size:13.5px;color:#6b5b47;line-height:1.55;margin:16px 0 0">{{ spNote }}</p>
     </div>
   </section>
 
   <section id="map" data-screen-label="03 Map" style="max-width:1280px;margin:32px auto 0;background:#20302a;color:#f2ece0;padding:56px 40px;border-radius:16px">
     <div>
-      <h2 style="font-family:Arial,Helvetica,sans-serif;font-weight:400;font-size:clamp(30px,3.8vw,48px);line-height:1.08;margin:0 0 16px;max-width:900px;text-wrap:pretty">{{ mapTitle }}</h2>
-      <p style="font-family:Arial,Helvetica,sans-serif;font-size:20.5px;line-height:1.55;color:#e9e0ce;max-width:720px;margin:0 0 30px;text-wrap:pretty">{{ mapLede }}</p>
+      <h2 style="font-family:Arial,Helvetica,sans-serif;font-weight:400;font-size:clamp(28px,3.6vw,46px);line-height:1.08;margin:0 0 16px;max-width:900px;text-wrap:pretty">{{ mapTitle }}</h2>
+      <p style="font-family:Arial,Helvetica,sans-serif;font-size:20px;line-height:1.55;color:#e9e0ce;max-width:720px;margin:0 0 30px;text-wrap:pretty">{{ mapLede }}</p>
 
       <div style="min-width:0">
           <div style="background:#17231e;border:1px solid rgba(242,236,224,0.14);border-radius:10px;padding:10px">
@@ -262,7 +262,7 @@
               </sc-for>
             </svg>
           </div>
-          <div style="display:flex;flex-wrap:wrap;gap:18px;align-items:center;margin-top:14px;font-size:13.5px;color:#e9e0ce">
+          <div style="display:flex;flex-wrap:wrap;gap:18px;align-items:center;margin-top:14px;font-size:13px;color:#e9e0ce">
             <span style="letter-spacing:0.1em;text-transform:uppercase;font-weight:600;color:#cbbfa9">{{ legendTitle }}</span>
             <sc-for list="{{ legend }}" as="l" hint-placeholder-count="3">
               <span style="display:flex;align-items:center;gap:7px"><span style="width:11px;height:11px;border-radius:50%;background:{{ l.color }}"></span>{{ l.label }}</span>
@@ -279,27 +279,27 @@
       <div style="display:grid;grid-template-columns:minmax(0,1.12fr) minmax(0,0.88fr);gap:26px;margin-top:28px">
         <div style="min-width:0;background:#17231e;border:1px solid rgba(242,236,224,0.14);border-radius:10px;padding:24px">
           
-          <div style="font-size:13px;letter-spacing:0.12em;text-transform:uppercase;color:#a7d18c;font-weight:700">{{ activeRank }}</div>
-          <h3 style="font-family:Arial,Helvetica,sans-serif;font-weight:500;font-size:33px;margin:8px 0 14px;line-height:1.1">{{ activeName }}</h3>
-          <p style="font-size:15.5px;line-height:1.65;color:#e9e0ce;margin:0 0 18px;text-wrap:pretty">{{ activeNote }}</p>
+          <div style="font-size:12.5px;letter-spacing:0.12em;text-transform:uppercase;color:#a7d18c;font-weight:700">{{ activeRank }}</div>
+          <h3 style="font-family:Arial,Helvetica,sans-serif;font-weight:500;font-size:30px;margin:8px 0 14px;line-height:1.1">{{ activeName }}</h3>
+          <p style="font-size:15px;line-height:1.65;color:#e9e0ce;margin:0 0 18px;text-wrap:pretty">{{ activeNote }}</p>
           <div style="display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px;padding:16px 0;border-top:1px solid rgba(242,236,224,0.14);border-bottom:1px solid rgba(242,236,224,0.14)">
             <sc-for list="{{ activeStats }}" as="s" hint-placeholder-count="3">
               <div>
-                <div style="font-family:Arial,Helvetica,sans-serif;font-size:22.5px;line-height:1.1;color:#f2ece0">{{ s.v }}</div>
+                <div style="font-family:Arial,Helvetica,sans-serif;font-size:21px;line-height:1.1;color:#f2ece0">{{ s.v }}</div>
                 <div style="font-size:12.5px;line-height:1.35;color:#cbbfa9;margin-top:5px">{{ s.l }}</div>
               </div>
             </sc-for>
           </div>
           <div style="margin-top:18px">
-            <div style="font-size:13px;letter-spacing:0.1em;text-transform:uppercase;color:#cbbfa9;font-weight:600;margin-bottom:8px">{{ speciesTitle }}</div>
-            <div style="font-size:14.5px;color:#f2ece0;margin-bottom:8px">{{ activeSpecies }}</div>
+            <div style="font-size:12.5px;letter-spacing:0.1em;text-transform:uppercase;color:#cbbfa9;font-weight:600;margin-bottom:8px">{{ speciesTitle }}</div>
+            <div style="font-size:14px;color:#f2ece0;margin-bottom:8px">{{ activeSpecies }}</div>
             <div style="display:flex;height:9px;border-radius:99px;overflow:hidden;background:rgba(242,236,224,0.12)">
               <div style="{{ arabicaBarStyle }}"></div>
               <div style="{{ robustaBarStyle }}"></div>
             </div>
           </div>
           <div style="margin-top:22px">
-            <div style="font-size:13px;letter-spacing:0.1em;text-transform:uppercase;color:#cbbfa9;font-weight:600;margin-bottom:10px">{{ flavorTitle }}</div>
+            <div style="font-size:12.5px;letter-spacing:0.1em;text-transform:uppercase;color:#cbbfa9;font-weight:600;margin-bottom:10px">{{ flavorTitle }}</div>
             <div style="display:flex;gap:16px;align-items:center;flex-wrap:wrap">
               <svg viewBox="0 0 170 160" width="170" height="160" aria-hidden="true" style="flex:0 0 auto">
                 <circle cx="85" cy="76" r="54" fill="none" stroke="rgba(242,236,224,0.16)" stroke-width="1"></circle>
@@ -310,22 +310,22 @@
                   <text x="{{ a.x }}" y="{{ a.y }}" text-anchor="middle" dominant-baseline="middle" fill="#cbbfa9" font-size="11" font-family="'Source Sans 3',sans-serif">{{ a.label }}</text>
                 </sc-for>
               </svg>
-              <p style="flex:1 1 140px;min-width:0;font-size:15px;line-height:1.6;color:#e9e0ce;margin:0;text-wrap:pretty">{{ activeTagline }}</p>
+              <p style="flex:1 1 140px;min-width:0;font-size:14.5px;line-height:1.6;color:#e9e0ce;margin:0;text-wrap:pretty">{{ activeTagline }}</p>
             </div>
           </div>
-          <p style="font-size:13.5px;line-height:1.55;color:#cbbfa9;margin:18px 0 0">{{ activeRegions }}</p>
+          <p style="font-size:13px;line-height:1.55;color:#cbbfa9;margin:18px 0 0">{{ activeRegions }}</p>
         </div>
         <div style="min-width:0;background:#17231e;border:1px solid rgba(242,236,224,0.14);border-radius:10px;padding:24px">
           <div style="margin-top:24px;padding-top:22px;border-top:1px solid rgba(242,236,224,0.14)">
-            <div style="font-family:Arial,Helvetica,sans-serif;font-size:23.5px;margin-bottom:4px">{{ rankTitle }}</div>
-            <p style="font-size:13.5px;color:#cbbfa9;margin:0 0 16px;line-height:1.5">{{ rankSub }}</p>
+            <div style="font-family:Arial,Helvetica,sans-serif;font-size:22px;margin-bottom:4px">{{ rankTitle }}</div>
+            <p style="font-size:13px;color:#cbbfa9;margin:0 0 16px;line-height:1.5">{{ rankSub }}</p>
             <div style="display:flex;flex-direction:column;gap:2px;max-height:520px;overflow-y:auto">
               <sc-for list="{{ ranks }}" as="r" hint-placeholder-count="20">
                 <button type="button" onClick="{{ r.onClick }}" style="{{ r.rowStyle }}">
-                  <span style="font-size:13px;color:#cbbfa9;width:20px;text-align:right;flex:0 0 auto">{{ r.i }}</span>
-                  <span style="font-size:14.5px;flex:1 1 auto;text-align:left;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;min-width:0">{{ r.name }}</span>
+                  <span style="font-size:12.5px;color:#cbbfa9;width:20px;text-align:right;flex:0 0 auto">{{ r.i }}</span>
+                  <span style="font-size:14px;flex:1 1 auto;text-align:left;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;min-width:0">{{ r.name }}</span>
                   <span style="flex:0 0 56px;height:9px;background:rgba(242,236,224,0.1);border-radius:99px;overflow:hidden"><span style="{{ r.fillStyle }}"></span></span>
-                  <span style="font-size:14px;font-variant-numeric:tabular-nums;flex:0 0 42px;text-align:right">{{ r.val }}</span>
+                  <span style="font-size:13.5px;font-variant-numeric:tabular-nums;flex:0 0 42px;text-align:right">{{ r.val }}</span>
                 </button>
               </sc-for>
             </div>
@@ -336,8 +336,8 @@
   </section>
 
   <section id="process" data-screen-label="04 Process" style="max-width:1280px;margin:32px auto 0;padding:56px 40px;background:#fffdf7;border:1px solid rgba(42,32,24,0.12);border-radius:16px">
-    <h2 style="font-family:Arial,Helvetica,sans-serif;font-weight:400;font-size:clamp(30px,3.8vw,48px);line-height:1.08;margin:0 0 16px;text-wrap:pretty">{{ prTitle }}</h2>
-    <p style="font-family:Arial,Helvetica,sans-serif;font-size:21.5px;line-height:1.55;color:#4a3b2c;max-width:700px;margin:0 0 34px;text-wrap:pretty">{{ prLede }}</p>
+    <h2 style="font-family:Arial,Helvetica,sans-serif;font-weight:400;font-size:clamp(28px,3.6vw,46px);line-height:1.08;margin:0 0 16px;text-wrap:pretty">{{ prTitle }}</h2>
+    <p style="font-family:Arial,Helvetica,sans-serif;font-size:20px;line-height:1.55;color:#4a3b2c;max-width:700px;margin:0 0 34px;text-wrap:pretty">{{ prLede }}</p>
     <div style="height:300px;position:relative;margin-bottom:34px;border:1px solid rgba(42,32,24,0.14)">
       <image-slot id="cg-process" shape="rect" fit="cover" placeholder="{{ prSlot }}" src="https://upload.wikimedia.org/wikipedia/commons/thumb/e/e0/Women_drying_coffee.jpg/1920px-Women_drying_coffee.jpg" credit="Ảnh: Philip Asedri Dradrio · CC BY-SA 4.0 (Wikimedia Commons)" credit-href="https://commons.wikimedia.org/wiki/File:Women_drying_coffee.jpg"></image-slot>
     </div>
@@ -345,34 +345,34 @@
       <sc-for list="{{ prSteps }}" as="s" hint-placeholder-count="7">
         <div style="background:#fffdf7;padding:24px 22px 26px;min-width:0">
           <div style="display:flex;align-items:center;gap:10px;margin-bottom:12px">
-            <span style="width:26px;height:26px;border-radius:50%;background:#4b7a4f;color:#f7f1e4;font-size:14px;font-weight:700;display:flex;align-items:center;justify-content:center;flex:0 0 auto">{{ s.n }}</span>
-            <h3 style="font-family:Arial,Helvetica,sans-serif;font-weight:500;font-size:22.5px;margin:0;line-height:1.15">{{ s.name }}</h3>
+            <span style="width:26px;height:26px;border-radius:50%;background:#4b7a4f;color:#f7f1e4;font-size:13.5px;font-weight:700;display:flex;align-items:center;justify-content:center;flex:0 0 auto">{{ s.n }}</span>
+            <h3 style="font-family:Arial,Helvetica,sans-serif;font-weight:500;font-size:21px;margin:0;line-height:1.15">{{ s.name }}</h3>
           </div>
-          <p style="font-size:15.5px;line-height:1.68;color:#4a3b2c;margin:0;text-wrap:pretty">{{ s.body }}</p>
+          <p style="font-size:15px;line-height:1.68;color:#4a3b2c;margin:0;text-wrap:pretty">{{ s.body }}</p>
         </div>
       </sc-for>
     </div>
   </section>
 
   <section id="brewing" data-screen-label="05 Brewing" style="max-width:1280px;margin:32px auto 0;padding:56px 40px;background:#fffdf7;border:1px solid rgba(42,32,24,0.12);border-radius:16px">
-    <h2 style="font-family:Arial,Helvetica,sans-serif;font-weight:400;font-size:clamp(30px,3.8vw,48px);line-height:1.08;margin:0 0 16px;text-wrap:pretty">{{ brTitle }}</h2>
-    <p style="font-family:Arial,Helvetica,sans-serif;font-size:21.5px;line-height:1.55;color:#4a3b2c;max-width:720px;margin:0 0 34px;text-wrap:pretty">{{ brLede }}</p>
+    <h2 style="font-family:Arial,Helvetica,sans-serif;font-weight:400;font-size:clamp(28px,3.6vw,46px);line-height:1.08;margin:0 0 16px;text-wrap:pretty">{{ brTitle }}</h2>
+    <p style="font-family:Arial,Helvetica,sans-serif;font-size:20px;line-height:1.55;color:#4a3b2c;max-width:720px;margin:0 0 34px;text-wrap:pretty">{{ brLede }}</p>
     <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(290px,1fr));gap:20px">
       <sc-for list="{{ brMethods }}" as="m" hint-placeholder-count="8">
         <article style="background:#fffdf7;border:1px solid rgba(42,32,24,0.14);padding:22px;min-width:0;display:flex;flex-direction:column;gap:14px">
           <div>
-            <h3 style="font-family:Arial,Helvetica,sans-serif;font-weight:500;font-size:24.5px;margin:0 0 5px;line-height:1.1">{{ m.name }}</h3>
-            <div style="font-size:13px;letter-spacing:0.1em;text-transform:uppercase;color:#4b7a4f;font-weight:600">{{ m.origin }}</div>
+            <h3 style="font-family:Arial,Helvetica,sans-serif;font-weight:500;font-size:23px;margin:0 0 5px;line-height:1.1">{{ m.name }}</h3>
+            <div style="font-size:12.5px;letter-spacing:0.1em;text-transform:uppercase;color:#4b7a4f;font-weight:600">{{ m.origin }}</div>
           </div>
           <div style="display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:1px;background:rgba(42,32,24,0.12)">
             <sc-for list="{{ m.specs }}" as="sp" hint-placeholder-count="3">
               <div style="background:#f7f1e4;padding:10px 8px;text-align:center">
                 <div style="font-size:11.5px;letter-spacing:0.08em;text-transform:uppercase;color:#6b5b47;margin-bottom:4px">{{ sp.k }}</div>
-                <div style="font-size:14.5px;font-weight:600;line-height:1.25">{{ sp.v }}</div>
+                <div style="font-size:14px;font-weight:600;line-height:1.25">{{ sp.v }}</div>
               </div>
             </sc-for>
           </div>
-          <p style="font-size:15.5px;line-height:1.65;color:#4a3b2c;margin:0;text-wrap:pretty">{{ m.body }}</p>
+          <p style="font-size:15px;line-height:1.65;color:#4a3b2c;margin:0;text-wrap:pretty">{{ m.body }}</p>
         </article>
       </sc-for>
     </div>
@@ -382,31 +382,31 @@
   </section>
 
   <section id="tasting" data-screen-label="06 Tasting" style="max-width:1280px;margin:32px auto 0;padding:56px 40px;background:#fffdf7;border:1px solid rgba(42,32,24,0.12);border-radius:16px">
-    <h2 style="font-family:Arial,Helvetica,sans-serif;font-weight:400;font-size:clamp(30px,3.8vw,48px);line-height:1.08;margin:0 0 16px;text-wrap:pretty">{{ taTitle }}</h2>
-    <p style="font-family:Arial,Helvetica,sans-serif;font-size:21.5px;line-height:1.55;color:#4a3b2c;max-width:720px;margin:0 0 34px;text-wrap:pretty">{{ taLede }}</p>
+    <h2 style="font-family:Arial,Helvetica,sans-serif;font-weight:400;font-size:clamp(28px,3.6vw,46px);line-height:1.08;margin:0 0 16px;text-wrap:pretty">{{ taTitle }}</h2>
+    <p style="font-family:Arial,Helvetica,sans-serif;font-size:20px;line-height:1.55;color:#4a3b2c;max-width:720px;margin:0 0 34px;text-wrap:pretty">{{ taLede }}</p>
     <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:26px">
       <div style="min-width:0;display:flex;flex-direction:column;gap:1px;background:rgba(42,32,24,0.14);border:1px solid rgba(42,32,24,0.14)">
         <sc-for list="{{ taAxes }}" as="a" hint-placeholder-count="5">
           <div style="background:#fffdf7;padding:18px 20px;flex:1 1 0;display:flex;flex-direction:column;justify-content:center">
-            <h3 style="font-family:Arial,Helvetica,sans-serif;font-weight:500;font-size:21.5px;margin:0 0 6px">{{ a.k }}</h3>
-            <p style="font-size:15.5px;line-height:1.62;color:#4a3b2c;margin:0;text-wrap:pretty">{{ a.v }}</p>
+            <h3 style="font-family:Arial,Helvetica,sans-serif;font-weight:500;font-size:20px;margin:0 0 6px">{{ a.k }}</h3>
+            <p style="font-size:15px;line-height:1.62;color:#4a3b2c;margin:0;text-wrap:pretty">{{ a.v }}</p>
           </div>
         </sc-for>
       </div>
       <div style="min-width:0;display:flex;flex-direction:column;gap:18px">
         <sc-for list="{{ taWheel }}" as="g" hint-placeholder-count="4">
           <div style="background:#fffdf7;border:1px solid rgba(42,32,24,0.14);padding:18px 20px">
-            <div style="font-size:13px;letter-spacing:0.12em;text-transform:uppercase;font-weight:700;color:{{ g.color }};margin-bottom:12px">{{ g.group }}</div>
+            <div style="font-size:12.5px;letter-spacing:0.12em;text-transform:uppercase;font-weight:700;color:{{ g.color }};margin-bottom:12px">{{ g.group }}</div>
             <div style="display:flex;flex-wrap:wrap;gap:8px">
               <sc-for list="{{ g.notes }}" as="n" hint-placeholder-count="6">
-                <span style="font-size:14.5px;padding:6px 12px;border-radius:99px;background:{{ g.bg }};color:#3a2d20">{{ n }}</span>
+                <span style="font-size:14px;padding:6px 12px;border-radius:99px;background:{{ g.bg }};color:#3a2d20">{{ n }}</span>
               </sc-for>
             </div>
           </div>
         </sc-for>
         <ol style="margin:0;padding-left:22px;display:flex;flex-direction:column;gap:9px">
           <sc-for list="{{ taHowto }}" as="h" hint-placeholder-count="3">
-            <li style="font-size:15.5px;line-height:1.6;color:#4a3b2c">{{ h }}</li>
+            <li style="font-size:15px;line-height:1.6;color:#4a3b2c">{{ h }}</li>
           </sc-for>
         </ol>
       </div>
@@ -415,26 +415,26 @@
 
   <section id="history" data-screen-label="07 History" style="max-width:1280px;margin:32px auto 0;background:#efe6d2;padding:56px 40px;border:1px solid rgba(42,32,24,0.12);border-radius:16px">
     <div>
-      <h2 style="font-family:Arial,Helvetica,sans-serif;font-weight:400;font-size:clamp(30px,3.8vw,48px);line-height:1.08;margin:0 0 16px;text-wrap:pretty">{{ hiTitle }}</h2>
-      <p style="font-family:Arial,Helvetica,sans-serif;font-size:21.5px;line-height:1.55;color:#4a3b2c;max-width:760px;margin:0 0 44px;text-wrap:pretty">{{ hiLede }}</p>
+      <h2 style="font-family:Arial,Helvetica,sans-serif;font-weight:400;font-size:clamp(28px,3.6vw,46px);line-height:1.08;margin:0 0 16px;text-wrap:pretty">{{ hiTitle }}</h2>
+      <p style="font-family:Arial,Helvetica,sans-serif;font-size:20px;line-height:1.55;color:#4a3b2c;max-width:760px;margin:0 0 44px;text-wrap:pretty">{{ hiLede }}</p>
       <div style="display:flex;flex-direction:column;gap:0">
         <sc-for list="{{ timeline }}" as="t" hint-placeholder-count="10">
           <div style="display:grid;grid-template-columns:minmax(0,150px) 30px minmax(0,1fr);gap:0;align-items:start">
             <div style="text-align:right;padding:0 20px 44px 0">
-              <div style="font-family:Arial,Helvetica,sans-serif;font-size:25.5px;line-height:1.1;color:#2a2018">{{ t.year }}</div>
-              <div style="font-size:12px;letter-spacing:0.1em;text-transform:uppercase;font-weight:700;margin-top:7px;color:{{ t.badgeColor }}">{{ t.badge }}</div>
+              <div style="font-family:Arial,Helvetica,sans-serif;font-size:24px;line-height:1.1;color:#2a2018">{{ t.year }}</div>
+              <div style="font-size:12.0px;letter-spacing:0.1em;text-transform:uppercase;font-weight:700;margin-top:7px;color:{{ t.badgeColor }}">{{ t.badge }}</div>
             </div>
             <div style="position:relative;display:flex;justify-content:center;align-self:stretch">
               <span style="position:absolute;top:0;bottom:0;width:1px;background:rgba(42,32,24,0.2)"></span>
               <span style="position:relative;margin-top:8px;width:13px;height:13px;border-radius:50%;background:{{ t.dotColor }};border:3px solid #efe6d2"></span>
             </div>
             <div style="padding:0 0 44px 22px;min-width:0">
-              <h3 style="font-family:Arial,Helvetica,sans-serif;font-weight:500;font-size:26px;line-height:1.2;margin:0 0 10px;text-wrap:pretty">{{ t.title }}</h3>
-              <p style="font-size:16.5px;line-height:1.72;color:#4a3b2c;margin:0 0 12px;max-width:680px;text-wrap:pretty">{{ t.body }}</p>
+              <h3 style="font-family:Arial,Helvetica,sans-serif;font-weight:500;font-size:25px;line-height:1.2;margin:0 0 10px;text-wrap:pretty">{{ t.title }}</h3>
+              <p style="font-size:15.5px;line-height:1.72;color:#4a3b2c;margin:0 0 12px;max-width:680px;text-wrap:pretty">{{ t.body }}</p>
               <div style="display:flex;flex-wrap:wrap;gap:14px;align-items:center">
-                <span style="font-size:13.5px;color:#6b5b47">{{ t.refs }}</span>
+                <span style="font-size:13px;color:#6b5b47">{{ t.refs }}</span>
                 <sc-if value="{{ t.hasCountry }}" hint-placeholder-val="{{ false }}">
-                  <a href="#map" onClick="{{ t.onSelect }}" style="font-size:13.5px;font-weight:600;color:#4b7a4f;text-decoration:none;border-bottom:1px solid rgba(75,122,79,0.4)">{{ t.linkLabel }}</a>
+                  <a href="#map" onClick="{{ t.onSelect }}" style="font-size:13px;font-weight:600;color:#4b7a4f;text-decoration:none;border-bottom:1px solid rgba(75,122,79,0.4)">{{ t.linkLabel }}</a>
                 </sc-if>
               </div>
             </div>
@@ -445,29 +445,29 @@
   </section>
 
   <section id="vietnam" data-screen-label="08 Vietnam" style="max-width:1280px;margin:32px auto 0;padding:56px 40px;background:#fffdf7;border:1px solid rgba(42,32,24,0.12);border-radius:16px">
-    <h2 style="font-family:Arial,Helvetica,sans-serif;font-weight:400;font-size:clamp(30px,3.8vw,48px);line-height:1.08;margin:0 0 16px;max-width:900px;text-wrap:pretty">{{ vnTitle }}</h2>
-    <p style="font-family:Arial,Helvetica,sans-serif;font-size:21.5px;line-height:1.55;color:#4a3b2c;max-width:740px;margin:0 0 30px;text-wrap:pretty">{{ vnLede }}</p>
+    <h2 style="font-family:Arial,Helvetica,sans-serif;font-weight:400;font-size:clamp(28px,3.6vw,46px);line-height:1.08;margin:0 0 16px;max-width:900px;text-wrap:pretty">{{ vnTitle }}</h2>
+    <p style="font-family:Arial,Helvetica,sans-serif;font-size:20px;line-height:1.55;color:#4a3b2c;max-width:740px;margin:0 0 30px;text-wrap:pretty">{{ vnLede }}</p>
     <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:1px;background:rgba(42,32,24,0.14);border:1px solid rgba(42,32,24,0.14);margin-bottom:34px">
       <sc-for list="{{ vnStats }}" as="s" hint-placeholder-count="4">
         <div style="background:#fffdf7;padding:20px 18px">
-          <div style="font-family:Arial,Helvetica,sans-serif;font-size:28px;line-height:1.05;color:#b23b3f">{{ s.v }}</div>
-          <div style="font-size:14px;line-height:1.4;color:#57493a;margin-top:8px">{{ s.l }}</div>
+          <div style="font-family:Arial,Helvetica,sans-serif;font-size:26px;line-height:1.05;color:#b23b3f">{{ s.v }}</div>
+          <div style="font-size:13.5px;line-height:1.4;color:#57493a;margin-top:8px">{{ s.l }}</div>
         </div>
       </sc-for>
     </div>
     <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:34px">
       <div style="min-width:0">
         <sc-for list="{{ vnParas }}" as="p" hint-placeholder-count="3">
-          <p style="font-family:Arial,Helvetica,sans-serif;font-size:19.5px;line-height:1.74;margin:0 0 22px;text-wrap:pretty">{{ p }}</p>
+          <p style="font-family:Arial,Helvetica,sans-serif;font-size:19px;line-height:1.74;margin:0 0 22px;text-wrap:pretty">{{ p }}</p>
         </sc-for>
         <div style="display:flex;flex-direction:column;gap:1px;background:rgba(42,32,24,0.14);border:1px solid rgba(42,32,24,0.14)">
           <sc-for list="{{ vnRegions }}" as="r" hint-placeholder-count="4">
             <div style="background:#fffdf7;padding:16px 18px;display:grid;grid-template-columns:minmax(0,1fr) auto;gap:10px;align-items:baseline">
               <div style="min-width:0">
-                <div style="font-family:Arial,Helvetica,sans-serif;font-size:20.5px;margin-bottom:5px">{{ r.name }}</div>
-                <div style="font-size:14.5px;line-height:1.55;color:#57493a;text-wrap:pretty">{{ r.note }}</div>
+                <div style="font-family:Arial,Helvetica,sans-serif;font-size:20px;margin-bottom:5px">{{ r.name }}</div>
+                <div style="font-size:14px;line-height:1.55;color:#57493a;text-wrap:pretty">{{ r.note }}</div>
               </div>
-              <div style="font-size:13.5px;font-weight:600;color:#4b7a4f;white-space:nowrap">{{ r.alt }}</div>
+              <div style="font-size:13px;font-weight:600;color:#4b7a4f;white-space:nowrap">{{ r.alt }}</div>
             </div>
           </sc-for>
         </div>
@@ -479,23 +479,23 @@
   </section>
 
   <section id="health" data-screen-label="09 Health" style="max-width:1280px;margin:32px auto 0;padding:56px 40px;background:#fffdf7;border:1px solid rgba(42,32,24,0.12);border-radius:16px">
-    <h2 style="font-family:Arial,Helvetica,sans-serif;font-weight:400;font-size:clamp(30px,3.8vw,48px);line-height:1.08;margin:0 0 16px;text-wrap:pretty">{{ heTitle }}</h2>
-    <p style="font-family:Arial,Helvetica,sans-serif;font-size:21.5px;line-height:1.55;color:#4a3b2c;max-width:720px;margin:0 0 34px;text-wrap:pretty">{{ heLede }}</p>
+    <h2 style="font-family:Arial,Helvetica,sans-serif;font-weight:400;font-size:clamp(28px,3.6vw,46px);line-height:1.08;margin:0 0 16px;text-wrap:pretty">{{ heTitle }}</h2>
+    <p style="font-family:Arial,Helvetica,sans-serif;font-size:20px;line-height:1.55;color:#4a3b2c;max-width:720px;margin:0 0 34px;text-wrap:pretty">{{ heLede }}</p>
     <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:26px">
       <div style="min-width:0;display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:1px;background:rgba(42,32,24,0.14);border:1px solid rgba(42,32,24,0.14)">
         <sc-for list="{{ hePoints }}" as="p" hint-placeholder-count="4">
           <div style="background:#fffdf7;padding:20px">
-            <h3 style="font-family:Arial,Helvetica,sans-serif;font-weight:500;font-size:21.5px;margin:0 0 8px;line-height:1.2">{{ p.h }}</h3>
-            <p style="font-size:15.5px;line-height:1.65;color:#4a3b2c;margin:0;text-wrap:pretty">{{ p.b }}</p>
+            <h3 style="font-family:Arial,Helvetica,sans-serif;font-weight:500;font-size:20px;margin:0 0 8px;line-height:1.2">{{ p.h }}</h3>
+            <p style="font-size:15px;line-height:1.65;color:#4a3b2c;margin:0;text-wrap:pretty">{{ p.b }}</p>
           </div>
         </sc-for>
       </div>
       <div style="min-width:0;background:#fffdf7;border:1px solid rgba(42,32,24,0.14);padding:24px">
-        <div style="font-family:Arial,Helvetica,sans-serif;font-size:23.5px;margin-bottom:20px;line-height:1.2">{{ heChartTitle }}</div>
+        <div style="font-family:Arial,Helvetica,sans-serif;font-size:22px;margin-bottom:20px;line-height:1.2">{{ heChartTitle }}</div>
         <div style="display:flex;flex-direction:column;gap:14px">
           <sc-for list="{{ heCaffeine }}" as="c" hint-placeholder-count="6">
             <div>
-              <div style="display:flex;justify-content:space-between;font-size:14.5px;margin-bottom:6px">
+              <div style="display:flex;justify-content:space-between;font-size:14px;margin-bottom:6px">
                 <span style="color:#4a3b2c">{{ c.label }}</span>
                 <span style="font-weight:600;font-variant-numeric:tabular-nums">{{ c.val }}</span>
               </div>
@@ -505,23 +505,23 @@
             </div>
           </sc-for>
         </div>
-        <p style="font-size:13.5px;color:#6b5b47;line-height:1.6;margin:20px 0 0">{{ heNote }}</p>
+        <p style="font-size:13px;color:#6b5b47;line-height:1.6;margin:20px 0 0">{{ heNote }}</p>
       </div>
     </div>
   </section>
 
   <section id="economy" data-screen-label="10 Economy" style="max-width:1280px;margin:32px auto 0;padding:56px 40px;background:#fffdf7;border:1px solid rgba(42,32,24,0.12);border-radius:16px">
-    <h2 style="font-family:Arial,Helvetica,sans-serif;font-weight:400;font-size:clamp(30px,3.8vw,48px);line-height:1.08;margin:0 0 16px;text-wrap:pretty">{{ ecTitle }}</h2>
-    <p style="font-family:Arial,Helvetica,sans-serif;font-size:21.5px;line-height:1.55;color:#4a3b2c;max-width:720px;margin:0 0 34px;text-wrap:pretty">{{ ecLede }}</p>
+    <h2 style="font-family:Arial,Helvetica,sans-serif;font-weight:400;font-size:clamp(28px,3.6vw,46px);line-height:1.08;margin:0 0 16px;text-wrap:pretty">{{ ecTitle }}</h2>
+    <p style="font-family:Arial,Helvetica,sans-serif;font-size:20px;line-height:1.55;color:#4a3b2c;max-width:720px;margin:0 0 34px;text-wrap:pretty">{{ ecLede }}</p>
     <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:34px">
       <div style="min-width:0">
         <sc-for list="{{ ecParas }}" as="p" hint-placeholder-count="3">
-          <p style="font-family:Arial,Helvetica,sans-serif;font-size:19.5px;line-height:1.74;margin:0 0 22px;text-wrap:pretty">{{ p }}</p>
+          <p style="font-family:Arial,Helvetica,sans-serif;font-size:19px;line-height:1.74;margin:0 0 22px;text-wrap:pretty">{{ p }}</p>
         </sc-for>
       </div>
       <div style="min-width:0;display:flex;flex-direction:column">
         <div style="background:#fffdf7;border:1px solid rgba(42,32,24,0.14);padding:24px">
-          <div style="font-family:Arial,Helvetica,sans-serif;font-size:22.5px;line-height:1.25;margin-bottom:20px">{{ ecChainTitle }}</div>
+          <div style="font-family:Arial,Helvetica,sans-serif;font-size:21px;line-height:1.25;margin-bottom:20px">{{ ecChainTitle }}</div>
           <div style="display:flex;height:34px;border-radius:6px;overflow:hidden;margin-bottom:18px">
             <sc-for list="{{ ecChain }}" as="c" hint-placeholder-count="5">
               <div style="{{ c.segStyle }}"></div>
@@ -529,14 +529,14 @@
           </div>
           <div style="display:flex;flex-direction:column;gap:10px">
             <sc-for list="{{ ecChain }}" as="c" hint-placeholder-count="5">
-              <div style="display:flex;align-items:center;gap:10px;font-size:15px">
+              <div style="display:flex;align-items:center;gap:10px;font-size:14.5px">
                 <span style="width:11px;height:11px;border-radius:3px;background:{{ c.color }};flex:0 0 auto"></span>
                 <span style="flex:1 1 auto;color:#4a3b2c;min-width:0">{{ c.label }}</span>
                 <span style="font-weight:600;font-variant-numeric:tabular-nums">{{ c.pct }}</span>
               </div>
             </sc-for>
           </div>
-          <p style="font-size:13.5px;color:#6b5b47;line-height:1.6;margin:18px 0 0">{{ ecChainNote }}</p>
+          <p style="font-size:13px;color:#6b5b47;line-height:1.6;margin:18px 0 0">{{ ecChainNote }}</p>
         </div>
         <div style="flex:1 1 auto;min-height:200px;position:relative;margin-top:22px;border:1px solid rgba(42,32,24,0.14)">
           <image-slot id="cg-economy" shape="rect" fit="cover" placeholder="{{ ecSlot }}" src="https://upload.wikimedia.org/wikipedia/commons/thumb/e/ee/NP_coffee_sacks_%285867722798%29.jpg/1920px-NP_coffee_sacks_%285867722798%29.jpg" credit="Ảnh: CIAT · CC BY-SA 2.0 (Wikimedia Commons)" credit-href="https://commons.wikimedia.org/wiki/File:NP_coffee_sacks_(5867722798).jpg"></image-slot>
@@ -546,13 +546,13 @@
   </section>
 
   <section id="glossary" data-screen-label="11 Glossary" style="max-width:1280px;margin:32px auto 0;padding:56px 40px;background:#fffdf7;border:1px solid rgba(42,32,24,0.12);border-radius:16px">
-    <h2 style="font-family:Arial,Helvetica,sans-serif;font-weight:400;font-size:clamp(30px,3.8vw,48px);line-height:1.08;margin:0 0 16px;text-wrap:pretty">{{ glTitle }}</h2>
-    <p style="font-family:Arial,Helvetica,sans-serif;font-size:21.5px;line-height:1.55;color:#4a3b2c;max-width:720px;margin:0 0 30px;text-wrap:pretty">{{ glLede }}</p>
+    <h2 style="font-family:Arial,Helvetica,sans-serif;font-weight:400;font-size:clamp(28px,3.6vw,46px);line-height:1.08;margin:0 0 16px;text-wrap:pretty">{{ glTitle }}</h2>
+    <p style="font-family:Arial,Helvetica,sans-serif;font-size:20px;line-height:1.55;color:#4a3b2c;max-width:720px;margin:0 0 30px;text-wrap:pretty">{{ glLede }}</p>
     <dl style="margin:0;display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:1px;background:rgba(42,32,24,0.14);border:1px solid rgba(42,32,24,0.14)">
       <sc-for list="{{ terms }}" as="t" hint-placeholder-count="13">
         <div style="background:#fffdf7;padding:18px 20px">
-          <dt style="font-family:Arial,Helvetica,sans-serif;font-size:20.5px;margin-bottom:6px">{{ t.term }}</dt>
-          <dd style="margin:0;font-size:15px;line-height:1.65;color:#4a3b2c;text-wrap:pretty">{{ t.def }}</dd>
+          <dt style="font-family:Arial,Helvetica,sans-serif;font-size:20px;margin-bottom:6px">{{ t.term }}</dt>
+          <dd style="margin:0;font-size:14.5px;line-height:1.65;color:#4a3b2c;text-wrap:pretty">{{ t.def }}</dd>
         </div>
       </sc-for>
     </dl>
@@ -562,7 +562,7 @@
     <h2 style="font-family:Arial,Helvetica,sans-serif;font-weight:400;font-size:clamp(26px,3vw,38px);line-height:1.1;margin:0 0 24px">{{ soTitle }}</h2>
     <ol style="margin:0;padding-left:24px;display:flex;flex-direction:column;gap:10px;max-width:860px">
       <sc-for list="{{ sources }}" as="s" hint-placeholder-count="9">
-        <li style="font-size:15.5px;line-height:1.6">
+        <li style="font-size:15px;line-height:1.6">
           <a href="{{ s.url }}" target="_blank" rel="noopener">{{ s.name }}</a>
           <span style="color:#6b5b47"> - {{ s.note }}</span>
         </li>
@@ -578,16 +578,16 @@
             <ellipse cx="17" cy="17" rx="11" ry="14.4" transform="rotate(-16 17 17)" fill="#7fae68" />
             <path d="M17.4 3.2 C13.2 8.4 13.8 24 17.8 30.6" fill="none" stroke="#1c3521" stroke-width="1.8" stroke-linecap="round" opacity="0.85" />
           </svg>
-          <span style="font-weight:700;font-size:17px">Coffee Globe</span>
+          <span style="font-weight:700;font-size:16.5px">Coffee Globe</span>
         </div>
-        <p style="font-size:15px;line-height:1.7;margin:0;max-width:380px;text-wrap:pretty">{{ footerAbout }}</p>
+        <p style="font-size:14.5px;line-height:1.7;margin:0;max-width:380px;text-wrap:pretty">{{ footerAbout }}</p>
       </div>
       <div style="min-width:0">
-        <h4 style="font-size:13px;letter-spacing:0.12em;text-transform:uppercase;color:#a7d18c;margin:0 0 12px">{{ footerSourcesH }}</h4>
-        <p style="font-size:14.5px;line-height:1.7;margin:0;text-wrap:pretty">{{ footerNote }}</p>
+        <h4 style="font-size:12.5px;letter-spacing:0.12em;text-transform:uppercase;color:#a7d18c;margin:0 0 12px">{{ footerSourcesH }}</h4>
+        <p style="font-size:14px;line-height:1.7;margin:0;text-wrap:pretty">{{ footerNote }}</p>
       </div>
     </div>
-    <div style="max-width:1280px;margin:26px auto 0;padding:18px 24px 0;border-top:1px solid rgba(242,236,224,0.14);display:flex;flex-wrap:wrap;gap:16px;justify-content:space-between;font-size:13.5px;color:#cbbfa9">
+    <div style="max-width:1280px;margin:26px auto 0;padding:18px 24px 0;border-top:1px solid rgba(242,236,224,0.14);display:flex;flex-wrap:wrap;gap:16px;justify-content:space-between;font-size:13px;color:#cbbfa9">
       <span>{{ footerCopy }}</span>
       <a href="#top" style="color:#a7d18c;text-decoration:none">{{ backToTop }}</a>
     </div>
@@ -595,8 +595,8 @@
 
   <sc-if value="{{ termOpen }}" hint-placeholder-val="{{ false }}">
     <div style="position:fixed;left:50%;bottom:24px;transform:translateX(-50%);z-index:80;max-width:460px;background:#2a2018;color:#f2ece0;border-radius:10px;padding:16px 20px;box-shadow:0 20px 50px rgba(0,0,0,0.32);animation:cg-in .16s ease-out">
-      <div style="font-family:Arial,Helvetica,sans-serif;font-size:19.5px;margin-bottom:6px;color:#a7d18c">{{ termName }}</div>
-      <div style="font-size:15px;line-height:1.6">{{ termDef }}</div>
+      <div style="font-family:Arial,Helvetica,sans-serif;font-size:19px;margin-bottom:6px;color:#a7d18c">{{ termName }}</div>
+      <div style="font-size:14.5px;line-height:1.6">{{ termDef }}</div>
     </div>
   </sc-if>
 </div>
@@ -687,7 +687,7 @@ class Component extends DCLogic {
     const bagWord = lang === "en" ? "bags" : "bao";
 
     const select = id => () => this.setState({ active: id });
-    const btn = on => `font-family:inherit;font-size:14px;font-weight:600;padding:9px 13px;border:none;cursor:pointer;background:${on ? accent : "transparent"};color:${on ? "#f7f1e4" : "#6e5f4d"}`;
+    const btn = on => `font-family:inherit;font-size:13.5px;font-weight:600;padding:9px 13px;border:none;cursor:pointer;background:${on ? accent : "transparent"};color:${on ? "#f7f1e4" : "#6e5f4d"}`;
 
     // search
     const q = this.state.query.trim().toLowerCase();
@@ -795,7 +795,7 @@ class Component extends DCLogic {
       chips: sorted.map(d => ({
         label: d.flag + " " + dName(d),
         onClick: select(d.id),
-        style: `font-family:inherit;font-size:14px;padding:7px 12px;border-radius:99px;cursor:pointer;border:1px solid ${d.id === active.id ? "#f2ece0" : "rgba(242,236,224,0.24)"};background:${d.id === active.id ? "rgba(242,236,224,0.14)" : "transparent"};color:${d.id === active.id ? "#f2ece0" : "#cfc6b4"}`
+        style: `font-family:inherit;font-size:13.5px;padding:7px 12px;border-radius:99px;cursor:pointer;border:1px solid ${d.id === active.id ? "#f2ece0" : "rgba(242,236,224,0.24)"};background:${d.id === active.id ? "rgba(242,236,224,0.14)" : "transparent"};color:${d.id === active.id ? "#f2ece0" : "#cfc6b4"}`
       })),
       activeName: active.flag + " " + dName(active),
       activeRank: T.rankOfWorld(rankPos),
