@@ -51,7 +51,7 @@ window.CoffeePage.PAGE = {
     sections: {
             overview: {
         n: "01",
-        title: "Một trang web, cả thế giới cà phê",
+        title: "Giới thiệu",
         lede: "Có một thức uống bạn cầm trên tay gần như mỗi ngày mà ít khi dừng lại hỏi: nó từ đâu tới, và vì sao nó có vị này mà không phải vị khác? Trang này kể hành trình đó - từ quả mọng đỏ trên cây, qua bàn tay người trồng, người rang, đến tách cà phê đang bốc khói trước mặt bạn.",
         paras: [
           "Mọi chuyện bắt đầu từ hai loài cây. Arabica dịu dàng, thanh thoát, chỉ ưa cao nguyên mát lành; Robusta mạnh mẽ, đắng đậm, bám rễ khoẻ nơi đồng bằng nóng ẩm. Chúng khác nhau từ hình hài hạt đến cá tính trong ly - và chính khác biệt ấy làm nên vị cà phê bạn yêu thích.",
@@ -288,7 +288,7 @@ species: {
     sections: {
             overview: {
         n: "01",
-        title: "One website, the whole coffee world",
+        title: "About",
         lede: "A drink you hold almost every day, yet rarely stop to ask: where did it come from, and why does it taste this way and not another? This page tells that journey - from a red cherry on the tree, through the farmer's and roaster's hands, to the steaming cup in front of you.",
         paras: [
           "It all begins with two plants. Arabica - gentle and refined, at home only in cool highlands; Robusta - bold and bitter, thriving in hot lowlands. They differ from the shape of their beans to the character in the cup - and that difference shapes the coffee you love.",
