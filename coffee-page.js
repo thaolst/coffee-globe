@@ -69,7 +69,7 @@ window.CoffeePage.PAGE = {
 species: {
         n: "02",
         title: "Hai loài cây chia nhau cả thế giới",
-        lede: "Có hơn một trăm loài Coffea, nhưng chỉ hai loài nuôi cả ngành cà phê. Chúng khác nhau ở hình hạt, độ cao, lượng caffeine, và ở toàn bộ tính cách trong ly.",
+        lede: "Chi Coffea có khoảng 120-130 loài, nhưng chỉ bốn loài được trồng thương mại. Trong đó, hai loài chính - Arabica và Robusta - chiếm gần 99% sản lượng. Chúng khác nhau ở hình hạt, độ cao, lượng caffeine, và ở toàn bộ tính cách trong ly.",
         note: "Ngoài ra còn Liberica và Excelsa (Việt Nam gọi là cà phê mít), chỉ khoảng 1-2% sản lượng thế giới, đang được quan tâm trở lại vì chịu nóng tốt.",
         slotA: "Ảnh hạt Arabica",
         slotB: "Ảnh hạt Robusta"
@@ -215,8 +215,10 @@ species: {
       sources: { n: "12", title: "Nguồn tham khảo" }
     },
     terms: [
-      ["Arabica", "Loài Coffea arabica: hạt dài, rãnh cong, trồng ở độ cao, ít caffeine, vị chua thanh và thơm. Khoảng 57% cà phê thế giới."],
+      ["Arabica", "Loài Coffea arabica: hạt dài, rãnh cong, trồng ở độ cao, ít caffeine, vị chua thanh và thơm. Chiếm khoảng 57% trong nhóm hai loài chính."],
       ["Robusta", "Loài Coffea canephora: hạt tròn, rãnh thẳng, chịu nhiệt và bệnh, caffeine gần gấp đôi Arabica, vị đậm và đắng."],
+      ["Coffea", "Chi thực vật của cây cà phê, khoảng 120-130 loài. Chỉ bốn loài được trồng thương mại; hai loài chính là Arabica và Robusta."],
+      ["Liberica & Excelsa", "Hai loài cà phê hiếm, gộp lại chỉ khoảng 1% sản lượng thế giới. Excelsa thực ra là một biến thể của Liberica; ở Việt Nam thường gọi chung là cà phê mít."],
       ["Cherry", "Quả cà phê. Chín từ xanh sang đỏ thẫm, bên trong thường có hai hạt."],
       ["Bao 60 kg", "Đơn vị chuẩn của ngành cà phê. Mọi số liệu sản lượng thế giới đều tính bằng bao 60 kg cà phê nhân."],
       ["Chế biến ướt", "Bóc thịt quả và lên men trong nước trước khi phơi. Cho ly sạch, chua thanh, rõ nét."],
@@ -232,6 +234,12 @@ species: {
     footer: {
       about: "Coffee Globe là một trang thông tin: cà phê là gì, trồng ở đâu, pha thế nào và giá trị đi về đâu.",
       sourcesH: "Về số liệu",
+      booksTitle: "Đọc thêm",
+      books: [
+        ["Hành trình cà phê thế giới", "bản dịch phổ biến ở Việt Nam", "toàn cảnh lịch sử và văn hoá cà phê"],
+        ["The World Atlas of Coffee", "James Hoffmann", "cà phê từng nước, giống và cách pha"],
+        ["Uncommon Grounds", "Mark Pendergrast", "lịch sử cà phê và cách nó định hình thế giới"]
+      ],
       note: "Sản lượng theo ước tính USDA và ICO mùa 2024-2025. Tỉ lệ giống, mô tả hương vị, lượng caffeine và phân chia giá trị là giá trị tham khảo phổ biến trong ngành, không phải kết quả đo lường. Bản đồ chỉ mang tính minh họa.",
       copy: "© 2026 Coffee Globe. Nội dung để tham khảo, không dùng cho mục đích mua bán hay tư vấn y tế."
     },
@@ -306,7 +314,7 @@ species: {
 species: {
         n: "02",
         title: "Two species share the whole world",
-        lede: "There are over a hundred Coffea species, but two carry the industry. They differ in bean shape, altitude and caffeine, and in their entire personality in the cup.",
+        lede: "The Coffea genus has around 120-130 species, but only four are grown commercially - and the two main ones, Arabica and Robusta, account for nearly 99% of output. They differ in bean shape, altitude and caffeine, and in their entire personality in the cup.",
         note: "Liberica and Excelsa also exist, only about 1-2% of world production, now drawing fresh interest for their heat tolerance.",
         slotA: "Photo of Arabica beans",
         slotB: "Photo of Robusta beans"
@@ -452,8 +460,10 @@ species: {
       sources: { n: "12", title: "Sources" }
     },
     terms: [
-      ["Arabica", "Coffea arabica: long bean with a curved crease, grown high, lower caffeine, bright and aromatic. About 57% of world coffee."],
+      ["Arabica", "Coffea arabica: long bean with a curved crease, grown high, lower caffeine, bright and aromatic. About 57% within the two main species."],
       ["Robusta", "Coffea canephora: rounder bean with a straight crease, heat- and disease-tolerant, nearly double the caffeine, bold and bitter."],
+      ["Coffea", "The plant genus of coffee, around 120-130 species. Only four are grown commercially; the two main ones are Arabica and Robusta."],
+      ["Liberica & Excelsa", "Two rare coffee species, together only about 1% of world output. Excelsa is in fact a variety of Liberica."],
       ["Cherry", "The coffee fruit. Ripens from green to deep red and usually holds two seeds."],
       ["60 kg bag", "The industry's standard unit. All world production figures are counted in 60 kg bags of green coffee."],
       ["Washed", "Pulp removed and the seed fermented in water before drying. Gives a clean, bright, well-defined cup."],
@@ -469,6 +479,12 @@ species: {
     footer: {
       about: "Coffee Globe is an information page: what coffee is, where it grows, how it is brewed and where the value goes.",
       sourcesH: "About the data",
+      booksTitle: "Further reading",
+      books: [
+        ["Hành trình cà phê thế giới (A Journey Through World Coffee)", "Vietnamese edition", "a broad history and culture of coffee"],
+        ["The World Atlas of Coffee", "James Hoffmann", "coffee country by country, varieties and brewing"],
+        ["Uncommon Grounds", "Mark Pendergrast", "coffee's history and how it shaped the modern world"]
+      ],
       note: "Production figures follow USDA and ICO estimates for the 2024-2025 season. Species shares, flavour notes, caffeine levels and value splits are common industry reference values, not measurements. The map is illustrative only.",
       copy: "© 2026 Coffee Globe. Reference content only, not for trading or medical advice."
     },
