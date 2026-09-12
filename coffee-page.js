@@ -69,7 +69,7 @@ window.CoffeePage.PAGE = {
 species: {
         n: "02",
         title: "Hai loài cây chia nhau cả thế giới",
-        lede: "Chi Coffea có khoảng 120-130 loài, nhưng chỉ bốn loài được trồng thương mại. Trong đó, hai loài chính - Arabica và Robusta - chiếm gần 99% sản lượng. Chúng khác nhau ở hình hạt, độ cao, lượng caffeine, và ở toàn bộ tính cách trong ly.",
+        lede: "Chi Coffea có khoảng 120-130 loài, nhưng chỉ bốn nhóm cà phê được trồng thương mại. Trong đó, hai loài chính - Arabica và Robusta - chiếm gần 99% sản lượng. Chúng khác nhau ở hình hạt, độ cao, lượng caffeine, và ở toàn bộ tính cách trong ly. Thú vị là Arabica không thuần chủng: nó là cây lai tự nhiên giữa Robusta và một loài họ hàng (Coffea eugenioides), với bộ nhiễm sắc thể gấp đôi.",
         note: "Ngoài ra còn Liberica và Excelsa (Việt Nam gọi là cà phê mít), chỉ khoảng 1-2% sản lượng thế giới, đang được quan tâm trở lại vì chịu nóng tốt.",
         slotA: "Ảnh hạt Arabica",
         slotB: "Ảnh hạt Robusta"
@@ -93,7 +93,7 @@ species: {
           ["Phơi & bảo quản", "Hạ độ ẩm hạt xuống khoảng 10-12% trên sân phơi hoặc giàn lưới. Phơi vội thì hạt nứt, phơi chậm thì lên men lỗi."],
           ["Xay vỏ & phân loại", "Bóc lớp vỏ trấu, phân loại theo cỡ hạt, tỉ trọng và màu. Người ta loại bỏ hạt lỗi ở đây, một hạt lên men xấu đủ làm hỏng cả ấm."],
           ["Xuất khẩu", "Đóng bao 60 kg hoặc túi chống ẩm, đi tàu. Từ lúc này cà phê là một loại hàng hóa có giá niêm yết trên sàn New York và London."],
-          ["Rang", "8-14 phút ở 190-230°C. Rang nhạt giữ axit và hương hoa quả; rang đậm đẩy vị về socola, khói và đắng. Đây là bước biến đổi lớn nhất."],
+          ["Rang", "8-14 phút ở 190-230°C, đánh dấu bằng hai tiếng nứt: nứt lần 1 cho vị chua sáng, nứt lần 2 đẩy về đắng và khói. Rang nhạt giữ axit và hương hoa quả; rang đậm đẩy vị về socola, khói và đắng. Đây là bước biến đổi lớn nhất."],
           ["Xay & pha", "Cỡ xay phải khớp với thời gian nước tiếp xúc: mịn cho espresso 25 giây, thô cho French press 4 phút. Cà phê xay sẵn mất phần lớn hương thơm trong 15 phút."]
         ],
         slot: "Ảnh sân phơi cà phê"
@@ -118,10 +118,10 @@ species: {
       tasting: {
         n: "06",
         title: "Nếm cà phê như người thẩm định",
-        lede: "Giới chuyên môn dùng phương pháp cupping: cùng một tỉ lệ, cùng nhiệt độ, nếm mù. Bạn không cần bàn cupping, chỉ cần biết mình đang tìm gì.",
+        lede: "Giới chuyên môn dùng phương pháp cupping: cùng một tỉ lệ, cùng nhiệt độ, chấm điểm từng mẫu. Bạn không cần bàn cupping, chỉ cần biết mình đang tìm gì.",
         axes: [
           ["Hương", "Mùi bột khô và mùi khi gặp nước nóng, thường là nơi hiện ra hoa, gia vị, trái cây."],
-          ["Độ chua", "Cảm giác sáng, giòn nơi hai bên lưỡi. Chua ngon giống chanh hoặc táo, không phải chua giấm."],
+          ["Độ chua", "Cảm giác sáng, giòn trong miệng. Chua ngon giống chanh hoặc táo, không phải chua giấm."],
           ["Độ ngọt", "Đến từ quả chín và rang đúng. Ngọt là dấu hiệu rõ nhất của hạt hái đúng lúc."],
           ["Body", "Độ dày trong miệng: từ mỏng như trà đến sánh như sữa. Robusta và French press thường dày hơn."],
           ["Hậu vị", "Những gì còn lại sau khi nuốt. Càng dài, càng sạch, càng đáng giá."]
@@ -141,7 +141,7 @@ species: {
       history: {
         n: "07",
         title: "Hành trình của hạt cà phê",
-        lede: "Một loại quả mà dê ăn trước cả người. Từng bị coi là thứ của ma quỷ, bị cấm, bị giữ độc quyền, bị đánh cắp giống đem đi vòng quanh thế giới, để rồi thành thức uống được uống nhiều nhất hành tinh sau nước lọc."
+        lede: "Một loại quả mà dê ăn trước cả người. Từng bị coi là thứ của ma quỷ, bị cấm, bị giữ độc quyền, bị đánh cắp giống đem đi vòng quanh thế giới, để rồi thành một trong những thức uống phổ biến nhất hành tinh."
       },
       vietnam: {
         n: "08",
@@ -192,9 +192,9 @@ species: {
         title: "Ai được bao nhiêu trong ly cà phê",
         lede: "Cà phê là một trong những nông sản được giao dịch nhiều nhất thế giới. Giá bạn trả và giá người trồng nhận gần như không liên quan đến nhau.",
         paras: [
-          "Cà phê chưa rang được mua bán trên hai sàn: Arabica ở New York (hợp đồng “C”), Robusta ở London. Giá dao động theo thời tiết Brazil, tỉ giá, chi phí vận tải biển và cả đầu cơ, nông dân nhận giá của một thị trường mà họ không có tiếng nói.",
+          "Cà phê chưa rang được mua bán trên hai sàn: Arabica ở New York (hợp đồng “C”), Robusta ở London. ICO xếp giá thành bốn nhóm: arabica Colombia êm, arabica êm khác, arabica Brazil tự nhiên và robusta. Giá dao động theo thời tiết Brazil, tỉ giá, chi phí vận tải biển và cả đầu cơ, nông dân nhận giá của một thị trường mà họ không có tiếng nói.",
           "Trong một ly cà phê pha ở quán thành phố, phần tiền về tay người trồng thường chỉ là một phần rất nhỏ. Phần lớn giá trị nằm ở khâu rang, thương hiệu, mặt bằng và nhân công phục vụ. Đó là lý do các phong trào direct trade, fair trade và mua theo lô cố gắng dịch chuyển vài điểm phần trăm ấy về phía đầu chuỗi.",
-          "Rủi ro lớn nhất của thập kỷ tới không phải giá mà là khí hậu. Arabica cần khoảng 18-22°C; nhiệt độ tăng đẩy vùng trồng lên cao hơn, trong khi núi thì không cao thêm. Nhiều nghiên cứu cho rằng đến 2050 diện tích phù hợp cho Arabica có thể giảm khoảng một nửa, và đó là lúc Robusta chịu nhiệt, cùng những loài bị lãng quên như Liberica, trở nên quan trọng."
+          "Rủi ro lớn nhất của thập kỷ tới không phải giá mà là khí hậu. Arabica cần khoảng 18-22°C; nhiệt độ tăng đẩy vùng trồng lên cao hơn, trong khi núi thì không cao thêm. Một số nghiên cứu cho rằng đến 2050 diện tích phù hợp cho Arabica có thể giảm khoảng một nửa, và đó là lúc Robusta chịu nhiệt, cùng những loài bị lãng quên như Liberica, trở nên quan trọng."
         ],
         chainTitle: "Giá trị đi đâu (ước tính điển hình cho một ly ở quán)",
         chain: [
@@ -217,7 +217,7 @@ species: {
     terms: [
       ["Arabica", "Loài Coffea arabica: hạt dài, rãnh cong, trồng ở độ cao, ít caffeine, vị chua thanh và thơm. Chiếm khoảng 57% trong nhóm hai loài chính."],
       ["Robusta", "Loài Coffea canephora: hạt tròn, rãnh thẳng, chịu nhiệt và bệnh, caffeine gần gấp đôi Arabica, vị đậm và đắng."],
-      ["Coffea", "Chi thực vật của cây cà phê, khoảng 120-130 loài. Chỉ bốn loài được trồng thương mại; hai loài chính là Arabica và Robusta."],
+      ["Coffea", "Chi thực vật của cây cà phê, khoảng 120-130 loài. Chỉ bốn nhóm cà phê được trồng thương mại; hai nhóm chính là Arabica và Robusta."],
       ["Liberica & Excelsa", "Hai loài cà phê hiếm, gộp lại chỉ khoảng 1% sản lượng thế giới. Excelsa thực ra là một biến thể của Liberica; ở Việt Nam thường gọi chung là cà phê mít."],
       ["Cherry", "Quả cà phê. Chín từ xanh sang đỏ thẫm, bên trong thường có hai hạt."],
       ["Bao 60 kg", "Đơn vị chuẩn của ngành cà phê. Mọi số liệu sản lượng thế giới đều tính bằng bao 60 kg cà phê nhân."],
@@ -225,11 +225,13 @@ species: {
       ["Natural", "Phơi cả quả dưới nắng rồi mới xay vỏ. Cho vị ngọt đậm và hương trái chín, đôi khi lên men."],
       ["Honey", "Bóc vỏ nhưng giữ lại lớp nhớt khi phơi. Nằm giữa chế biến ướt và natural."],
       ["Crema", "Lớp bọt vàng nâu trên mặt espresso, do khí CO₂ trong hạt mới rang bị nhũ hóa dưới áp suất."],
-      ["Cupping", "Quy trình thẩm định chuẩn hóa: nếm mù nhiều mẫu cùng tỉ lệ và nhiệt độ để cho điểm."],
+      ["Cupping", "Quy trình thẩm định chuẩn hóa: chấm điểm nhiều mẫu cùng tỉ lệ và nhiệt độ."],
       ["Body", "Cảm giác dày, đầy trong miệng, từ mỏng như trà đến sánh như sữa."],
       ["Độ cao", "Chiều cao so với mực nước biển của vườn cà phê. Càng cao, quả chín càng chậm, thường càng ngọt và thơm."],
       ["Specialty", "Cà phê được hội đồng thẩm định cho từ 80 điểm trở lên trên thang 100, truy xuất được nguồn gốc."],
-      ["Hợp đồng C", "Hợp đồng tương lai của Arabica trên sàn New York, mốc giá tham chiếu cho phần lớn giao dịch Arabica thế giới."]
+      ["Hợp đồng C", "Hợp đồng tương lai của Arabica trên sàn New York, mốc giá tham chiếu cho phần lớn giao dịch Arabica thế giới."],
+      ["Peaberry (hạt đơn)", "Quả cà phê chỉ chứa một hạt thay vì hai; hạt nhỏ, tròn hơn và thường được cho là dồn hương vị."],
+      ["Anaerobic", "Lên men hạt trong bình kín, ít oxy, tạo ra hương trái cây lạ và độ chua đặc trưng."]
     ],
     footer: {
       about: "Coffee Globe là một trang thông tin: cà phê là gì, trồng ở đâu, pha thế nào và giá trị đi về đâu.",
@@ -314,7 +316,7 @@ species: {
 species: {
         n: "02",
         title: "Two species share the whole world",
-        lede: "The Coffea genus has around 120-130 species, but only four are grown commercially - and the two main ones, Arabica and Robusta, account for nearly 99% of output. They differ in bean shape, altitude and caffeine, and in their entire personality in the cup.",
+        lede: "The Coffea genus has around 120-130 species, but only four groups are grown commercially - and the two main ones, Arabica and Robusta, account for nearly 99% of output. They differ in bean shape, altitude and caffeine, and in their entire personality in the cup. Interestingly, Arabica is not a pure species: it is a natural hybrid of Robusta and a relative (Coffea eugenioides), with twice the chromosome count.",
         note: "Liberica and Excelsa also exist, only about 1-2% of world production, now drawing fresh interest for their heat tolerance.",
         slotA: "Photo of Arabica beans",
         slotB: "Photo of Robusta beans"
@@ -338,7 +340,7 @@ species: {
           ["Drying & storage", "Bringing moisture down to about 10-12% on patios or raised beds. Dry too fast and beans crack; too slow and ferment faults set in."],
           ["Milling & sorting", "Hulling the parchment, then grading by size, density and colour. Defects are removed here, a single bad ferment can spoil a whole brew."],
           ["Export", "Packed in 60 kg bags or barrier liners and shipped. From here coffee is a commodity priced on the New York and London exchanges."],
-          ["Roasting", "8-14 minutes at 190-230°C. Light roasts keep acidity and fruit; dark roasts push towards chocolate, smoke and bitterness. The biggest transformation of all."],
+          ["Roasting", "8-14 minutes at 190-230°C, marked by two cracks: first crack for bright acidity, second crack towards bitter and smoky. Light roasts keep acidity and fruit; dark roasts push towards chocolate, smoke and bitterness. The biggest transformation of all."],
           ["Grinding & brewing", "Grind size must match contact time: fine for a 25-second espresso, coarse for a 4-minute French press. Pre-ground coffee loses most of its aroma within 15 minutes."]
         ],
         slot: "Photo of coffee drying beds"
@@ -363,10 +365,10 @@ species: {
       tasting: {
         n: "06",
         title: "Tasting coffee like a grader",
-        lede: "Professionals use cupping: same ratio, same temperature, tasted blind. You don't need a cupping table, you just need to know what you're looking for.",
+        lede: "Professionals use cupping: same ratio, same temperature, scored sample by sample. You don't need a cupping table, you just need to know what you're looking for.",
         axes: [
           ["Aroma", "The smell of dry grounds and of the crust when hot water hits, where flowers, spice and fruit usually appear."],
-          ["Acidity", "The bright, crisp sensation along the sides of the tongue. Good acidity tastes of lemon or apple, never vinegar."],
+          ["Acidity", "The bright, crisp sensation in the mouth. Good acidity tastes of lemon or apple, never vinegar."],
           ["Sweetness", "Comes from ripe cherries and a well-judged roast. The clearest sign the fruit was picked at the right moment."],
           ["Body", "Weight in the mouth, from tea-thin to milk-thick. Robusta and French press tend heavier."],
           ["Finish", "What remains after you swallow. The longer and cleaner, the better the coffee."]
@@ -386,7 +388,7 @@ species: {
       history: {
         n: "07",
         title: "The journey of the coffee bean",
-        lede: "A fruit that goats ate before people did. Once called the work of the devil, banned, hoarded, its seeds smuggled across oceans, until it became the most widely drunk beverage on Earth after water."
+        lede: "A fruit that goats ate before people did. Once called the work of the devil, banned, hoarded, its seeds smuggled across oceans, until it became one of the most widely drunk beverages on Earth."
       },
       vietnam: {
         n: "08",
@@ -437,9 +439,9 @@ species: {
         title: "Who gets what in a cup of coffee",
         lede: "Coffee is among the most traded agricultural commodities on Earth. The price you pay and the price the farmer receives are almost unrelated.",
         paras: [
-          "Green coffee trades on two exchanges: Arabica in New York (the “C” contract) and Robusta in London. Prices swing on Brazilian weather, currencies, freight costs and speculation, growers take the price of a market in which they have no voice.",
+          "Green coffee trades on two exchanges: Arabica in New York (the “C” contract) and Robusta in London. The ICO sorts prices into four groups: Colombian milds, other milds, Brazilian naturals and robustas. Prices swing on Brazilian weather, currencies, freight costs and speculation, growers take the price of a market in which they have no voice.",
           "In a brewed coffee sold in a city café, the grower's share is usually a very small slice. Most of the value sits in roasting, brand, rent and service labour. That is what direct trade, fair trade and lot-based buying try to shift by a few percentage points.",
-          "The biggest risk of the coming decade is not price but climate. Arabica wants roughly 18-22°C; warming pushes suitable land uphill, and mountains do not grow taller. Several studies suggest suitable Arabica area could halve by 2050, which is when heat-tolerant Robusta, and forgotten species like Liberica, start to matter."
+          "The biggest risk of the coming decade is not price but climate. Arabica wants roughly 18-22°C; warming pushes suitable land uphill, and mountains do not grow taller. Some studies suggest suitable Arabica area could halve by 2050, which is when heat-tolerant Robusta, and forgotten species like Liberica, start to matter."
         ],
         chainTitle: "Where the money goes (typical estimate for a café cup)",
         chain: [
@@ -462,7 +464,7 @@ species: {
     terms: [
       ["Arabica", "Coffea arabica: long bean with a curved crease, grown high, lower caffeine, bright and aromatic. About 57% within the two main species."],
       ["Robusta", "Coffea canephora: rounder bean with a straight crease, heat- and disease-tolerant, nearly double the caffeine, bold and bitter."],
-      ["Coffea", "The plant genus of coffee, around 120-130 species. Only four are grown commercially; the two main ones are Arabica and Robusta."],
+      ["Coffea", "The plant genus of coffee, around 120-130 species. Only four groups are grown commercially; the two main ones are Arabica and Robusta."],
       ["Liberica & Excelsa", "Two rare coffee species, together only about 1% of world output. Excelsa is in fact a variety of Liberica."],
       ["Cherry", "The coffee fruit. Ripens from green to deep red and usually holds two seeds."],
       ["60 kg bag", "The industry's standard unit. All world production figures are counted in 60 kg bags of green coffee."],
@@ -470,11 +472,13 @@ species: {
       ["Natural", "The whole cherry sun-dried before hulling. Gives heavy sweetness and ripe, sometimes fermented fruit."],
       ["Honey", "Skin removed but sticky mucilage left on during drying. Sits between washed and natural."],
       ["Crema", "The amber foam on an espresso, CO₂ from fresh beans emulsified under pressure."],
-      ["Cupping", "The standardised grading ritual: several samples tasted blind at identical ratio and temperature, then scored."],
+      ["Cupping", "The standardised grading ritual: several samples scored at identical ratio and temperature."],
       ["Body", "The weight and fullness of the coffee in the mouth, from tea-thin to milk-thick."],
       ["Altitude", "Height above sea level of the farm. Higher means slower ripening, usually more sweetness and aroma."],
       ["Specialty", "Coffee scored 80 or above out of 100 by trained graders, with traceable origin."],
-      ["C contract", "The New York Arabica futures contract, the reference price for most Arabica trade in the world."]
+      ["C contract", "The New York Arabica futures contract, the reference price for most Arabica trade in the world."],
+      ["Peaberry", "A cherry that holds one round seed instead of two; smaller, denser and often prized for flavour."],
+      ["Anaerobic", "Fermenting beans in a sealed, low-oxygen tank, producing unusual fruity aromas and acidity."]
     ],
     footer: {
       about: "Coffee Globe is an information page: what coffee is, where it grows, how it is brewed and where the value goes.",
