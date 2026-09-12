@@ -86,13 +86,14 @@ species: {
       process: {
         n: "04",
         title: "Từ hạt đến ly",
-        lede: "Bảy bước, mỗi bước đều có thể làm hỏng hoặc làm nên một ly cà phê ngon.",
+        lede: "Tám bước, mỗi bước đều có thể làm hỏng hoặc làm nên một ly cà phê ngon.",
         steps: [
           ["Thu hoạch", "Hái chọn từng quả chín bằng tay (chất lượng cao) hoặc hái tuốt cả cành, có nơi dùng máy. Một cây cho khoảng 2,5-5 kg quả mỗi vụ, đủ cho chừng nửa kilogam cà phê rang."],
           ["Sơ chế", "Tách hạt khỏi thịt quả. Chế biến ướt cho ly sạch, chua thanh; chế biến khô (natural) phơi cả quả, cho vị ngọt và hương trái chín; honey nằm giữa hai lối."],
           ["Phơi & bảo quản", "Hạ độ ẩm hạt xuống khoảng 10-12% trên sân phơi hoặc giàn lưới. Phơi vội thì hạt nứt, phơi chậm thì lên men lỗi."],
           ["Xay vỏ & phân loại", "Bóc lớp vỏ trấu, phân loại theo cỡ hạt, tỉ trọng và màu. Người ta loại bỏ hạt lỗi ở đây, một hạt lên men xấu đủ làm hỏng cả ấm."],
           ["Xuất khẩu", "Đóng bao 60 kg hoặc túi chống ẩm, đi tàu. Từ lúc này cà phê là một loại hàng hóa có giá niêm yết trên sàn New York và London."],
+          ["Khử caffeine", "Ở giai đoạn hạt xanh, caffeine được loại bớt bằng nước, dung môi hoặc CO₂ siêu tới hạn - thường trước khi rang, để lại dưới 3% caffeine mà giữ phần lớn hương vị."],
           ["Rang", "8-14 phút ở 190-230°C, đánh dấu bằng hai tiếng nứt: nứt lần 1 cho vị chua sáng, nứt lần 2 đẩy về đắng và khói. Rang nhạt giữ axit và hương hoa quả; rang đậm đẩy vị về socola, khói và đắng. Đây là bước biến đổi lớn nhất."],
           ["Xay & pha", "Cỡ xay phải khớp với thời gian nước tiếp xúc: mịn cho espresso 25 giây, thô cho French press 4 phút. Cà phê xay sẵn mất phần lớn hương thơm trong 15 phút."]
         ],
@@ -101,7 +102,7 @@ species: {
       brewing: {
         n: "05",
         title: "Cách pha: cùng một hạt, mười ly khác nhau",
-        lede: "Muốn pha ngon, chỉ cần nắm ba yếu tố: bột xay mịn hay thô, lượng nước so với lượng cà phê, và thời gian nước tiếp xúc với bột. Mỗi cách pha chỉ là một cách khác nhau để cân bằng ba yếu tố đó.",
+        lede: "Muốn pha ngon, chỉ cần nắm ba yếu tố: bột xay mịn hay thô, lượng nước so với lượng cà phê, và thời gian nước tiếp xúc với bột. Mỗi cách pha chỉ là một cách khác nhau để cân bằng ba yếu tố đó. Chuẩn của SCA: tỉ lệ vàng 1:15-1:18, nước 92-96°C và nước pha có tổng chất rắn hoà tan (TDS) 75-250 ppm, lý tưởng khoảng 150.",
         cols: ["Tỉ lệ", "Cỡ xay", "Thời gian"],
         methods: [
           ["Espresso", "Ý", "1 : 2", "Rất mịn", "25-30 giây", "Nước nóng bị ép qua bánh bột dưới áp suất 9 bar. Cho ra 25-30 ml đặc sánh với lớp crema, nền của cappuccino, latte, americano."],
@@ -135,7 +136,8 @@ species: {
         howto: [
           "Xay ngay trước khi pha; mùi thơm mất nhanh nhất trong 15 phút đầu.",
           "Nếm ba lần: nóng, ấm, và gần nguội. Vị ngọt và lỗi chỉ hiện rõ khi nguội.",
-          "Nếm hai ly cạnh nhau. So sánh dễ hơn miêu tả."
+          "Nếm hai ly cạnh nhau. So sánh dễ hơn miêu tả.",
+          "Nếm bằng thìa: húp mạnh cho hương tản đều khắp miệng."
         ]
       },
       history: {
@@ -174,7 +176,8 @@ species: {
           ["Cách nó làm bạn tỉnh", "Caffeine không tạo ra năng lượng. Nó chỉ chặn adenosine, chất báo hiệu buồn ngủ tích tụ trong ngày. Khi caffeine hết tác dụng, số adenosine đó vẫn còn, nên bạn cảm thấy sụt hẳn."],
           ["Bao lâu thì hết", "Nửa đời sinh học của caffeine khoảng 5 giờ. Ly cà phê 3 giờ chiều vẫn còn một nửa lượng caffeine trong người lúc 8 giờ tối, lý do phổ biến nhất của giấc ngủ nông."],
           ["Bao nhiêu là hợp lý", "Các cơ quan an toàn thực phẩm xem tới khoảng 400 mg mỗi ngày (3-4 ly pha) là an toàn với người lớn khỏe mạnh; phụ nữ mang thai thường được khuyên giữ dưới 200 mg."],
-          ["Điểm cộng và điểm trừ", "Uống vừa phải gắn với sự tỉnh táo, hiệu suất bền hơn và một số lợi ích chuyển hóa trong các nghiên cứu dài hạn. Quá liều thì tim nhanh, bồn chồn, đau dạ dày, mất ngủ."]
+          ["Điểm cộng và điểm trừ", "Uống vừa phải gắn với sự tỉnh táo, hiệu suất bền hơn và một số lợi ích chuyển hóa trong các nghiên cứu dài hạn. Quá liều thì tim nhanh, bồn chồn, đau dạ dày, mất ngủ."],
+          ["Cà phê không caffeine", "Khử caffeine (decaf) loại khoảng 97% caffeine nhưng giữ lại phần lớn hương vị; mỗi ly vẫn còn vài miligam."]
         ],
         caffeineTitle: "Caffeine trong một khẩu phần thông thường",
         caffeine: [
@@ -231,7 +234,11 @@ species: {
       ["Specialty", "Cà phê được hội đồng thẩm định cho từ 80 điểm trở lên trên thang 100, truy xuất được nguồn gốc."],
       ["Hợp đồng C", "Hợp đồng tương lai của Arabica trên sàn New York, mốc giá tham chiếu cho phần lớn giao dịch Arabica thế giới."],
       ["Peaberry (hạt đơn)", "Quả cà phê chỉ chứa một hạt thay vì hai; hạt nhỏ, tròn hơn và thường được cho là dồn hương vị."],
-      ["Anaerobic", "Lên men hạt trong bình kín, ít oxy, tạo ra hương trái cây lạ và độ chua đặc trưng."]
+      ["Anaerobic", "Lên men hạt trong bình kín, ít oxy, tạo ra hương trái cây lạ và độ chua đặc trưng."],
+      ["Decaf", "Cà phê đã khử gần hết caffeine (thường còn dưới 3%), giữ phần lớn hương vị."],
+      ["Độ rang", "Mức rang hạt: nhạt giữ chua và hương hoa quả, vừa cân bằng, đậm thiên về socola và đắng."],
+      ["Nước pha (TDS)", "Tổng chất rắn hoà tan trong nước; SCA khuyến nghị 75-250 ppm, lý tưởng khoảng 150 ppm."],
+      ["Mùa vụ", "Vụ thu hoạch thay đổi theo vùng: Brazil tháng 5-9, Ethiopia tháng 10-1, Việt Nam tháng 11-1, Colombia có hai vụ."]
     ],
     footer: {
       about: "Coffee Globe là một trang thông tin: cà phê là gì, trồng ở đâu, pha thế nào và giá trị đi về đâu.",
@@ -333,13 +340,14 @@ species: {
       process: {
         n: "04",
         title: "From seed to cup",
-        lede: "Seven steps, each able to make or ruin the cup.",
+        lede: "Eight steps, each able to make or ruin the cup.",
         steps: [
           ["Harvest", "Selective hand picking of ripe cherries (highest quality), stripping whole branches, or machine harvesting. One tree yields 2.5-5 kg of cherries a season, about half a kilo of roasted coffee."],
           ["Processing", "Separating seed from fruit. Washed processing gives a clean, bright cup; natural drying of the whole cherry gives sweetness and ripe fruit; honey sits between the two."],
           ["Drying & storage", "Bringing moisture down to about 10-12% on patios or raised beds. Dry too fast and beans crack; too slow and ferment faults set in."],
           ["Milling & sorting", "Hulling the parchment, then grading by size, density and colour. Defects are removed here, a single bad ferment can spoil a whole brew."],
           ["Export", "Packed in 60 kg bags or barrier liners and shipped. From here coffee is a commodity priced on the New York and London exchanges."],
+          ["Decaffeination", "At the green-bean stage, caffeine is stripped out with water, solvents or supercritical CO₂ - usually before roasting, leaving under 3% while keeping most of the flavour."],
           ["Roasting", "8-14 minutes at 190-230°C, marked by two cracks: first crack for bright acidity, second crack towards bitter and smoky. Light roasts keep acidity and fruit; dark roasts push towards chocolate, smoke and bitterness. The biggest transformation of all."],
           ["Grinding & brewing", "Grind size must match contact time: fine for a 25-second espresso, coarse for a 4-minute French press. Pre-ground coffee loses most of its aroma within 15 minutes."]
         ],
@@ -348,7 +356,7 @@ species: {
       brewing: {
         n: "05",
         title: "Brewing: one bean, ten different cups",
-        lede: "Three things shape every cup: how finely the beans are ground, how much water you use, and how long the water touches the grounds. Each brewing method is just a different balance of those three.",
+        lede: "Three things shape every cup: how finely the beans are ground, how much water you use, and how long the water touches the grounds. Each brewing method is just a different balance of those three. SCA standards: a golden ratio of 1:15-1:18, water at 92-96°C, and brewing water with a TDS of 75-250 ppm, ideally around 150.",
         cols: ["Ratio", "Grind", "Time"],
         methods: [
           ["Espresso", "Italy", "1 : 2", "Very fine", "25-30 sec", "Hot water forced through a compacted puck at 9 bar. Yields 25-30 ml of syrupy coffee under a layer of crema, the base of cappuccino, latte and americano."],
@@ -382,7 +390,8 @@ species: {
         howto: [
           "Grind immediately before brewing; most aroma is gone within 15 minutes.",
           "Taste three times: hot, warm, nearly cold. Sweetness and faults only show as it cools.",
-          "Taste two cups side by side. Comparing is far easier than describing."
+          "Taste two cups side by side. Comparing is far easier than describing.",
+          "Taste with a spoon: a hard slurp spreads the aroma across the mouth."
         ]
       },
       history: {
@@ -421,7 +430,8 @@ species: {
           ["How it wakes you", "Caffeine creates no energy. It blocks adenosine, the sleepiness signal that builds up through the day. When the caffeine wears off, that adenosine is still waiting, hence the crash."],
           ["How long it lasts", "Caffeine's half-life is about five hours. A 3pm coffee still has half its caffeine in you at 8pm, the most common cause of shallow sleep."],
           ["How much is reasonable", "Food-safety agencies consider up to about 400 mg a day (3-4 brewed cups) safe for healthy adults; pregnancy guidance is usually under 200 mg."],
-          ["Upsides and downsides", "Moderate intake is associated with alertness, better sustained performance and some metabolic benefits in long-term studies. Too much brings a racing heart, jitters, stomach upset and lost sleep."]
+          ["Upsides and downsides", "Moderate intake is associated with alertness, better sustained performance and some metabolic benefits in long-term studies. Too much brings a racing heart, jitters, stomach upset and lost sleep."],
+          ["Decaf", "Decaffeination removes around 97% of the caffeine while keeping most of the flavour; a cup still holds a few milligrams."]
         ],
         caffeineTitle: "Caffeine in a typical serving",
         caffeine: [
@@ -478,7 +488,11 @@ species: {
       ["Specialty", "Coffee scored 80 or above out of 100 by trained graders, with traceable origin."],
       ["C contract", "The New York Arabica futures contract, the reference price for most Arabica trade in the world."],
       ["Peaberry", "A cherry that holds one round seed instead of two; smaller, denser and often prized for flavour."],
-      ["Anaerobic", "Fermenting beans in a sealed, low-oxygen tank, producing unusual fruity aromas and acidity."]
+      ["Anaerobic", "Fermenting beans in a sealed, low-oxygen tank, producing unusual fruity aromas and acidity."],
+      ["Decaf", "Coffee with nearly all its caffeine removed (usually under 3%), keeping most of the flavour."],
+      ["Roast level", "How dark the beans are roasted: light keeps acidity and fruit, medium balances, dark leans chocolate and bitter."],
+      ["Water (TDS)", "Total dissolved solids in water; the SCA recommends 75-250 ppm, ideally around 150 ppm."],
+      ["Harvest season", "Harvest timing varies by region: Brazil May-Sep, Ethiopia Oct-Jan, Vietnam Nov-Jan, Colombia two crops."]
     ],
     footer: {
       about: "Coffee Globe is an information page: what coffee is, where it grows, how it is brewed and where the value goes.",
